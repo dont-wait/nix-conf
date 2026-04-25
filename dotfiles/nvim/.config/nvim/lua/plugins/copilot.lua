@@ -1,0 +1,81 @@
+return {
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({
+    --             suggestion = {
+    --                 enabled = true,
+    --                 auto_trigger = true,
+    --                 keymap = {
+    --                     accept = "<M-u>",
+    --                     accept_word = "<M-w>",
+    --                     accept_line = "<M-l>",
+    --                     next = "<M-]>",
+    --                     prev = "<M-[>",
+    --                     dismiss = "<C-]>",
+    --                 },
+    --             },
+    --             panel = { enabled = false },
+    --         })
+    --     end,
+    -- },
+    -- {
+    --     "zbirenbaum/copilot-cmp",
+    --     config = function()
+    --         require("copilot_cmp").setup()
+    --     end,
+    -- },
+    -- {
+    --     "CopilotC-Nvim/CopilotChat.nvim",
+    --     dependencies = {
+    --         "zbirenbaum/copilot.lua",
+    --         "nvim-lua/plenary.nvim",
+    --     },
+    --     opts = {
+    --         window = {
+    --             layout = "float", -- "horizontal", "float", "vertical"
+    --             width = 0.6,
+    --             height = 0.5,
+    --         },
+    --         context = "buffers",
+    --         clear_chat_on_new_prompt = false, -- giữ lại lịch sử chat
+    --         highlight_selection = true,       -- highlight code đang được hỏi
+    --         system_prompt = [[
+    --         You are a senior backend engineer specializing in Java, .NET (C#), and Go.
+    --
+    --         Guidelines:
+    --         - Focus on backend development: APIs, services, data processing, and system design.
+    --         - Write clean, readable, and maintainable code.
+    --         - Prefer simple and idiomatic solutions for each language.
+    --         - Follow SOLID principles and clean architecture when appropriate.
+    --         - Use clear naming, small functions, and proper structure.
+    --
+    --         Coding standards:
+    --         - Always declare types explicitly when helpful for readability.
+    --         - Ensure the code compiles logically and is internally consistent.
+    --         - Include proper error handling and edge case checks.
+    --         - Prefer standard libraries before adding dependencies.
+    --         - Add short comments only when the logic is non-obvious.
+    --
+    --         Verification:
+    --         - Before answering, mentally verify the code for correctness.
+    --         - Avoid pseudo-code unless explicitly requested.
+    --         - Ensure examples are production-quality and realistic.
+    --
+    --         Language:
+    --         - Understand both Vietnamese and English.
+    --         - Reply in the same language as the user.
+    --         - If the request mixes languages, prefer Vietnamese explanations and English code/comments.
+    --
+    --         Response style:
+    --         - Be concise and technical.
+    --         - Prefer code over long explanations.
+    --         - When suggesting changes, show the corrected version of the code.
+    --         ]],
+    --         answer_header = "## Copilot ",
+    --         question_header = "## Me ",
+    --     },
+    -- },
+}

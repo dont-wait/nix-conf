@@ -1,0 +1,191 @@
+# ========================
+# MOD KEY
+# ========================
+
+set $mod Mod4
+
+# ========================
+# FONT
+# ========================
+
+font pango:JetBrainsMono Nerd Font 16
+
+# ========================
+# TERMINAL
+# ========================
+
+# set $term ghostty
+set $term wezterm
+bindsym $mod+Return exec $term
+# ========================
+# APP LAUNCHER
+# ========================
+
+
+# ========================
+# APPLICATION SHORTCUTS
+# ========================
+
+bindsym $mod+Shift+f exec firefox
+bindsym $mod+Shift+d exec zathura
+
+# ========================
+# WINDOW CONTROL
+# ========================
+
+bindsym $mod+Shift+q kill
+
+bindsym $mod+r reload
+bindsym $mod+Shift+r restart 
+bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+Shift+p exec arandr
+
+# just laptop screen
+bindsym $mod+F1 exec --no-startup-id xrandr --output eDP-1 --auto --primary --output HDMI-1 --off
+# just second screen
+bindsym $mod+F2 exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --primary --output eDP-1 --off
+
+bindsym $mod+F3 focus output eDP-1
+bindsym $mod+F4 focus output HDMI-1
+
+# dual screen
+bindsym $mod+F5 exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --right-of eDP-1
+
+bindsym $mod+Shift+F1 move container to output eDP-1
+bindsym $mod+Shift+F2 move container to output HDMI-1
+
+
+# ========================
+# FOCUS (vim style)
+# ========================
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# ========================
+# MOVE WINDOW
+# ========================
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# ========================
+# RESIZE
+# ========================
+
+bindsym $mod+Ctrl+h resize shrink width 10 px
+bindsym $mod+Ctrl+l resize grow width 10 px
+bindsym $mod+Ctrl+j resize shrink height 10 px
+bindsym $mod+Ctrl+k resize grow height 10 px
+
+# ========================
+# WORKSPACES
+# ========================
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# ========================
+# SCRATCHPAD
+# ========================
+
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus  move scratchpad
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+f fullscreen
+# ========================
+# SCREENSHOT
+# ========================
+
+bindsym $mod+Shift+S exec --no-startup-id flameshot gui
+
+# ========================
+# AUDIO
+# ========================
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 6%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+
+# ========================
+# BRIGHNESS
+# ========================
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+
+
+
+# ========================
+# WINDOW RULES
+# ========================
+
+for_window [class="firefox"] move to workspace $ws2
+# default_border pixel 1
+# default_floating_border pixel 4
+# smart_borders no_gaps
+for_window [class=".*"] border pixel 1
+# client.focused          #89b4fa #89b4fa #cdd6f4 #89b4fa #89b4fa
+client.focused          #a6adc8 #a6adc8 #11111b #a6adc8 #a6adc8
+client.unfocused        #1e1e2e #1e1e2e #6c7086 #1e1e2e #1e1e2e
+# ========================
+# GAPS
+# ========================
+
+gaps inner 2
+gaps outer 1
+
+# ========================
+# BAR
+# ========================
+
+# bar {
+#     i3bar_command i3bar --transparency
+#     status_command i3status
+#     position top
+#     tray_output none
+#     colors {
+#         background #00000000
+#         statusline #ffffff
+#         focused_workspace  #89b4fa #89b4fa #1e1e2e
+#         active_workspace   #313244 #313244 #cdd6f4
+#         inactive_workspace #18182500 #18182500 #6c7086
+#         urgent_workspace   #f38ba8 #f38ba8 #1e1e2e
+#     }
+# }
+
+# bindsym $mod+b bar mode toggle
+bindsym $mod+b exec --no-startup-id polybar-msg cmd toggle
+bindsym $mod+d exec rofi -show drun 
+bindsym $mod+Shift+b exec blueman-manager
+#========================
+# AUTOSTART
+# ========================
+exec --no-startup-id autocutsel -fork
+exec --no-startup-id autocutsel -selection PRIMARY -fork
+exec --no-startup-id udiskie --tray &
+exec_always --no-startup-id picom
+exec_always --no-startup-id dunst
+exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/bg/itachi2.png
