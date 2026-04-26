@@ -11,18 +11,24 @@
     ./db.nix
     ./langs.nix
 
-    ../../modules/home-manager/tmux.nix
-    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/default.nix
     ../../modules/home-manager/i3.nix
     ../../modules/home-manager/yazi.nix
-    ../../modules/home-manager/wezterm.nix
-    ../../modules/home-manager/ghostty.nix
-    ../../modules/home-manager/nvim.nix
+    ../../modules/home-manager/firefox.nix
+    ../../modules/home-manager/zathura.nix
   ];
 
   home.username = "dontwait";
   home.homeDirectory = "/home/dontwait";
   home.stateVersion = "25.11";
+
+  within = {
+    neovim.enable = true;
+    ghostty.enable = true;
+    zsh.enable = true;
+  };
+
+  nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
     # terminal & shell
@@ -38,7 +44,6 @@
     yazi
 
     # desktop
-    dmenu
     dunst
     feh
     picom
@@ -76,7 +81,6 @@
     flutter
     openssl
     azuredatastudio
-    staruml
     vmware-workstation
 
     # misc
@@ -84,7 +88,12 @@
     edid-decode
     stow
     qt6Packages.fcitx5-configtool
+    jq
   ];
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   programs.home-manager.enable = true;
 }

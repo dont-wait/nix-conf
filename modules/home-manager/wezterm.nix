@@ -1,24 +1,27 @@
 {
+  lib,
   config,
   pkgs,
-  lib,
   ...
 }:
 
-{
-  programs.wezterm = {
-    enable = true;
-    enableUaches = true;
-    package = pkgs.wezterm;
-  };
+with lib;
 
-  home-manager.users.dontwait =
-    { lib, ... }:
-    {
-      home.file = {
-        ".config/wezterm" = {
-          source = ../../dotfiles/wezterm/.wezterm.lua;
-        };
+let
+  cfg = config.within.wezterm;
+in
+{
+  options.within.wezterm.enable = mkEnableOption "Enables Within's wezterm config";
+
+  config = mkIf cfg.enable {
+    programs.wezterm.enable = true;
+    home.file = {
+      ".wezterm.lua" = {
+        source = ../../dotfiles/wezterm/wezterm.lua;
+      };
+      "bg" = {
+        source = ../../dotfiles/bg;
       };
     };
+  };
 }

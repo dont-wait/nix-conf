@@ -1,19 +1,23 @@
 {
+  lib,
   config,
   pkgs,
-  lib,
   ...
 }:
 
+with lib;
+
+let
+  cfg = config.within.ghostty;
+in
 {
-  home-manager.users.dontwait =
-    { lib, ... }:
-    {
-      home.file = {
-        ".config/ghostty" = {
-          source = ../../dotfiles/ghostty/.config/ghostty;
-          recursive = true;
-        };
+  options.within.ghostty.enable = mkEnableOption "Enables Within's Ghostty config";
+
+  config = mkIf cfg.enable {
+    home.file = {
+      ".config/ghostty/config" = {
+        source = ../../dotfiles/ghostty/config;
       };
     };
+  };
 }
