@@ -181,15 +181,26 @@
 
   programs.nm-applet.enable = true;
 
-  nixpkgs.config.allowBroken = true;
+  nixpkgs.config = {
+    allowBroken = true;
+    allowUnfree = true;
+    android_sdk.accept_license = true;
+  };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  system.userActivationScripts = {
+    stdio = {
+      text = ''
+        rm -f ~/Android/Sdk/platform-tools/adb
+        ln -s /run/current-system/sw/bin/adb ~/Android/Sdk/platform-tools/adb
+      '';
+      deps = [
+      ];
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
     git
     wget
     gh
@@ -211,15 +222,10 @@
     intel-media-driver
     vulkan-loader
     intel-compute-runtime
-    autocutsel
-    xclip
-    autorandr
-    arandr
     openvpn
     networkmanager-openvpn
     update-systemd-resolved
     antigravity-fhs
-    android-tools
     (androidenv.composeAndroidPackages {
       platformVersions = [ "36" ];
       ndkVersions = [ "28.2.13676358" ];

@@ -32,16 +32,9 @@
 
   home.packages = with pkgs; [
     # terminal & shell
-    neovim
-    wezterm
-    ghostty
-    tmux
-    zsh
     oh-my-zsh
     fastfetch
-    tldr
     tree-sitter
-    yazi
 
     # desktop
     dunst
@@ -67,7 +60,7 @@
     rar
 
     # apps
-    discord
+    discord-qt
     brave
     obs-studio
     libreoffice-qt
@@ -75,6 +68,11 @@
     mpv
     postman
     vscode-fhs
+    autocutsel
+    xclip
+    autorandr
+    arandr
+    android-tools
 
     # dev
     android-studio
@@ -89,6 +87,8 @@
     stow
     qt6Packages.fcitx5-configtool
     jq
+    nerd-fonts.inconsolata
+    nerd-fonts.jetbrains-mono
   ];
 
   home.sessionVariables = {
