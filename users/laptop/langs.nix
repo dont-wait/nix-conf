@@ -8,7 +8,6 @@ in
   home.packages = with pkgs; [
     # C/C++
     gcc
-    clang
     gnumake
 
     # Node / Web

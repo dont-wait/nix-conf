@@ -35,6 +35,9 @@
     oh-my-zsh
     fastfetch
     tree-sitter
+    ghostty
+    wezterm
+    yazi
 
     # desktop
     dunst
@@ -45,11 +48,7 @@
     pavucontrol
     brightnessctl
     blueman
-    (polybar.override {
-      i3Support = true;
-      pulseSupport = true;
-    })
-
+    polybar
     # file manager
     xfce.thunar
     xfce.thunar-volman
