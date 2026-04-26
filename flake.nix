@@ -31,7 +31,7 @@
     in
     {
       nixosConfigurations = {
-        nixos      = mkNixosConfig [ ./nixos/laptop/configuration.nix ];
+        laptop      = mkNixosConfig [ ./nixos/laptop/configuration.nix ];
         minimal-vm = mkNixosConfig [ ./nixos/minimal-vm/configuration.nix ];
       };
 

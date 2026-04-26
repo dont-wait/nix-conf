@@ -177,9 +177,6 @@
     stdenv.cc.cc.lib
     zlib
   ];
-  programs = {
-    adb.enable = true;
-  };
   programs.bash.enableCompletion = true;
 
   programs.nm-applet.enable = true;
@@ -222,6 +219,7 @@
     networkmanager-openvpn
     update-systemd-resolved
     antigravity-fhs
+    android-tools
     (androidenv.composeAndroidPackages {
       platformVersions = [ "36" ];
       ndkVersions = [ "28.2.13676358" ];
