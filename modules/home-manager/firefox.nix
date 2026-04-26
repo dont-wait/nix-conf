@@ -3,17 +3,26 @@
 {
   programs.firefox = {
     enable = true;
+    configPath = ".mozilla/firefox";
     profiles.default = {
 
       search.engines = {
         "Nix Packages" = {
-          urls = [{
-            template = "https://search.nixos.org/packages";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
 
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "@np" ];
@@ -22,6 +31,7 @@
       search.force = true;
 
       settings = {
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.pocket.enabled" = false;
         "dom.security.https_only_mode" = false;
         "browser.download.panel.shown" = true;
@@ -30,6 +40,7 @@
         "browser.theme.toolbar-theme" = 1;
       };
       userChrome = ''
+                
         /* Menu button */
         #PanelUI-button {
           -moz-box-ordinal-group: 0 !important;
@@ -54,10 +65,22 @@
         /* Extensions button */
         #unified-extensions-button {
             position: absolute !important;
-            opacity: 0 !important;
+            /* opacity: 0 !important; */
+            display: none !important;
           size: 1px !important;
         }
 
+        /*hide sidebar button*/
+        #sidebar-box,
+        #sidebar-splitter,
+        #sidebar-button {
+          display: none !important;
+        }
+
+        /* Hide reload button */
+        #stop-reload-button {
+          display: none !important;
+        }
         /* Extension name inside URL bar */
         #identity-box.extensionPage #identity-icon-label {
           visibility: collapse !important
@@ -142,7 +165,7 @@
         /* tabs */
         .tabbrowser-tab:not(:hover):not([visuallyselected], [multiselected]) {
             transition: .5s !important;
-            filter: opacity(50%) !important;
+            filter: opacity(30%) !important;
         }
 
         #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon, .tabbrowser-tab:is([visuallyselected], [multiselected]) {
@@ -243,6 +266,7 @@
             cursor: pointer;
             display: -moz-box !important;
         }
+
       '';
     };
   };

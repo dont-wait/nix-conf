@@ -15,10 +15,10 @@ in
   options.within.zsh.enable = mkEnableOption "Enables ZSH Settings";
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.bat
-      pkgs.ripgrep # grep string telescope
-      pkgs.zsh-powerlevel10k
+    home.packages = with pkgs;[
+      bat
+      ripgrep # grep string telescope
+      zsh-powerlevel10k
     ];
     programs.fzf = {
       enable = true;
@@ -57,6 +57,7 @@ in
         share = true;
       };
       shellAliases = {
+        ho = "~";
         dc = "docker-compose";
         rm = "rm -i";
         k = "kubectl";
@@ -66,6 +67,7 @@ in
         fv = "nvim $(fzf -m --preview='bat --color=always {}')";
         gcof = "git fetch && git checkout $(git branch | fzf | sed 's/^..//')";
         lzd = "lazydocker";
+        lzg = "lazygit";
         slzd = "sudo lazydocker";
       };
       initContent = ''

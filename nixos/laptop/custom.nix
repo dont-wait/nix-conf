@@ -35,7 +35,8 @@
     screenkey
     xclip # clipboard
     unzip
-  ];
+    brightnessctl
+      ];
   nixpkgs.config.allowUnfreePredicate = (_: true);
   boot.loader.systemd-boot.configurationLimit = 5;
   systemd = {
@@ -66,5 +67,5 @@
     options = "--delete-older-than 7d";
 
   };
-  
+
 }

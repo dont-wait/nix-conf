@@ -74,6 +74,7 @@
     MOZ_ENABLE_WAYLAND = "0";
     ELECTRON_OZONE_PLATFORM_HINT = "x11";
   };
+
   # Add this if you use Brave or Google Chrome
   programs.chromium.extraOpts = {
     enable = true;

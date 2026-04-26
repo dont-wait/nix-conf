@@ -44,14 +44,10 @@
     feh
     picom
     rofi
-    flameshot
-    pavucontrol
-    brightnessctl
     blueman
-    polybar
     # file manager
-    xfce.thunar
-    xfce.thunar-volman
+    thunar
+    thunar-volman
     gvfs
     udiskie
     udisks2
