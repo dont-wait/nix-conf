@@ -2,14 +2,22 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./db.nix
     ./langs.nix
+
+    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/i3.nix
+    ../../modules/home-manager/yazi.nix
+    ../../modules/home-manager/wezterm.nix
+    ../../modules/home-manager/ghostty.nix
+    ../../modules/home-manager/nvim.nix
   ];
 
   home.username = "dontwait";
