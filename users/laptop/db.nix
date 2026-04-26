@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     postgresql # Cho Postgres (lệnh psql)
     mariadb # Cho MySQL (lệnh mysql)
     sqlcmd # Cho SQL Server (lệnh sqlcmd của Microsoft)

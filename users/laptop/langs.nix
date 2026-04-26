@@ -1,17 +1,18 @@
 { config, pkgs, ... }:
-
+let
+  python_version = pkgs.python3_13;
+  android_sdk.accept_license = true;
+in
 {
   # Tại đây khai báo các môi trường lập trình và LSP Server
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     # C/C++
     gcc
     clang
     gnumake
 
     # Node / Web
-    nodejs
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
+    nodejs_latest
     yarn-berry_3
 
     # Lua
@@ -33,39 +34,21 @@
     jdt-language-server
     google-java-format
     yaml-language-server
-
-    # Flutter
-    flutter
-    android-studio
-
-    #golang
-    go
-    gopls
-    gofumpt
-
-    # Tools
-    pkg-config
-    ninja
-    ripgrep
-    tree-sitter
-
-    # Git / docker
-    lazygit
-    lazydocker
-    docker-compose
-
-    # Extra LSP từ config cũ
-    stylua
-    basedpyright
-    ruff
-    nixfmt-rfc-style
-    zls
-    asm-lsp
-    websocat
-    rustc
-    cargo
-
-    lua51Packages.lua
-    lua51Packages.luarocks
   ];
+
+  home.sessionVariables = {
+    # Python
+    PYTHONSTARTUP = "${pkgs.python3}/lib/python3.13/site-packages";
+
+    # Node.js
+    # NODE_PATH = "~/.npm-global/lib/node_modules";
+    NODE_PATH = "$NODE_PATH:$ (npm root - g)";
+
+    # Rust
+    CARGO_HOME = "~/.cargo";
+
+    # Java
+    JAVA_HOME = "${pkgs.jdk25}";
+    PATH = "${pkgs.jdk25}/bin:$PATH";
+  };
 }

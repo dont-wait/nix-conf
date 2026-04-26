@@ -21,6 +21,7 @@
   environment.systemPackages = with pkgs; [
     docker-compose
     lazydocker
+    lazygit
     tlrc
     gnumake
     discord-ptb

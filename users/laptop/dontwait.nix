@@ -60,7 +60,7 @@
     rar
 
     # apps
-    discord-qt
+    discord-ptb
     brave
     obs-studio
     libreoffice-qt

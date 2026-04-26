@@ -23,7 +23,7 @@ in
         pkgs.vimPlugins.nvim-treesitter.withAllGrammars
       ];
       extraPackages = with pkgs; [
-        nodePackages_latest.vscode-json-languageserver
+        vscode-json-languageserver
         lua-language-server
         luajitPackages.jsregexp
         nil
@@ -46,7 +46,7 @@ in
       ];
 
     };
-    programs.neovim.home.file = {
+    home.file = {
       ".config/nvim" = {
         source = ../../dotfiles/nvim;
         recursive = true;
