@@ -225,6 +225,7 @@
     vulkan-loader
     intel-compute-runtime
     openvpn
+    i3status
     networkmanager-openvpn
     update-systemd-resolved
     antigravity-fhs

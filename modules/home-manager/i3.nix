@@ -8,7 +8,7 @@ let
   mod = "Mod4";
 in
 {
-  xsession.windowManager.i3 = {
+    xsession.windowManager.i3 = {
     enable = true;
     config = {
       modifier = mod;
@@ -19,9 +19,37 @@ in
       terminal = "wezterm";
 
       # ========================
-      # BAR — dùng polybar bên ngoài
+      # BAR —
       # ========================
-      bars = [ ];
+      bars = [
+        {
+          statusCommand = "i3status";
+          fonts = {
+            names = [ "JetBrainsMono Nerd Font" ];
+            size = 12.0;
+          };
+          colors = {
+            background = "#1e1e2e";
+            statusline = "#cdd6f4";
+            separator = "#6c7086";
+            focusedWorkspace = {
+              background = "#cba6f7";
+              border = "#cba6f7";
+              text = "#11111b";
+            };
+            activeWorkspace = {
+              background = "#313244";
+              border = "#313244";
+              text = "#cdd6f4";
+            };
+            inactiveWorkspace = {
+              background = "#1e1e2e";
+              border = "#1e1e2e";
+              text = "#6c7086";
+            };
+          };
+        }
+      ];
 
       # ========================
       # GAPS
@@ -147,7 +175,6 @@ in
         # ========================
         # POLYBAR & BLUETOOTH
         # ========================
-        "${mod}+b" = "exec --no-startup-id polybar-msg cmd toggle";
         "${mod}+Shift+b" = "exec blueman-manager";
 
         "${mod}+Shift+n" =
@@ -178,8 +205,6 @@ in
       exec_always --no-startup-id dunst
       exec_always --no-startup-id blueman-applet
       exec_always --no-startup-id nm-applet
-      exec_always --no-startup-id ~/.config/polybar/launch.sh
-      exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ~/dotfiles/bg/itachi2.png
-    '';
+      exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ~/dotfiles/bg/itachi2.png '';
   };
 }
