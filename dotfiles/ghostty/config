@@ -1,8 +1,7 @@
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 19
 #0.94
-background-opacity = 0.94 
-background-blur-radius = 80
+background-opacity = 0.80
 title = ""
 theme = Catppuccin Macchiato
 cursor-opacity = 0.65
@@ -17,7 +16,7 @@ keybind = alt+right=goto_split:right
 keybind = alt+enter=toggle_maximize
 
 # background 
-background-image = "/home/dontwait/dotfiles/bg/torii-gate-alone-mountain-scenery-digital-art-2k-wallpaper-uhdpaper.com-84@2@b.jpg"
-background-image-fit = cover
-background-image-position = center
-background-image-opacity = 0.05
+# background-image = "/home/dontwait/dotfiles/bg/torii-gate-alone-mountain-scenery-digital-art-2k-wallpaper-uhdpaper.com-84@2@b.jpg"
+# background-image-fit = cover
+# background-image-position = center
+# background-image-opacity = 1

@@ -16,7 +16,8 @@ in
       # ========================
       # TERMINAL
       # ========================
-      terminal = "wezterm";
+      # terminal = "wezterm";
+      terminal = "ghostty";
 
       # ========================
       # BAR —
@@ -73,7 +74,8 @@ in
       # ========================
       keybindings = lib.mkOptionDefault {
         # Terminal
-        "${mod}+Return" = "exec wezterm";
+        # "${mod}+Return" = "exec wezterm";
+        "${mod}+Return" = "exec ghostty";
 
         # App shortcuts
         "${mod}+Shift+f" = "exec firefox";
