@@ -71,6 +71,7 @@
     android-tools
 
     # dev
+    direnv
     android-studio
     flutter
     openssl

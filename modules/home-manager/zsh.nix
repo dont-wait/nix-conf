@@ -80,6 +80,10 @@ in
           git push --set-upstream origin "$branch"
         }
 
+        tos() {
+               
+
+        }
         cdb() {
             local target
             if [[ -z "$1" ]]; then

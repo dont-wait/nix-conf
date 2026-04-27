@@ -179,7 +179,7 @@ in
         "${mod}+Shift+b" = "exec blueman-manager";
         "${mod}+b" = "exec --no-startup-id ~/.config/i3/toggle-bar.sh";
         "${mod}+Shift+n" =
-          "exec --no-startup-id feh --no-fehbg --randomize --bg-scale ~/nix-conf/dotfiles/bg";
+          "exec --no-startup-id feh --no-fehbg --randomize --bg-scale ~/Documents/git/nix-conf/dotfiles/bg";
       };
     };
 
@@ -206,6 +206,7 @@ in
       exec_always --no-startup-id dunst
       exec_always --no-startup-id blueman-applet
       exec_always --no-startup-id nm-applet
-      exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ~/dotfiles/bg/itachi2.png '';
+      exec_always --no-startup-id sleep 1 && i3-msg bar mode hide
+      exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ~/Documents/git/dotfiles/bg/itachi2.png '';
   };
 }
