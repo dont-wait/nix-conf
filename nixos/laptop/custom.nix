@@ -29,14 +29,15 @@
     android-tools
     fastfetch
     tree
-    flameshot
+    satty
+    btop
     ffmpeg # video, graphics
     vlc
     screenkey
     xclip # clipboard
     unzip
     brightnessctl
-      ];
+  ];
   nixpkgs.config.allowUnfreePredicate = (_: true);
   boot.loader.systemd-boot.configurationLimit = 5;
   systemd = {

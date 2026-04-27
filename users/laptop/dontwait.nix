@@ -67,6 +67,7 @@
     xclip
     autorandr
     arandr
+    pavucontrol
     android-tools
 
     # dev
