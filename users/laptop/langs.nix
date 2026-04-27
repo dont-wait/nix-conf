@@ -24,6 +24,15 @@ in
     # Nix
     nil
 
+    # Go
+    go
+    go-tools
+
+    # Flutter
+    gradle_9
+    flutter329
+
+
     # Bash
     shfmt
     shellcheck

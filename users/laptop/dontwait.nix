@@ -13,6 +13,7 @@
 
     ../../modules/home-manager/default.nix
     ../../modules/home-manager/i3.nix
+    ../../modules/home-manager/picom.nix
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zathura.nix
