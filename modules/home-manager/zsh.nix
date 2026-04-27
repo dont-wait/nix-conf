@@ -15,11 +15,15 @@ in
   options.within.zsh.enable = mkEnableOption "Enables ZSH Settings";
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs;[
+    home.packages = with pkgs; [
       bat
       ripgrep # grep string telescope
       zsh-powerlevel10k
     ];
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true; 
+    };
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
@@ -72,17 +76,13 @@ in
         slzd = "sudo lazydocker";
       };
       initContent = ''
+        eval "$(direnv hook zsh)"
         export MANPAGER="nvim +Man!"
         bindkey -v
         bindkey '^F' autosuggest-accept
         gpup() {
           local branch=$(git rev-parse --abbrev-ref HEAD)
           git push --set-upstream origin "$branch"
-        }
-
-        tos() {
-               
-
         }
         cdb() {
             local target
