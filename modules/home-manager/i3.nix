@@ -6,6 +6,7 @@
 }:
 let
   mod = "Mod4";
+  wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/bg1.jpg";
 in
 {
   xsession.windowManager.i3 = {
@@ -181,7 +182,7 @@ in
       exec_always --no-startup-id blueman-applet
       exec_always --no-startup-id nm-applet
       exec_always --no-startup-id ~/.config/polybar/launch.sh
-      exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ~/Documents/git/nix-conf/dotfiles/bg/bg2.jpg
+      exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ${wallpaperPath}
       '';
   };
 }
