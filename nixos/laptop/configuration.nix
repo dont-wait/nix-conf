@@ -74,6 +74,7 @@
     MOZ_ENABLE_WAYLAND = "0";
     ELECTRON_OZONE_PLATFORM_HINT = "x11";
     XDG_CURRENT_DESKTOP = "i3";
+    FLAMESHOT_SKIP_PORTAL = "1";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -97,6 +98,7 @@
     xkb = {
       layout = "us";
       variant = "";
+      options = "caps:escape";
     };
     dpi = 96; # 96 (100%), 120 (125%), 144 (150%), 192 (200%)
     deviceSection = ''
