@@ -73,6 +73,7 @@
     # Force browsers to use X11
     MOZ_ENABLE_WAYLAND = "0";
     ELECTRON_OZONE_PLATFORM_HINT = "x11";
+    XDG_CURRENT_DESKTOP = "i3";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -107,7 +108,8 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
+    config.common.default = "gtk";
+    xdgOpenUsePortal = false;
   };
 
   services.displayManager.defaultSession = "none+i3";

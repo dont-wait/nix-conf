@@ -8,7 +8,7 @@ let
   mod = "Mod4";
 in
 {
-    xsession.windowManager.i3 = {
+  xsession.windowManager.i3 = {
     enable = true;
     config = {
       modifier = mod;
@@ -23,6 +23,7 @@ in
       # ========================
       bars = [
         {
+          position = "top";
           statusCommand = "i3status";
           fonts = {
             names = [ "JetBrainsMono Nerd Font" ];
@@ -157,7 +158,7 @@ in
         # ========================
         # SCREENSHOT
         # ========================
-        "${mod}+Shift+S" = "exec --no-startup-id flameshot gui";
+        "${mod}+Shift+s" = "exec --no-startup-id flameshot gui";
 
         # ========================
         # AUDIO
@@ -173,12 +174,12 @@ in
         "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set 5%-";
 
         # ========================
-        # POLYBAR & BLUETOOTH
+        # i3 status & BLUETOOTH
         # ========================
         "${mod}+Shift+b" = "exec blueman-manager";
-
+        "${mod}+b" = "exec --no-startup-id ~/.config/i3/toggle-bar.sh";
         "${mod}+Shift+n" =
-          "exec --no-startup-id feh --no-fehbg --randomize --bg-scale ~/nix-conf/dotfiles/bg/";
+          "exec --no-startup-id feh --no-fehbg --randomize --bg-scale ~/nix-conf/dotfiles/bg";
       };
     };
 

@@ -58,6 +58,7 @@ in
       };
       shellAliases = {
         ho = "~";
+        cls = "clear";
         dc = "docker-compose";
         rm = "rm -i";
         k = "kubectl";
@@ -72,7 +73,7 @@ in
       };
       initContent = ''
         export MANPAGER="nvim +Man!"
-        bindkey -v
+        # bindkey -v
         bindkey '^F' autosuggest-accept
         gpup() {
           local branch=$(git rev-parse --abbrev-ref HEAD)
