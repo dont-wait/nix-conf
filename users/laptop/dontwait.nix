@@ -51,6 +51,7 @@
     thunar-volman
     gvfs
     udiskie
+    cargo
     udisks2
     zathura
     rar
@@ -74,7 +75,6 @@
     # dev
     direnv
     android-studio
-    flutter
     openssl
     azuredatastudio
     vmware-workstation
