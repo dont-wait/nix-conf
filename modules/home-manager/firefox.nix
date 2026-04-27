@@ -55,6 +55,11 @@
           margin-right: 12px !important;
         }
 
+        /* Ẩn nút Firefox View */
+        #firefox-view-button {
+          display: none !important;
+        }
+
         /* Page back and foward buttons */
         #back-button,
         #forward-button
@@ -64,10 +69,12 @@
 
         /* Extensions button */
         #unified-extensions-button {
-            position: absolute !important;
-            /* opacity: 0 !important; */
-            display: none !important;
-          size: 1px !important;
+          display: flex !important; 
+          position: static !important;
+          opacity: 1 !important;
+          /* Đảm bảo nó không bị gán kích thước quá nhỏ */
+          width: auto !important;
+          height: auto !important;
         }
 
         /*hide sidebar button*/
