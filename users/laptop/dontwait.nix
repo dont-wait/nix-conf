@@ -17,6 +17,7 @@
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zathura.nix
+    ../../modules/home-manager/opencode.nix
   ];
 
   home.username = "dontwait";
