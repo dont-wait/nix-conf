@@ -309,3 +309,12 @@ The `laptop` host has auto-upgrade enabled via `system.autoUpgrade`:
 - **NixOS**: nixos-unstable + nixos-25.11 (for polybar overlay)
 - **Home Manager**: nixos-unstable
 - **State Version**: 26.05
+
+## Known Issues
+
+- **Flameshot**: Not working with current version. Screenshot functionality may be impaired.
+- **Polybar**: Using nixos-25.11 version due to compatibility issues with nixos-unstable. See `flake.nix` for overlay configuration.
+
+## Acknowledgments
+
+Inspired by [Kunkka19xx](https://github.com/Kunkka19xx) - thanks for the great NixOS configs!
