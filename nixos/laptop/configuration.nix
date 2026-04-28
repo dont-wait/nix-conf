@@ -74,7 +74,6 @@
     MOZ_ENABLE_WAYLAND = "0";
     ELECTRON_OZONE_PLATFORM_HINT = "x11";
     XDG_CURRENT_DESKTOP = "i3";
-    FLAMESHOT_SKIP_PORTAL = "1";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -268,7 +267,7 @@
   nix.gc.options = "--delete-older-than 7d";
 
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
     flake = "/home/dontwait/nix#laptop"; # Path to your flake and the output name
     flags = [
       "--update-input"
@@ -279,6 +278,6 @@
     randomizedDelaySec = "45min";
   };
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "25.11";
 
 }

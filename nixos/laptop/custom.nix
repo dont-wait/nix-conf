@@ -29,7 +29,6 @@
     android-tools
     fastfetch
     tree
-    flameshot
     btop
     ffmpeg # video, graphics
     vlc
