@@ -44,7 +44,7 @@
   systemd = {
     targets = {
       sleep = {
-        enable = false;
+        enable = true;
         unitConfig.DefaultDependencies = "no";
       };
       suspend = {
