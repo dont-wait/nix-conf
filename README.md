@@ -26,6 +26,7 @@ home-manager switch --flake .#dontwait
 ### laptop
 
 Full desktop configuration:
+
 - **Window Manager**: i3-gaps with picom, dunst, rofi
 - **Display Manager**: LightDM
 - **Terminal**: Ghostty, Wezterm
@@ -107,18 +108,21 @@ Before using this configuration, you need to modify several files to adapt it to
 Change all occurrences of `dontwait` to your username:
 
 **`users/laptop/dontwait.nix`** (lines 23-24):
+
 ```nix
 home.username = "dontwait";
 home.homeDirectory = "/home/dontwait";
 ```
 
 **`users/minimal-vm/dontwait-vm.nix`**:
+
 ```nix
 home.username = "dontwait";
 home.homeDirectory = "/home/dontwait";
 ```
 
 **`nixos/laptop/configuration.nix`** (lines 152-175):
+
 ```nix
 users.users.dontwait = {
   isNormalUser = true;
@@ -132,6 +136,7 @@ users.users.dontwait = {
 Update the hostname in NixOS configs:
 
 **`nixos/laptop/configuration.nix`** (line 28):
+
 ```nix
 networking.hostName = "nixos";
 ```
@@ -151,10 +156,12 @@ sudo nixos-generate-config
 ```
 
 Copy the generated `/etc/nixos/hardware-configuration.nix` to:
+
 - `nixos/laptop/hardware-configuration.nix`
 - `nixos/minimal-vm/hardware-configuration.nix` (if using VM)
 
 Key hardware-specific settings include:
+
 - `fileSystems` - your disk partitions and mount points
 - `boot.initrd.luks.devices` - encrypted partitions
 - `hardware.cpu.intel.updateMicrocode` or AMD equivalent
@@ -164,6 +171,7 @@ Key hardware-specific settings include:
 ### 4. User Groups
 
 Check and update user groups in **`nixos/laptop/configuration.nix`** (lines 158-169):
+
 ```nix
 extraGroups = [
   "networkmanager"
@@ -184,6 +192,7 @@ Remove groups that don't exist on your system or add new ones.
 ### 5. Time Zone
 
 Update in **`nixos/laptop/configuration.nix`** (line 40):
+
 ```nix
 time.timeZone = "Asia/Ho_Chi_Minh";
 ```
@@ -191,6 +200,7 @@ time.timeZone = "Asia/Ho_Chi_Minh";
 ### 6. Locale
 
 Update in **`nixos/laptop/configuration.nix`** (lines 43-55):
+
 ```nix
 i18n.defaultLocale = "en_US.UTF-8";
 ```
@@ -198,6 +208,7 @@ i18n.defaultLocale = "en_US.UTF-8";
 ### 7. Input Method (Fcitx5)
 
 If you don't need Vietnamese input, you can simplify **`nixos/laptop/configuration.nix`** (lines 57-65):
+
 ```nix
 i18n.inputMethod = {
   enable = true;
@@ -213,6 +224,7 @@ Or disable entirely by removing this section.
 ### 8. Display Manager (LightDM)
 
 Check **`nixos/laptop/configuration.nix`** (line 94):
+
 ```nix
 services.xserver.displayManager.lightdm.enable = true;
 ```
@@ -222,6 +234,7 @@ If using a different DM (SDDM, GDM, etc.), change accordingly.
 ### 9. Android SDK
 
 The Android SDK is configured in **`nixos/laptop/configuration.nix`** (lines 236-241):
+
 ```nix
 (androidenv.composeAndroidPackages {
   platformVersions = [ "36" ];
@@ -236,6 +249,7 @@ Update versions as needed or remove if not required.
 ### 10. Docker
 
 Docker is enabled in **`nixos/laptop/configuration.nix`** (line 246):
+
 ```nix
 virtualisation.docker.enable = true;
 ```
@@ -243,6 +257,7 @@ virtualisation.docker.enable = true;
 ### 11. Auto-Upgrade Path
 
 Update the flake path in **`nixos/laptop/configuration.nix`** (line 272):
+
 ```nix
 system.autoUpgrade = {
   enable = true;
@@ -254,6 +269,7 @@ system.autoUpgrade = {
 ### 12. Home Manager Modules
 
 Review imports in **`users/laptop/dontwait.nix`** (lines 10-21):
+
 ```nix
 imports = [
   ./db.nix
@@ -283,6 +299,7 @@ Remove packages you don't need or add new ones.
 ### 14. Flatpak
 
 Flatpak is enabled in **`nixos/laptop/configuration.nix`** (line 129):
+
 ```nix
 services.flatpak.enable = true;
 ```
@@ -292,6 +309,7 @@ Disable if not needed.
 ### 15. Printing (CUPS)
 
 Printing is enabled in **`nixos/laptop/configuration.nix`** (line 124):
+
 ```nix
 services.printing.enable = true;
 ```
@@ -301,19 +319,15 @@ Disable if no printer.
 ## Auto Upgrade
 
 The `laptop` host has auto-upgrade enabled via `system.autoUpgrade`:
+
 - Runs weekly
 - Automatically commits lock file changes
 
 ## Versions
 
-- **NixOS**: nixos-unstable + nixos-25.11 (for polybar overlay)
+- **NixOS**: nixos-unstable + nixos-25.11 (for polybar)
 - **Home Manager**: nixos-unstable
 - **State Version**: 26.05
-
-## Known Issues
-
-- **Flameshot**: Not working with current version. Screenshot functionality may be impaired.
-- **Polybar**: Using nixos-25.11 version due to compatibility issues with nixos-unstable. See `flake.nix` for overlay configuration.
 
 ## Acknowledgments
 
