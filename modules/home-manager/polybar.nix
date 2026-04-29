@@ -44,11 +44,11 @@ in
         font-0 = "JetBrainsMono Nerd Font Mono:size=10;2";
         padding-left = 1;
         padding-right = 1;
-        module-margin-left = 1;
-        module-margin-right = 1;
+        module-margin-left = 0;
+        module-margin-right = 0;
         modules-left = "i3";
         modules-center = "date";
-        modules-right = "sysinfo";
+        modules-right = "cpu memory disk volume battery";
         fixed-center = true;
         separator = "";
         tray-position = "none";
@@ -82,27 +82,69 @@ in
         label-foreground = "\${colors.foreground}";
       };
 
-      "module/sysinfo" = {
-        type = "custom/script";
-        exec = "${pkgs.writeShellScript "sysinfo" ''
-          cpu=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d. -f1)
-          mem=$(free -h | awk '/^Mem:/ {print $3}')
-          disk=$(df -h / | awk 'NR==2 {print $4}')
-          vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d%%", $2*100}')
-          bat=$(cat /sys/class/power_supply/BAT0/capacity)
-          status=$(cat /sys/class/power_supply/BAT0/status)
-          bt=$(bluetoothctl show | grep -q "Powered: yes" && echo "on" || echo "off")
-          case "$status" in
-            "Charging") bat_icon="󰂄" ;;
-            "Full"|"Not charging") bat_icon="󰁹" ;;
-            *) bat_icon="󰁾" ;;
-          esac
-          echo " 󰍛 $cpu%  󰾆 $mem  󰋊 $disk  󰕾 $vol  $bat_icon $bat%  󰂱 $bt"
-        ''}";
+      "module/cpu" = {
+        type = "internal/cpu";
+        interval = 3;
+        label = " 󰍛 %percentage%% ";
+        label-background = bg;
+        label-foreground = "\${colors.foreground}";
+      };
+
+      "module/memory" = {
+        type = "internal/memory";
         interval = 5;
-        format-background = bg;
-        format-foreground = "\${colors.foreground}";
-        label = "%output% ";
+        label = "󰾆 %used% ";
+        label-background = bg;
+        label-foreground = "\${colors.foreground}";
+      };
+
+      "module/disk" = {
+        type = "internal/fs";
+        "mount-0" = "/";
+        interval = 30;
+        format-mounted = "<label-mounted>";
+        label-mounted = "󰋊 %free% ";
+        label-mounted-background = bg;
+        label-mounted-foreground = "\${colors.foreground}";
+      };
+
+      "module/volume" = {
+        type = "internal/pulseaudio"; # event-driven, realtime
+        format-volume = "<label-volume>";
+        label-volume = "󰕾 %percentage%% ";
+        label-volume-background = bg;
+        label-volume-foreground = "\${colors.foreground}";
+        label-muted = "󰝟 --- ";
+        label-muted-background = bg;
+        label-muted-foreground = "\${colors.muted}";
+      };
+
+      "module/battery" = {
+        type = "internal/battery";
+        battery = "BAT0";
+        adapter = "AC";
+        full-at = 98;
+        format-charging = "<animation-charging> <label-charging>";
+        format-charging-background = bg;
+        format-discharging = "<ramp-capacity> <label-discharging>";
+        format-discharging-background = bg;
+        format-full = "<label-full>";
+        format-full-background = bg;
+        label-charging = "%percentage%% ";
+        label-discharging = "%percentage%% ";
+        label-full = "󰁹 100% ";
+        ramp-capacity-0 = "󰁺";
+        ramp-capacity-1 = "󰁼";
+        ramp-capacity-2 = "󰁾";
+        ramp-capacity-3 = "󰂀";
+        ramp-capacity-4 = "󰂂";
+        ramp-capacity-foreground = "\${colors.yellow}";
+        animation-charging-0 = "󰢜";
+        animation-charging-1 = "󰂆";
+        animation-charging-2 = "󰂈";
+        animation-charging-3 = "󰂉";
+        animation-charging-foreground = "\${colors.green}";
+        animation-charging-framerate = 600;
       };
     };
   };
