@@ -1,8 +1,9 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter.config").setup({
+        require("nvim-treesitter").setup({
             ensure_installed = {
                 "c",
                 "lua",
@@ -19,6 +20,7 @@ return {
                 "json",
                 "zig",
                 "c_sharp",
+                "dart"
             },
             highlight = { enable = true },
         })
