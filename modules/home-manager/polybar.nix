@@ -85,7 +85,7 @@ in
       "module/cpu" = {
         type = "internal/cpu";
         interval = 3;
-        label = " 󰍛 %percentage%% ";
+        label = "  󰍛 %percentage%% ";
         label-background = bg;
         label-foreground = "\${colors.foreground}";
       };
@@ -93,7 +93,7 @@ in
       "module/memory" = {
         type = "internal/memory";
         interval = 5;
-        label = "󰾆 %used% ";
+        label = " 󰾆 %used% ";
         label-background = bg;
         label-foreground = "\${colors.foreground}";
       };
@@ -103,7 +103,7 @@ in
         "mount-0" = "/";
         interval = 30;
         format-mounted = "<label-mounted>";
-        label-mounted = "󰋊 %free% ";
+        label-mounted = " 󰋊 %free% ";
         label-mounted-background = bg;
         label-mounted-foreground = "\${colors.foreground}";
       };
@@ -111,10 +111,10 @@ in
       "module/volume" = {
         type = "internal/pulseaudio"; # event-driven, realtime
         format-volume = "<label-volume>";
-        label-volume = "󰕾 %percentage%% ";
+        label-volume = " 󰕾 %percentage%% ";
         label-volume-background = bg;
         label-volume-foreground = "\${colors.foreground}";
-        label-muted = "󰝟 --- ";
+        label-muted = " 󰝟 --- ";
         label-muted-background = bg;
         label-muted-foreground = "\${colors.muted}";
       };
@@ -130,9 +130,9 @@ in
         format-discharging-background = bg;
         format-full = "<label-full>";
         format-full-background = bg;
-        label-charging = "%percentage%% ";
-        label-discharging = "%percentage%% ";
-        label-full = "󰁹 100% ";
+        label-charging = " %percentage%%  ";
+        label-discharging = " %percentage%%  ";
+        label-full = " 󰁹 100%  ";
         ramp-capacity-0 = "󰁺";
         ramp-capacity-1 = "󰁼";
         ramp-capacity-2 = "󰁾";
