@@ -5,103 +5,88 @@ local workspace_dir = workspace_path .. project_name
 
 local status, jdtls = pcall(require, "jdtls")
 if not status then
-	return
+    return
 end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
---
--- detect OS
-local os_config = ""
-if vim.fn.has("mac") == 1 then
-	os_config = "config_mac"
-elseif vim.fn.has("unix") == 1 then
-	os_config = "config_linux"
-elseif vim.fn.has("win32") == 1 then
-	os_config = "config_win"
-end
 
 local config = {
-	cmd = {
-		"java",
-		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
-		"-Dosgi.bundles.defaultStartLevel=4",
-		"-Declipse.product=org.eclipse.jdt.ls.core.product",
-		"-Dlog.protocol=true",
-		"-Dlog.level=ALL",
-		"-Xmx1g",
-		"--add-modules=ALL-SYSTEM",
-		"--add-opens",
-		"java.base/java.util=ALL-UNNAMED",
-		"--add-opens",
-		"java.base/java.lang=ALL-UNNAMED",
-		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
-		"-jar",
-		-- vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
-		vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
-		"-configuration",
-		home .. "/.local/share/nvim/mason/packages/jdtls/" .. os_config,
-		"-data",
-		workspace_dir,
-	},
-	root_dir = require("jdtls.setup").find_root({
-		".git",
-		"mvnw",
-		"gradlew",
-		"pom.xml",
-		"build.gradle",
-		"settings.gradle",
-	}),
 
-	settings = {
-		java = {
-			signatureHelp = { enabled = true },
-			extendedClientCapabilities = extendedClientCapabilities,
-			maven = {
-				downloadSources = true,
-			},
-			referencesCodeLens = {
-				enabled = true,
-			},
-			references = {
-				includeDecompiledSources = true,
-			},
-			inlayHints = {
-				parameterNames = {
-					enabled = "all", -- literals, all, none
-				},
-			},
-			format = {
-				enabled = true,
-				settings = {
-					profile = "GoogleStyle",
-				},
-			},
-		},
-	},
+    cmd = {
+        "jdtls",
+        "-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+        "-data",
+        workspace_dir,
+    }, -- dùng Nix jdtls trực tiếp,
 
-	init_options = {
-		bundles = {},
-	},
+    root_dir = require("jdtls.setup").find_root({
+        ".git",
+        "mvnw",
+        "gradlew",
+        "pom.xml",
+        "build.gradle",
+        "settings.gradle",
+    }),
+
+    settings = {
+        java = {
+            signatureHelp = { enabled = true },
+            extendedClientCapabilities = extendedClientCapabilities,
+            maven = {
+                downloadSources = true,
+            },
+            referencesCodeLens = {
+                enabled = true,
+            },
+            references = {
+                includeDecompiledSources = true,
+            },
+            inlayHints = {
+                parameterNames = {
+                    enabled = "all", -- literals, all, none
+                },
+            },
+            format = {
+                enabled = true,
+                settings = {
+                    profile = "GoogleStyle",
+                },
+            },
+        },
+    },
+
+    init_options = {
+        bundles = {},
+    },
 }
 require("jdtls").start_or_attach(config)
 
 vim.keymap.set("n", "<leader>co", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = "Organize Imports" })
 vim.keymap.set("n", "<leader>crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = "Extract Variable" })
 vim.keymap.set(
-	"v",
-	"<leader>crv",
-	"<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
-	{ desc = "Extract Variable" }
+    "v",
+    "<leader>crv",
+    "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
+    { desc = "Extract Variable" }
 )
 vim.keymap.set("n", "<leader>crc", "<Cmd>lua require('jdtls').extract_constant()<CR>", { desc = "Extract Constant" })
 vim.keymap.set(
-	"v",
-	"<leader>crc",
-	"<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
-	{ desc = "Extract Constant" }
+    "v",
+    "<leader>crc",
+    "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
+    { desc = "Extract Constant" }
 )
 vim.keymap.set(
-	"v",
-	"<leader>crm",
-	"<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
-	{ desc = "Extract Method" }
+    "v",
+    "<leader>crm",
+    "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
+    { desc = "Extract Method" }
 )
+vim.api.nvim_create_autocmd("LspAttach", {
+    buffer = 0,
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client.name == "jdtls" then
+            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+        end
+    end,
+})
