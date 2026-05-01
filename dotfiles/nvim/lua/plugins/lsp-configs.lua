@@ -185,6 +185,20 @@ return {
                 capabilities = capabilities,
             }
 
+            vim.lsp.config["dartls"] = {
+                capabilities = capabilities,
+                cmd = { "dart", "language-server", "--protocol=lsp" },
+                filetypes = { "dart" },
+                root_markers = { "pubspec.yaml" },
+                settings = {
+                    dart = {
+                        completeFunctionCalls = true,
+                        showTodos = true,
+                    },
+                },
+            }
+            vim.lsp.enable("dartls")
+
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "proto",
                 callback = function()
@@ -206,6 +220,7 @@ return {
                 "pylsp",
                 "bashls",
                 "asm_lsp",
+                "dartls",
             })
             -- lsp kepmap setting
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
