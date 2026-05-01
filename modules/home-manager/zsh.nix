@@ -62,6 +62,8 @@ in
       };
       shellAliases = {
         ho = "~";
+        gs = "git status";
+        gl = "git log --oneline";
         cls = "clear";
         dc = "docker-compose";
         rm = "rm -i";
