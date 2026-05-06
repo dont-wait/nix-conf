@@ -22,7 +22,7 @@ in
     ];
     programs.direnv = {
       enable = true;
-      nix-direnv.enable = true; 
+      nix-direnv.enable = true;
     };
     programs.fzf = {
       enable = true;
@@ -78,93 +78,94 @@ in
         slzd = "sudo lazydocker";
       };
       initContent = ''
-        eval "$(direnv hook zsh)"
-        export MANPAGER="nvim +Man!"
-        bindkey -v
-        bindkey '^F' autosuggest-accept
-        gpup() {
-          local branch=$(git rev-parse --abbrev-ref HEAD)
-          git push --set-upstream origin "$branch"
-        }
-        cdb() {
-            local target
-            if [[ -z "$1" ]]; then
-              cd ..
-              return
-            fi
-            # Nếu là số: lùi n cấp
-            if [[ "$1" =~ ^[0-9]+$ ]]; then
-              local dots=""
-              for i in {1..$1}; do dots="../$dots"; done
-              cd "$dots"
-              return
-            fi
-            # Nếu là chữ: tìm ngược theo tên
-            target=$(echo "$PWD" | grep -oEi ".*$1[^/]*" | head -n 1)
-            if [[ -n "$target" && "$target" != "$PWD" && -d "$target" ]]; then
-              cd "$target"
+          eval "$(direnv hook zsh)"
+          export MANPAGER="nvim +Man!"
+          bindkey -v
+          bindkey '^F' autosuggest-accept
+          gpup() {
+            local branch=$(git rev-parse --abbrev-ref HEAD)
+            git push --set-upstream origin "$branch"
+          }
+          cdb() {
+              local target
+              if [[ -z "$1" ]]; then
+                cd ..
+                return
+              fi
+              # Nếu là số: lùi n cấp
+              if [[ "$1" =~ ^[0-9]+$ ]]; then
+                local dots=""
+                for i in {1..$1}; do dots="../$dots"; done
+                cd "$dots"
+                return
+              fi
+              # Nếu là chữ: tìm ngược theo tên
+              target=$(echo "$PWD" | grep -oEi ".*$1[^/]*" | head -n 1)
+              if [[ -n "$target" && "$target" != "$PWD" && -d "$target" ]]; then
+                cd "$target"
+              else
+                echo "❌ Không tìm thấy cấp nào tên '$1'"
+              fi
+          }
+
+
+          y() {
+              local tmp="''$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+              command yazi "''$@" --cwd-file="''$tmp"
+              IFS= read -r -d ''' cwd < "''$tmp"
+              [ "''$cwd" != "''$PWD" ] && [ -d "''$cwd" ] && builtin cd -- "''$cwd"
+              rm -f -- "''$tmp"
+          }
+
+          opg() {
+            local base="$HOME/Documents/git"
+            local dir
+            dir=$(find "$base" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -exec test -d {} \; -print | fzf)
+            if [[ -n "$dir" ]]; then
+              cd "$dir"
             else
-              echo "❌ Không tìm thấy cấp nào tên '$1'"
+              cd "$base"
             fi
-        }
+          }
+          op() {
+            local user_dir="$HOME"
+            local dir
+            dir=$(find "$user_dir" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | fzf) && cd "$dir"
+          }
+          qss() {
+            local nix_dir="$HOME/nix"
+            local git_base="$HOME/Documents/git"
 
+            if ! tmux has-session -t nix 2>/dev/null; then
+              # Window 1: Vim
+              tmux new-session -d -s nix -c "$nix_dir" "vim"
 
-        y() {
-            local tmp="''$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-            command yazi "''$@" --cwd-file="''$tmp"
-            IFS= read -r -d ''' cwd < "''$tmp"
-            [ "''$cwd" != "''$PWD" ] && [ -d "''$cwd" ] && builtin cd -- "''$cwd"
-            rm -f -- "''$tmp"
-        }
+              # Window 2: bash
+              tmux new-window -t nix -c "$nix_dir"
+            fi
 
-        opg() {
-          local base="$HOME/Documents/git"
-          local dir
-          dir=$(find "$base" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -exec test -d {} \; -print | fzf)
-          if [[ -n "$dir" ]]; then
-            cd "$dir"
-          else
-            cd "$base"
-          fi
-        }
-        op() {
-          local user_dir="$HOME"
-          local dir
-          dir=$(find "$user_dir" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | fzf) && cd "$dir"
-        }
-        qss() {
-          local nix_dir="$HOME/nix"
-          local git_base="$HOME/Documents/git"
+            local dir
+            local base="$HOME/Documents/git"
 
-          if ! tmux has-session -t nix 2>/dev/null; then
-            # Window 1: Vim
-            tmux new-session -d -s nix -c "$nix_dir" "vim"
+            dir=$(find "$base" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | fzf)
 
-            # Window 2: bash
-            tmux new-window -t nix -c "$nix_dir"
-          fi
+            local name="$(basename "$dir")"
 
-          local dir
-          local base="$HOME/Documents/git"
+            if ! tmux has-session -t "$name" 2>/dev/null; then
+              # Window 1: Vim
+              tmux new-session -d -s "$name" -c "$dir" "vim"
 
-          dir=$(find "$base" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | fzf)
-
-          local name="$(basename "$dir")"
-
-          if ! tmux has-session -t "$name" 2>/dev/null; then
-            # Window 1: Vim
-            tmux new-session -d -s "$name" -c "$dir" "vim"
-
-            # Window 2: bash
-            tmux new-window -t "$name:" -c "$dir"
-            tmux select-window -t "$name:1" # select vim window
-          fi
-           if [[ -n "$TMUX" ]]; then
-            tmux switch-client -t "$name"
-          else
-            tmux attach-session -t "$name"
-          fi       
-        }
+              # Window 2: bash
+              tmux new-window -t "$name:" -c "$dir"
+              tmux select-window -t "$name:1" # select vim window
+            fi
+             if [[ -n "$TMUX" ]]; then
+              tmux switch-client -t "$name"
+            else
+              tmux attach-session -t "$name"
+            fi       
+          }
+        export PATH="$HOME/.npm-global/bin:$PATH"
       '';
     };
   };
