@@ -49,7 +49,7 @@ in
     home.file = {
       ".config/nvim" = {
         source = ../../dotfiles/nvim;
-        recursive = true;
+        # recursive = true;
       };
     };
   };

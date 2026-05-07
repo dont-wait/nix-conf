@@ -20,6 +20,7 @@ return {
 				"zig",
 				"c_sharp",
 				"dart",
+                "hurl",
 			},
 			sync_install = false,
 			indent = { enable = true },
@@ -28,10 +29,10 @@ return {
 		})
 
 		-- -- Enable highlight tự động cho tất cả filetype
-		-- vim.api.nvim_create_autocmd("FileType", {
-		-- 	callback = function()
-		-- 		pcall(vim.treesitter.start)
-		-- 	end,
-		-- })
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function()
+				pcall(vim.treesitter.start)
+			end,
+		})
 	end,
 }
