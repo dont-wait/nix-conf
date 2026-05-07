@@ -21,6 +21,7 @@
   environment.systemPackages = with pkgs; [
     docker-compose
     lazydocker
+    hurl
     lazygit
     tlrc
     gnumake
