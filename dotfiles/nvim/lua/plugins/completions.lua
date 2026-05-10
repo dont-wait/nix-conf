@@ -42,15 +42,12 @@ return {
 				window = {
 					completion = cmp.config.window.bordered({
 						border = "rounded",
-						winhighlight = "Normal:NormalFloat,CursorLine:PmenuSel,Search:None",
+						winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None", --CursorLine: CmpSel
 						scrollbar = false,
-						-- side_padding = 1,
 					}),
 					documentation = cmp.config.window.bordered({
 						border = "rounded",
-						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-						-- max_width = 60,
-						-- max_height = 15,
+						winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder",
 					}),
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -99,6 +96,12 @@ return {
 					-- { name = "copilot", group_index = 2 },
 				}),
 			})
+			-- Transparent cmp
+			vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
+			vim.api.nvim_set_hl(0, "CmpBorder", { bg = "NONE", fg = "#7aa2f7" })
+			vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = "NONE" })
+			vim.api.nvim_set_hl(0, "CmpDocBorder", { bg = "NONE", fg = "#7aa2f7" })
+            vim.api.nvim_set_hl(0, "CmpSel", { bg = "#2d3f76", fg = "NONE" })
 		end,
 	},
 }
