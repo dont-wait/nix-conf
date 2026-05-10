@@ -36,7 +36,7 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            { nixpkgs.overlays = [ polybarOverlay ]; } 
+            { nixpkgs.overlays = [ polybarOverlay ]; }
           ]
           ++ extraModules;
         };

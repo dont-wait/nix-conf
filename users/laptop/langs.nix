@@ -32,7 +32,6 @@ in
     gradle_9
     flutter329
 
-
     # Bash
     shfmt
     shellcheck

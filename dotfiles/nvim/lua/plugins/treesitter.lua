@@ -10,29 +10,35 @@ return {
 				"javascript",
 				"typescript",
 				"tsx",
+				"jsx",
 				"html",
+				"css",
 				"go",
 				"gomod",
 				"gowork",
 				"gosum",
 				"java",
 				"json",
+				"jsonc",
 				"zig",
 				"c_sharp",
 				"dart",
-                "hurl",
+				"hurl",
+				"bash",
+				"http",
+				"yaml",
+				"toml",
+				"python",
+				"nix",
 			},
 			sync_install = false,
-			indent = { enable = true },
-			auto_install = true,
-			highlight = { enable = true },
-		})
-
-		-- -- Enable highlight tự động cho tất cả filetype
-		vim.api.nvim_create_autocmd("FileType", {
-			callback = function()
-				pcall(vim.treesitter.start)
-			end,
+			auto_install = false,
+			highlight = {
+				enable = true,
+			},
+			indent = {
+				enable = true,
+			},
 		})
 	end,
 }

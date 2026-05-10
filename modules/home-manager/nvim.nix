@@ -31,9 +31,9 @@ in
         gofumpt
         stylua
         basedpyright
-        pyright
+        # pyright
         ruff
-        nixfmt-rfc-style
+        nixfmt
         zls
         ripgrep
         # fix bug lazy-luarocks
@@ -43,6 +43,12 @@ in
         asm-lsp
         websocat
         jdk
+        typescript-language-server # ts_ls
+        vscode-langservers-extracted # eslint, html, css, json
+        tailwindcss-language-server # tailwindcss
+        yaml-language-server # yamlls
+        bash-language-server # bashls
+        dockerfile-language-server # docker
       ];
 
     };
