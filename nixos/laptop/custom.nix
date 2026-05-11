@@ -38,6 +38,8 @@
     xclip # clipboard
     unzip
     brightnessctl
+
+    inputs.look.packages.${pkgs.system}.default
   ];
   nixpkgs.config.allowUnfreePredicate = (_: true);
   boot.loader.systemd-boot.configurationLimit = 5;
