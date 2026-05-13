@@ -7,7 +7,7 @@
     vSync = true;
     
     settings = {
-      corner-radius = 12;
+      corner-radius = 1;
       round-borders = 1;
       
       rounded-corners-exclude = [

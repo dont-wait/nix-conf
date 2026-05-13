@@ -38,6 +38,7 @@
     xclip # clipboard
     unzip
     brightnessctl
+    cargo-tauri
 
     inputs.look.packages.${pkgs.system}.default
   ];
