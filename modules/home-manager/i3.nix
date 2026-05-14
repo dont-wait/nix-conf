@@ -54,8 +54,8 @@ in
         "${mod}+Shift+f" = "exec firefox";
         "${mod}+Shift+d" = "exec zathura";
         "${mod}+Shift+t" = "exec --no-startup-id bash $HOME/.config/zathura/change-theme.bash";
-        "${mod}+Shift+m" = "exec ghostty --title=kew-player -e bash -c 'kew all shuffle'";
-
+        "${mod}+Shift+m" =
+          "exec --no-startup-id bash -c 'ghostty --title=kew-player -e bash -c \"kew all shuffle\" & sleep 0.5 && i3-msg \"[title=kew-player] move to workspace 9\"'";
         # App launcher
         "${mod}+d" = "exec rofi -show drun";
 
