@@ -72,7 +72,7 @@ in
 
         # Scratchpad
         "${mod}+minus" =
-          "exec i3-msg scratchpad show || bash -c 'i3-msg floating enable && i3-msg resize set 1280px 960px && i3-msg move position center && i3-msg move scratchpad'";
+          "exec i3-msg scratchpad show || bash -c 'i3-msg floating enable && i3-msg resize set 1280px 1080px && i3-msg move position center && i3-msg move scratchpad'";
         "${mod}+Shift+minus" = "move scratchpad";
 
         # ========================
