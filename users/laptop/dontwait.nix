@@ -67,17 +67,18 @@
     hunspell
     mpv
     postman
-    vscode-fhs
     autocutsel
     xclip
     autorandr
     arandr
     pavucontrol
     android-tools
+    
+    # music
+    kew
 
     # dev
     direnv
-    android-studio
     openssl
     azuredatastudio
     vmware-workstation

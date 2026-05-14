@@ -54,6 +54,7 @@ in
         "${mod}+Shift+f" = "exec firefox";
         "${mod}+Shift+d" = "exec zathura";
         "${mod}+Shift+t" = "exec --no-startup-id bash $HOME/.config/zathura/change-theme.bash";
+        "${mod}+Shift+m" = "exec ghostty --title=kew-player -e bash -c 'kew all shuffle'";
 
         # App launcher
         "${mod}+d" = "exec rofi -show drun";
@@ -70,7 +71,8 @@ in
         "${mod}+Shift+space" = "floating toggle";
 
         # Scratchpad
-        "${mod}+minus" = "scratchpad show";
+        "${mod}+minus" =
+          "exec i3-msg scratchpad show || bash -c 'i3-msg floating enable && i3-msg resize set 1280px 960px && i3-msg move position center && i3-msg move scratchpad'";
         "${mod}+Shift+minus" = "move scratchpad";
 
         # ========================
