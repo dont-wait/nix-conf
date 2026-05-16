@@ -164,7 +164,7 @@ in
       # ========================
       # WINDOW RULES
       # ========================
-      for_window [class=".*"] border pixel 1
+      for_window [class=".*"] border pixel 0
       for_window [class="firefox"] move to workspace 2
       for_window [class="Polybar"] floating enable, border none, sticky enable
 
@@ -172,8 +172,8 @@ in
       # ========================
       # COLORS (Catppuccin Mocha)
       # ========================
-      client.focused          #a6adc8 #a6adc8 #11111b #a6adc8 #a6adc8
-      client.unfocused        #1e1e2e #1e1e2e #6c7086 #1e1e2e #1e1e2e
+      # client.focused          #a6adc8 #a6adc8 #11111b #a6adc8 #a6adc8
+      # client.unfocused        #1e1e2e #1e1e2e #6c7086 #1e1e2e #1e1e2e
 
       # ========================
       # AUTOSTART
