@@ -164,6 +164,7 @@ in
       # ========================
       # WINDOW RULES
       # ========================
+      workspace 1 output eDP-1
       for_window [class=".*"] border pixel 0
       for_window [class="firefox"] move to workspace 2
       for_window [class="Polybar"] floating enable, border none, sticky enable
