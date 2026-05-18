@@ -20,7 +20,7 @@ return {
 		"ellisonleao/gruvbox.nvim",
 		name = "gruvbox",
 		priority = 1000,
-        lazy = false,
+		lazy = false,
 	},
 	{
 		"alligator/accent.vim",
@@ -32,12 +32,41 @@ return {
 			local themes = {
 				"tokyonight",
 				"accent",
-                "gruvbox",
+				"gruvbox",
 				"catppuccin",
 				"rose-pine",
 			}
+
+			local theme_file = vim.fn.stdpath("data") .. "/last_theme.txt"
+			local function save_theme(theme)
+				local f = io.open(theme_file, "w")
+				if f then
+					f:write(theme)
+					f:close()
+				end
+			end
+
+			local function load_theme()
+				local f = io.open(theme_file, "r")
+				if f then
+					local theme = f:read("*l")
+					f:close()
+					return theme
+				end
+				return nil
+			end
+
 			-- Tìm index của theme mặc định (ví dụ là tokyonight)
 			local current_theme_index = 1
+			local saved = load_theme()
+			if saved then
+				for i, t in ipairs(themes) do
+					if t == saved then
+						current_theme_index = i
+						break
+					end
+				end
+			end
 
 			-- Thiết lập theme mặc định ngay khi mở máy
 			-- Dùng pcall để không bị crash nếu có lỗi tải plugin
@@ -54,6 +83,7 @@ return {
 				local success, _ = pcall(vim.cmd.colorscheme, theme)
 
 				if success then
+                    save_theme(theme)
 					print("🎨 Theme: " .. theme)
 				else
 					print("❌ Lỗi: Không tìm thấy " .. theme)
