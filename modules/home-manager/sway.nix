@@ -44,7 +44,7 @@ in
         # Window control
         "${mod}+Shift+q" = "kill";
         "${mod}+r" = "reload";
-        "${mod}+Shift+r" = "reload";
+        "${mod}+Shift+r" = "exec bash -c 'pkill waybar 2>/dev/null; waybar &; swaymsg reload'";
         "${mod}+Shift+e" = "exec swaymsg exit";
         "${mod}+Shift+p" = "exec wdisplays";
 
@@ -150,6 +150,7 @@ in
       exec dunst
       exec blueman-applet
       exec nm-applet
+      exec waybar
       exec fcitx5
       exec swaymsg workspace 1
     '';

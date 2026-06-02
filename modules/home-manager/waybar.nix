@@ -4,10 +4,14 @@
   ...
 }:
 
-let
-  tr = "#00000000";
-in
 {
+  systemd.user.services.waybar = {
+    Service = {
+      StandardOutput = "null";
+      StandardError = "null";
+    };
+  };
+
   programs.waybar = {
     enable = true;
 
@@ -78,24 +82,35 @@ in
         font-family: "JetBrainsMono Nerd Font";
         font-size: 12px;
         min-height: 0;
+        background: transparent;
       }
 
       window#waybar {
-        background: ${tr};
+        background: transparent;
       }
 
       #workspaces button {
         color: #6c7086;
+        background: rgba(30, 30, 46, 0.6);
+        border-radius: 8px;
         padding: 0 6px;
         margin: 2px 2px;
       }
 
-      #workspaces button.active {
+      #workspaces button.active,
+      #workspaces button.focused {
+        color: #a6e3a1;
+        background: rgba(166, 227, 161, 0.15);
+      }
+
+      #workspaces button.visible {
         color: #89b4fa;
+        background: rgba(137, 180, 250, 0.1);
       }
 
       #workspaces button.urgent {
         color: #f38ba8;
+        background: rgba(243, 139, 168, 0.15);
       }
 
       #clock,
@@ -109,6 +124,18 @@ in
         margin: 2px 2px;
       }
 
+      #cpu {
+        color: #89b4fa;
+      }
+
+      #memory {
+        color: #a6e3a1;
+      }
+
+      #disk {
+        color: #f9e2af;
+      }
+
       #battery {
         color: #a6e3a1;
       }
@@ -119,6 +146,10 @@ in
 
       #battery.critical {
         color: #f38ba8;
+      }
+
+      #pulseaudio {
+        color: #cdd6f4;
       }
 
       #pulseaudio.muted {
