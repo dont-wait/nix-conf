@@ -13,6 +13,7 @@
 
     ../../modules/home-manager/default.nix
     ../../modules/home-manager/yazi.nix
+    ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/opencode.nix
