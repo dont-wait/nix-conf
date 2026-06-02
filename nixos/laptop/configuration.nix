@@ -87,11 +87,11 @@
     ];
   };
 
-  # Config i3
+  # Config 
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
-    windowManager.i3.enable = true;
+    # windowManager.i3.enable = true;
     libinput.touchpad.naturalScrolling = true;
 
     xkb = {
@@ -106,6 +106,11 @@
 
   };
 
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -113,7 +118,7 @@
     xdgOpenUsePortal = false;
   };
 
-  services.displayManager.defaultSession = "none+i3";
+  services.displayManager.defaultSession = "sway"; # none+i3
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

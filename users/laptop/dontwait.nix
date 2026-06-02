@@ -12,19 +12,19 @@
     ./langs.nix
 
     ../../modules/home-manager/default.nix
-    ../../modules/home-manager/i3.nix
-    ../../modules/home-manager/picom.nix
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/opencode.nix
-    ../../modules/home-manager/flameshot.nix
-    ../../modules/home-manager/polybar.nix
+    ../../modules/home-manager/sway.nix
+    # ../../modules/home-manager/picom.nix
+    # ../../modules/home-manager/flameshot.nix
+    # ../../modules/home-manager/polybar.nix
   ];
 
   home.username = "dontwait";
   home.homeDirectory = "/home/dontwait";
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   within = {
     neovim.enable = true;
@@ -46,7 +46,11 @@
     # desktop
     dunst
     feh
-    picom
+    # picom (built into sway)
+    grim
+    slurp
+    wl-clipboard
+    wdisplays
     rofi
     blueman
     # file manager
@@ -67,13 +71,13 @@
     hunspell
     mpv
     postman
-    autocutsel
-    xclip
-    autorandr
-    arandr
+    # autocutsel (X11 only)
+    # xclip (use wl-clipboard instead)
+    # autorandr (X11 only)
+    # arandr (use wdisplays instead)
     pavucontrol
     android-tools
-    
+
     # music
     kew
 

@@ -27,11 +27,11 @@
       },
       "locked": {
         "dir": "apps/linows",
-        "lastModified": 1779697502,
-        "narHash": "sha256-5d+bqONdfL7ijCKjbxGxhYVgvmfLTtdBW4QG2LQ6P04=",
+        "lastModified": 1780365280,
+        "narHash": "sha256-DxsYzYEplPHnTilh+B4LalxSjoXqSMVTIOM2R1hUKxM=",
         "owner": "kunkka19xx",
         "repo": "look",
-        "rev": "54265b5e6d3736f76e60528fa574eafa6eec469e",
+        "rev": "a226991775564a2c7d67d82db60bde4d2cb5816d",
         "type": "github"
       },
       "original": {
