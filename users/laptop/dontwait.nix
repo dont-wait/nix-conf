@@ -20,6 +20,7 @@
     ../../modules/home-manager/sway.nix
     # ../../modules/home-manager/picom.nix
     # ../../modules/home-manager/flameshot.nix
+    ../../modules/home-manager/waybar.nix
     # ../../modules/home-manager/polybar.nix
   ];
 
