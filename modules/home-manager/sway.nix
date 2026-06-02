@@ -22,6 +22,13 @@ in
       };
       terminal = "ghostty";
 
+      input = {
+        "*" = {
+          xkb_layout = "us";
+          xkb_options = "caps:escape";
+        };
+      };
+
       keybindings = lib.mkOptionDefault {
         # Terminal
         "${mod}+Return" = "exec ghostty";
@@ -82,38 +89,29 @@ in
         "${mod}+Shift+5" = "move container to workspace 5";
 
         # Multi-monitor
-        "${mod}+F1" =
-          "exec swaymsg output eDP-1 enable, output HDMI-1 disable";
-        "${mod}+F2" =
-          "exec swaymsg output HDMI-1 enable, output eDP-1 disable";
+        "${mod}+F1" = "exec swaymsg output eDP-1 enable, output HDMI-A-1 disable";
+        "${mod}+F2" = "exec swaymsg output HDMI-A-1 enable, output eDP-1 disable";
         "${mod}+F3" = "focus output eDP-1";
-        "${mod}+F4" = "focus output HDMI-1";
-        "${mod}+F5" =
-          "exec swaymsg output eDP-1 enable, output HDMI-1 enable";
+        "${mod}+F4" = "focus output HDMI-A-1";
+        "${mod}+F5" = "exec swaymsg output eDP-1 enable, output HDMI-A-1 enable";
         "${mod}+Shift+F1" = "move container to output eDP-1";
-        "${mod}+Shift+F2" = "move container to output HDMI-1";
+        "${mod}+Shift+F2" = "move container to output HDMI-A-1";
 
         # Screenshot
-        "${mod}+Shift+s" =
-          "exec bash -c 'grim -g \"$(slurp)\" - | wl-copy'";
+        "${mod}+Shift+s" = "exec bash -c 'grim -g \"$(slurp)\" - | wl-copy'";
 
         # Random wallpaper
         "${mod}+Shift+n" =
           "exec bash -c 'swaymsg output \"*\" bg \"$(find $HOME/Documents/git/nix-conf/dotfiles/bg -type f | shuf -n1)\" fill'";
 
         # Audio
-        "XF86AudioRaiseVolume" =
-          "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-        "XF86AudioLowerVolume" =
-          "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 6%-";
-        "XF86AudioMute" =
-          "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 6%-";
+        "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
         # Brightness
-        "XF86MonBrightnessUp" =
-          "exec --no-startup-id brightnessctl set +5%";
-        "XF86MonBrightnessDown" =
-          "exec --no-startup-id brightnessctl set 5%-";
+        "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set +5%";
+        "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set 5%-";
 
         # Bluetooth
         "${mod}+Shift+b" = "exec blueman-manager";
@@ -135,6 +133,7 @@ in
       for_window [class=".*"] border pixel 0
       for_window [title="kew-player"] move to workspace 9
       for_window [title="Look"] floating enable, border none
+
 
       # Font
       font pango:JetBrainsMono Nerd Font 16

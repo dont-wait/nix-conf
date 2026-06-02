@@ -73,7 +73,7 @@
     # Force browsers to use X11
     MOZ_ENABLE_WAYLAND = "0";
     ELECTRON_OZONE_PLATFORM_HINT = "x11";
-    XDG_CURRENT_DESKTOP = "i3";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 
   # Add this if you use Brave or Google Chrome
