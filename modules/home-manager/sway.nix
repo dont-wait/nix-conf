@@ -27,6 +27,12 @@ in
           xkb_layout = "us";
           xkb_options = "caps:escape";
         };
+
+        "type:touchpad" = {
+          tap = "enabled";
+          tap_button_map = "lrm";
+          natural_scroll = "enabled";
+        };
       };
 
       keybindings = lib.mkOptionDefault {
