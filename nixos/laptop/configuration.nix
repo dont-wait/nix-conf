@@ -196,16 +196,16 @@
     android_sdk.accept_license = true;
   };
 
-  system.userActivationScripts = {
-    stdio = {
-      text = ''
-        rm -f ~/Android/Sdk/platform-tools/adb
-        ln -s /run/current-system/sw/bin/adb ~/Android/Sdk/platform-tools/adb
-      '';
-      deps = [
-      ];
-    };
-  };
+  # system.userActivationScripts = {
+  #   stdio = {
+  #     text = ''
+  #       rm -f ~/Android/Sdk/platform-tools/adb
+  #       ln -s /run/current-system/sw/bin/adb ~/Android/Sdk/platform-tools/adb
+  #     '';
+  #     deps = [
+  #     ];
+  #   };
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -237,12 +237,12 @@
     networkmanager-openvpn
     update-systemd-resolved
     antigravity-fhs
-    (androidenv.composeAndroidPackages {
-      platformVersions = [ "36" ];
-      ndkVersions = [ "28.2.13676358" ];
-      buildToolsVersions = [ "35.0.0" ];
-      includeNDK = true;
-    }).androidsdk
+    # (androidenv.composeAndroidPackages {
+    #   platformVersions = [ "36" ];
+    #   ndkVersions = [ "28.2.13676358" ];
+    #   buildToolsVersions = [ "35.0.0" ];
+    #   includeNDK = true;
+    # }).androidsdk
   ];
 
   # Enable the OpenSSH daemon.
@@ -283,6 +283,6 @@
     randomizedDelaySec = "45min";
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 
 }

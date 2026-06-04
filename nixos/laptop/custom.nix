@@ -27,7 +27,7 @@
     gnumake
     discord-ptb
     droidcam # android phone wbcam client
-    android-tools
+    # android-tools
     fastfetch
     tree
     btop
