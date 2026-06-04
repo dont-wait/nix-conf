@@ -6,7 +6,7 @@
 }:
 let
   mod = "Mod4";
-  wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/bg1.jpg";
+  wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/nix-girl2.png";
 in
 {
   wayland.windowManager.sway = {
