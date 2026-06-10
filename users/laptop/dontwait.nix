@@ -52,7 +52,6 @@
     # slurp
     # wl-clipboard
     # wdisplays
-    flameshot
     arandr
     autocutsel
     xclip
