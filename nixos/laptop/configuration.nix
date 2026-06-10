@@ -73,7 +73,8 @@
     # Force browsers to use X11
     MOZ_ENABLE_WAYLAND = "0";
     ELECTRON_OZONE_PLATFORM_HINT = "x11";
-    XDG_CURRENT_DESKTOP = "sway";
+    # XDG_CURRENT_DESKTOP = "sway";
+    XDG_CURRENT_DESKTOP = "i3";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -91,7 +92,7 @@
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
-    # windowManager.i3.enable = true;
+    windowManager.i3.enable = true;
     libinput.touchpad.naturalScrolling = true;
 
     xkb = {
@@ -106,10 +107,10 @@
 
   };
 
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
 
   xdg.portal = {
     enable = true;
@@ -118,7 +119,8 @@
     xdgOpenUsePortal = false;
   };
 
-  services.displayManager.defaultSession = "sway"; # none+i3
+  services.displayManager.defaultSession = "none+i3";
+  # services.displayManager.defaultSession = "sway";
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

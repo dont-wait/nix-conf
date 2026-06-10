@@ -17,11 +17,11 @@
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/opencode.nix
-    ../../modules/home-manager/sway.nix
-    # ../../modules/home-manager/picom.nix
-    # ../../modules/home-manager/flameshot.nix
-    ../../modules/home-manager/waybar.nix
-    # ../../modules/home-manager/polybar.nix
+    # ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/picom.nix
+    ../../modules/home-manager/flameshot.nix
+    # ../../modules/home-manager/waybar.nix
+    ../../modules/home-manager/polybar.nix
   ];
 
   home.username = "dontwait";
@@ -48,11 +48,14 @@
     # desktop
     dunst
     feh
-    # picom (built into sway)
-    grim
-    slurp
-    wl-clipboard
-    wdisplays
+    # grim
+    # slurp
+    # wl-clipboard
+    # wdisplays
+    flameshot
+    arandr
+    autocutsel
+    xclip
     rofi
     blueman
     # file manager
@@ -73,10 +76,6 @@
     hunspell
     mpv
     postman
-    # autocutsel (X11 only)
-    # xclip (use wl-clipboard instead)
-    # autorandr (X11 only)
-    # arandr (use wdisplays instead)
     pavucontrol
     android-tools
 
