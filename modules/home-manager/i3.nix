@@ -168,6 +168,7 @@ in
       for_window [class=".*"] border pixel 0
       for_window [class="firefox"] move to workspace 2
       for_window [class="Polybar"] floating enable, border none, sticky enable
+      for_window [title="Look"] floating enable, border none
 
 
       # ========================
