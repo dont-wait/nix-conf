@@ -23,7 +23,7 @@ return {
 				end, "Reset hunk")
 
 				map("n", "<leader>hS", gs.stage_buffer, "Stage buffer")
-				map("n", "<leader>hR", gs.stage_hunk, "Reset buffer")
+				map("n", "<leader>hR", gs.reset_buffer, "Reset buffer")
 				map("n", "<leader>hb", function()
 					gs.blame_line({ full = true })
 				end, "Blame line")
