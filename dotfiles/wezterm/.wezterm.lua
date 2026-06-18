@@ -6,7 +6,7 @@ local brightness = 0.05
 
 -- image setting
 local home = os.getenv("HOME")
-local background_folder = home .. "/dotfiles/bg"
+local background_folder = home .. "/Documents/git/nix-conf/dotfiles/bg"
 
 local function pick_random_background(folder)
 	local handle = io.popen('ls "' .. folder .. '"')

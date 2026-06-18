@@ -10,7 +10,7 @@ return {
 		lazy = false,
 		opts = {
 			auto_install = true,
-			ensure_installed = { "zls", "ts_ls", "gopls", "lua_ls", "jsonls", "yamlls", "bashls", "pylsp" },
+			ensure_installed = { "zls", "ts_ls", "gopls", "lua_ls", "jsonls", "yamlls", "bashls", "pylsp", "lemminx" },
 		},
 	},
 	{
@@ -89,6 +89,10 @@ return {
 				filetypes = { "dart" },
 				root_markers = { "pubspec.yaml" },
 			}
+			vim.lsp.config.lemminx = {
+				capabilities = capabilities,
+				filetypes = { "xml"},
+			}
 
 			vim.lsp.enable({
 				"lua_ls",
@@ -106,6 +110,7 @@ return {
 				"pylsp",
 				"bashls",
 				"dartls",
+                "lemminx",
 			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })
