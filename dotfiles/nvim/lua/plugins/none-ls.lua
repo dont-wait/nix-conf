@@ -15,7 +15,10 @@ return {
 				null_ls.builtins.formatting.asmfmt,
 				-- null_ls.builtins.formatting.google_java_format,
 				null_ls.builtins.formatting.sql_formatter,
-				null_ls.builtins.formatting.xmlformat,
+				null_ls.builtins.formatting.xmllint.with({
+					filetypes = { "xml" },
+					extra_args = { "--format" },
+				}),
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
