@@ -46,7 +46,7 @@ in
     rustc
     rustfmt
     # rustlings
-    # clippy
+    clippy
   ];
 
   home.sessionVariables = {
