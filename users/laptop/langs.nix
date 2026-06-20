@@ -43,8 +43,9 @@ in
 
     # Rust
     cargo
-    rustling
-    clippy
+    rustlings
+    rustc
+    # clippy
     rustfmt
   ];
 
