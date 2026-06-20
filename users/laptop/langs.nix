@@ -58,10 +58,14 @@ in
     NODE_PATH = "$NODE_PATH:$ (npm root - g)";
 
     # Rust
-    CARGO_HOME = "$HOME/.cargo";
+    CARGO_HOME = "${config.home.homeDirectory}/.cargo";
 
     # Java
     JAVA_HOME = "${pkgs.jdk25}";
-    PATH = "${pkgs.jdk25}/bin:$PATH";
   };
+
+  home.sessionPath = [
+    "${pkgs.jdk25}/bin"
+    "${config.home.homeDirectory}/.cargo/bin"
+  ];
 }
