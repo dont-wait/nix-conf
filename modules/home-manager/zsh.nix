@@ -164,9 +164,10 @@ in
                     else
                       tmux attach-session -t "$name"
                     fi       
-                  }
-                export GOPATH="$HOME/go"          
-                export PATH="$GOPATH/bin:$HOME/.npm-global/bin:$PATH"      
+                   }
+                export GOPATH="$HOME/go"
+                export CARGO_HOME="${config.home.homeDirectory}/.cargo"
+                export PATH="$CARGO_HOME/bin:$GOPATH/bin:$HOME/.npm-global/bin:$PATH"
             '';
     };
   };
