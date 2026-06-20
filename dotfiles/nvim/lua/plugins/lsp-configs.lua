@@ -95,6 +95,25 @@ return {
             }
             vim.lsp.config["rust_analyzer"] = {
                 capabilities = capabilities,
+                cmd = { "rust-analyzer" },
+                settings = {
+                    ["rust-analyzer"] = {
+                        cargo = {
+                            allFeatures = true,
+                            buildScripts = { enable = true },
+                        },
+                        check = {
+                            command = "clippy",
+                        },
+                        completion = {
+                            autoimport = { enable = true },
+                        },
+                        imports = {
+                            granularity = { group = "module" },
+                            prefix = "crate",
+                        },
+                    },
+                },
             }
 
             vim.lsp.enable({

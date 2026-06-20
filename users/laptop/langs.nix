@@ -44,6 +44,7 @@ in
     # Rust
     cargo
     rustc
+    rust-analyzer
     rustfmt
     # rustlings
     clippy
