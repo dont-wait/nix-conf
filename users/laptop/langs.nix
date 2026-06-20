@@ -43,10 +43,10 @@ in
 
     # Rust
     cargo
-    rustlings
     rustc
-    # clippy
     rustfmt
+    # rustlings
+    # clippy
   ];
 
   home.sessionVariables = {
