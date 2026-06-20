@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   python_version = pkgs.python3_13;
-  android_sdk.accept_license = true;
 in
 {
   # Tại đây khai báo các môi trường lập trình và LSP Server
@@ -41,6 +40,12 @@ in
     jdt-language-server
     google-java-format
     yaml-language-server
+
+    # Rust
+    cargo
+    rustling
+    clippy
+    rustfmt
   ];
 
   home.sessionVariables = {
@@ -52,7 +57,7 @@ in
     NODE_PATH = "$NODE_PATH:$ (npm root - g)";
 
     # Rust
-    CARGO_HOME = "~/.cargo";
+    CARGO_HOME = "$HOME/.cargo";
 
     # Java
     JAVA_HOME = "${pkgs.jdk25}";
