@@ -100,10 +100,14 @@ return {
                     ["rust-analyzer"] = {
                         cargo = {
                             allFeatures = true,
+                            allTargets = true,
                             buildScripts = { enable = true },
                         },
                         check = {
                             command = "clippy",
+                        },
+                        procMacro = {
+                            enable = true,
                         },
                         completion = {
                             autoimport = { enable = true },
