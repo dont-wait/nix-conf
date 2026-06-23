@@ -70,15 +70,15 @@ in
         position x=1920 y=0
     }
 
-    workspace "1:term"
-    workspace "2:web"
-    workspace "3:chat"
-    workspace "4:docs"
-    workspace "5:misc"
-    workspace "6:vm"
-    workspace "7:files"
-    workspace "8:media"
-    workspace "9:music"
+    workspace "1"
+    workspace "2"
+    workspace "3"
+    workspace "4"
+    workspace "5"
+    workspace "6"
+    workspace "7"
+    workspace "8"
+    workspace "9"
 
     layout {
         gaps 4
@@ -113,16 +113,17 @@ in
     spawn-at-startup "lookapp"
     spawn-at-startup "blueman-applet"
     spawn-at-startup "nm-applet"
+    spawn-at-startup "waybar"
     spawn-sh-at-startup "swaybg -i ${wallpaperPath} -m fill"
 
     window-rule {
         match app-id="firefox$"
-        open-on-workspace "2:web"
+        open-on-workspace "2"
     }
 
     window-rule {
         match title="^kew-player$"
-        open-on-workspace "9:music"
+        open-on-workspace "9"
     }
 
     window-rule {
@@ -173,32 +174,32 @@ in
         Mod+Ctrl+J { set-window-height "+10%"; }
         Mod+Ctrl+K { set-window-height "-10%"; }
 
-        Mod+1 { focus-workspace "1:term"; }
-        Mod+2 { focus-workspace "2:web"; }
-        Mod+3 { focus-workspace "3:chat"; }
-        Mod+4 { focus-workspace "4:docs"; }
-        Mod+5 { focus-workspace "5:misc"; }
-        Mod+6 { focus-workspace "6:vm"; }
-        Mod+7 { focus-workspace "7:files"; }
-        Mod+8 { focus-workspace "8:media"; }
-        Mod+9 { focus-workspace "9:music"; }
+        Mod+1 { focus-workspace "1"; }
+        Mod+2 { focus-workspace "2"; }
+        Mod+3 { focus-workspace "3"; }
+        Mod+4 { focus-workspace "4"; }
+        Mod+5 { focus-workspace "5"; }
+        Mod+6 { focus-workspace "6"; }
+        Mod+7 { focus-workspace "7"; }
+        Mod+8 { focus-workspace "8"; }
+        Mod+9 { focus-workspace "9"; }
 
-        Mod+Ctrl+1 { move-column-to-workspace "1:term"; }
-        Mod+Ctrl+2 { move-column-to-workspace "2:web"; }
-        Mod+Ctrl+3 { move-column-to-workspace "3:chat"; }
-        Mod+Ctrl+4 { move-column-to-workspace "4:docs"; }
-        Mod+Ctrl+5 { move-column-to-workspace "5:misc"; }
-        Mod+Ctrl+6 { move-column-to-workspace "6:vm"; }
-        Mod+Ctrl+7 { move-column-to-workspace "7:files"; }
-        Mod+Ctrl+8 { move-column-to-workspace "8:media"; }
-        Mod+Ctrl+9 { move-column-to-workspace "9:music"; }
+        Mod+Ctrl+1 { move-column-to-workspace "1"; }
+        Mod+Ctrl+2 { move-column-to-workspace "2"; }
+        Mod+Ctrl+3 { move-column-to-workspace "3"; }
+        Mod+Ctrl+4 { move-column-to-workspace "4"; }
+        Mod+Ctrl+5 { move-column-to-workspace "5"; }
+        Mod+Ctrl+6 { move-column-to-workspace "6"; }
+        Mod+Ctrl+7 { move-column-to-workspace "7"; }
+        Mod+Ctrl+8 { move-column-to-workspace "8"; }
+        Mod+Ctrl+9 { move-column-to-workspace "9"; }
 
         Mod+F3 { focus-monitor-left; }
         Mod+F4 { focus-monitor-right; }
         Mod+Shift+F1 { move-column-to-monitor-left; }
         Mod+Shift+F2 { move-column-to-monitor-right; }
 
-        Mod+Shift+S repeat=false { screenshot show-pointer=false; }
+        Mod+Shift+S repeat=false { spawn "flameshot" "gui"; }
 
         XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
         XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "6%-"; }

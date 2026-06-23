@@ -17,6 +17,7 @@
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/opencode.nix
+    ../../modules/home-manager/flameshot.nix
     ../../modules/home-manager/niri.nix
     ../../modules/home-manager/waybar.nix
   ];
