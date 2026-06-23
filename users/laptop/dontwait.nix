@@ -17,9 +17,12 @@
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/opencode.nix
-    # ../../modules/home-manager/flameshot.nix
-    ../../modules/home-manager/niri.nix
-    ../../modules/home-manager/waybar.nix
+    ../../modules/home-manager/picom.nix
+    ../../modules/home-manager/flameshot.nix
+    ../../modules/home-manager/i3.nix
+    ../../modules/home-manager/polybar.nix
+    # ../../modules/home-manager/niri.nix
+    # ../../modules/home-manager/waybar.nix
   ];
 
   home.username = "dontwait";
@@ -45,12 +48,11 @@
 
     # desktop
     dunst
-    fuzzel
-    grim
-    slurp
-    swaybg
-    wl-clipboard
-    xwayland-satellite
+    feh
+    arandr
+    autocutsel
+    xclip
+    rofi
     blueman
     # file manager
     thunar

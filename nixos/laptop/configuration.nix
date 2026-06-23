@@ -69,10 +69,15 @@
     GTK_IM_MODULE = lib.mkForce "fcitx";
     QT_IM_MODULE = lib.mkForce "fcitx";
     XMODIFIERS = "@im=fcitx";
-    NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    XDG_CURRENT_DESKTOP = "niri";
+    # NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = "0";
+    # MOZ_ENABLE_WAYLAND = "1";
+    # Force browsers to use X11
+    MOZ_ENABLE_WAYLAND = "0";
+    # ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    ELECTRON_OZONE_PLATFORM_HINT = "x11";
+    # XDG_CURRENT_DESKTOP = "niri";
+    XDG_CURRENT_DESKTOP = "i3";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -82,7 +87,8 @@
       "--gtk-version=4"
       "--disable-features=WaylandFractionalScaleV1"
       "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
+      # "--ozone-platform=wayland"
+      "--ozone-platform=x11"
     ];
   };
 
@@ -90,6 +96,8 @@
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
+    windowManager.i3.enable = true;
+    libinput.touchpad.naturalScrolling = true;
 
     xkb = {
       layout = "us";
@@ -103,21 +111,22 @@
 
   };
 
-  programs.niri.enable = true;
+  # programs.niri.enable = true;
 
-  services.libinput.touchpad.naturalScrolling = true;
+  # services.libinput.touchpad.naturalScrolling = true;
 
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
       common.default = "gtk";
-      niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+      # niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
     };
     xdgOpenUsePortal = false;
   };
 
-  services.displayManager.defaultSession = "niri";
+  # services.displayManager.defaultSession = "niri";
+  services.displayManager.defaultSession = "none+i3";
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -127,7 +136,7 @@
   # services.printing.enable = true;
 
   security.polkit.enable = true;
-  security.pam.services.swaylock = { };
+  # security.pam.services.swaylock = { };
 
   # Enable Flatpak
   services.flatpak.enable = true;
@@ -186,7 +195,7 @@
     stdenv.cc.cc.lib
     zlib
   ];
-  programs.bash.completion.enable = true;
+  programs.bash.enableCompletion = true;
 
   programs.nm-applet.enable = true;
 
@@ -233,6 +242,7 @@
     vulkan-loader
     intel-compute-runtime
     openvpn
+    i3status
     networkmanager-openvpn
     update-systemd-resolved
     antigravity-fhs
