@@ -61,6 +61,7 @@ config.font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Regular",
 config.font_size = 19
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
+config.status_update_interval = 0
 config.window_frame = {
 	-- border_left_width = "0.28cell",
 	-- border_right_width = "0.28cell",
