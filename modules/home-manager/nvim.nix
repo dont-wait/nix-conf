@@ -41,6 +41,7 @@ in
         lua51Packages.lua
         lua51Packages.luarocks
         asm-lsp
+        csharpier
         websocat
         jdk
         typescript-language-server # ts_ls

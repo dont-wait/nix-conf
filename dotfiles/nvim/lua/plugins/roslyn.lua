@@ -17,6 +17,9 @@ return {
             on_attach = function(client, bufnr)
                 local lspkind = require("lspkind")
 
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+
                 vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
                     if not (result and result.contents) then
                         return
@@ -24,7 +27,7 @@ return {
 
                     -- Dọn dẹp markdown như đã làm ở bước trước
                     local function clean(t)
-                        return t:gsub("\\([%.%(%)%_%*])", "%1")
+                        return t:gsub("\\([%.%(%)_%*])", "%1")
                     end
 
                     config = config or {}
