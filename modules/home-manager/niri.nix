@@ -113,7 +113,6 @@ in
     spawn-at-startup "lookapp"
     spawn-at-startup "blueman-applet"
     spawn-at-startup "nm-applet"
-    spawn-at-startup "waybar"
     spawn-sh-at-startup "swaybg -i ${wallpaperPath} -m fill"
 
     window-rule {
@@ -220,7 +219,9 @@ in
         Mod+Shift+F1 { move-column-to-monitor-left; }
         Mod+Shift+F2 { move-column-to-monitor-right; }
 
-        Mod+Shift+S repeat=false { spawn "flameshot" "gui"; }
+        Print repeat=false { screenshot; }
+        Ctrl+Print repeat=false { screenshot-screen; }
+        Alt+Print repeat=false { screenshot-window; }
 
         XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
         XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "6%-"; }
