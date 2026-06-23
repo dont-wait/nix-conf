@@ -70,6 +70,16 @@ in
         position x=1920 y=0
     }
 
+    workspace "1"
+    workspace "2"
+    workspace "3"
+    workspace "4"
+    workspace "5"
+    workspace "6"
+    workspace "7"
+    workspace "8"
+    workspace "9"
+
     layout {
         gaps 4
         center-focused-column "never"
@@ -80,7 +90,7 @@ in
             proportion 0.66667
         }
 
-        default-column-width { proportion 1.0; }
+        default-column-width { proportion 0.5; }
 
         focus-ring {
             width 4
@@ -112,6 +122,16 @@ in
         default-column-width { fixed 480; }
         default-window-height { fixed 270; }
         default-floating-position x=32 y=32 relative-to="bottom-left"
+    }
+
+    window-rule {
+        match app-id="firefox$"
+        open-on-workspace "2"
+    }
+
+    window-rule {
+        match title="^kew-player$"
+        open-on-workspace "9"
     }
 
     window-rule {
@@ -185,15 +205,15 @@ in
         Mod+8 { focus-workspace "8"; }
         Mod+9 { focus-workspace "9"; }
 
-        Mod+Ctrl+1 { move-column-to-workspace "1"; }
-        Mod+Ctrl+2 { move-column-to-workspace "2"; }
-        Mod+Ctrl+3 { move-column-to-workspace "3"; }
-        Mod+Ctrl+4 { move-column-to-workspace "4"; }
-        Mod+Ctrl+5 { move-column-to-workspace "5"; }
-        Mod+Ctrl+6 { move-column-to-workspace "6"; }
-        Mod+Ctrl+7 { move-column-to-workspace "7"; }
-        Mod+Ctrl+8 { move-column-to-workspace "8"; }
-        Mod+Ctrl+9 { move-column-to-workspace "9"; }
+        Mod+Shift+1 { move-window-to-workspace "1"; }
+        Mod+Shift+2 { move-window-to-workspace "2"; }
+        Mod+Shift+3 { move-window-to-workspace "3"; }
+        Mod+Shift+4 { move-window-to-workspace "4"; }
+        Mod+Shift+5 { move-window-to-workspace "5"; }
+        Mod+Shift+6 { move-window-to-workspace "6"; }
+        Mod+Shift+7 { move-window-to-workspace "7"; }
+        Mod+Shift+8 { move-window-to-workspace "8"; }
+        Mod+Shift+9 { move-window-to-workspace "9"; }
 
         Mod+F3 { focus-monitor-left; }
         Mod+F4 { focus-monitor-right; }
