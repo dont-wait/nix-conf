@@ -118,12 +118,7 @@ in
         match title="^Look$"
         open-floating true
     }
-
-    window-rule {
-        match app-id="ghostty$"
-        opacity 0.9
-    }
-
+    
     window-rule {
         geometry-corner-radius 8
         clip-to-geometry true
