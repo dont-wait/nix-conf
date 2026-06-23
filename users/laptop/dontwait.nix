@@ -52,7 +52,8 @@
     arandr
     autocutsel
     xclip
-    rofi
+    # rofi
+    dmenu-rs
     blueman
     # file manager
     thunar
