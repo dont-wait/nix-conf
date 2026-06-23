@@ -69,12 +69,10 @@
     GTK_IM_MODULE = lib.mkForce "fcitx";
     QT_IM_MODULE = lib.mkForce "fcitx";
     XMODIFIERS = "@im=fcitx";
-    NIXOS_OZONE_WL = "0";
-    # Force browsers to use X11
-    MOZ_ENABLE_WAYLAND = "0";
-    ELECTRON_OZONE_PLATFORM_HINT = "x11";
-    # XDG_CURRENT_DESKTOP = "sway";
-    XDG_CURRENT_DESKTOP = "i3";
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    XDG_CURRENT_DESKTOP = "niri";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -84,7 +82,7 @@
       "--gtk-version=4"
       "--disable-features=WaylandFractionalScaleV1"
       "--enable-features=UseOzonePlatform"
-      "--ozone-platform=x11"
+      "--ozone-platform=wayland"
     ];
   };
 
@@ -92,8 +90,6 @@
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
-    windowManager.i3.enable = true;
-    libinput.touchpad.naturalScrolling = true;
 
     xkb = {
       layout = "us";
@@ -107,20 +103,21 @@
 
   };
 
-  # programs.sway = {
-  #   enable = true;
-  #   wrapperFeatures.gtk = true;
-  # };
+  programs.niri.enable = true;
+
+  services.libinput.touchpad.naturalScrolling = true;
 
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "gtk";
+    config = {
+      common.default = "gtk";
+      niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+    };
     xdgOpenUsePortal = false;
   };
 
-  services.displayManager.defaultSession = "none+i3";
-  # services.displayManager.defaultSession = "sway";
+  services.displayManager.defaultSession = "niri";
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -130,6 +127,7 @@
   # services.printing.enable = true;
 
   security.polkit.enable = true;
+  security.pam.services.swaylock = { };
 
   # Enable Flatpak
   services.flatpak.enable = true;
@@ -188,7 +186,7 @@
     stdenv.cc.cc.lib
     zlib
   ];
-  programs.bash.enableCompletion = true;
+  programs.bash.completion.enable = true;
 
   programs.nm-applet.enable = true;
 
@@ -235,7 +233,6 @@
     vulkan-loader
     intel-compute-runtime
     openvpn
-    i3status
     networkmanager-openvpn
     update-systemd-resolved
     antigravity-fhs

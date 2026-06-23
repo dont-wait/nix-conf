@@ -14,6 +14,7 @@
 
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
 
     settings = {
       mainBar = {
@@ -24,14 +25,30 @@
         margin-left = 8;
         margin-right = 8;
         spacing = 0;
-        modules-left = [ "sway/workspaces" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "cpu" "memory" "disk" "pulseaudio" "battery" ];
+        modules-left = [ "niri/workspaces" ];
+        modules-center = [ "niri/window" ];
+        modules-right = [ "clock" "cpu" "memory" "disk" "pulseaudio" "battery" ];
 
-        "sway/workspaces" = {
+        "niri/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
-          format = "{name}";
+          format = "{icon}";
+          format-icons = {
+            "1:term" = "";
+            "2:web" = "";
+            "3:chat" = "";
+            "4:docs" = "󰈙";
+            "5:misc" = "";
+            "6:vm" = "󰢹";
+            "7:files" = "";
+            "8:media" = "󰎆";
+            "9:music" = "󰝚";
+            default = "";
+          };
+        };
+
+        "niri/window" = {
+          format = "{title}";
         };
 
         "clock" = {
@@ -114,6 +131,7 @@
       }
 
       #clock,
+      #window,
       #cpu,
       #memory,
       #disk,
@@ -126,6 +144,10 @@
 
       #cpu {
         color: #89b4fa;
+      }
+
+      #window {
+        color: #cdd6f4;
       }
 
       #memory {

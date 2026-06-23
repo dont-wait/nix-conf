@@ -33,7 +33,6 @@
     btop
     ffmpeg # video, graphics
     vlc
-    polybar
     screenkey
     xclip # clipboard
     unzip
