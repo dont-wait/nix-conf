@@ -70,16 +70,6 @@ in
         position x=1920 y=0
     }
 
-    workspace "1"
-    workspace "2"
-    workspace "3"
-    workspace "4"
-    workspace "5"
-    workspace "6"
-    workspace "7"
-    workspace "8"
-    workspace "9"
-
     layout {
         gaps 4
         center-focused-column "never"
@@ -90,7 +80,7 @@ in
             proportion 0.66667
         }
 
-        default-column-width { proportion 0.5; }
+        default-column-width { proportion 1.0; }
 
         focus-ring {
             width 4
@@ -117,16 +107,6 @@ in
     spawn-sh-at-startup "swaybg -i ${wallpaperPath} -m fill"
 
     window-rule {
-        match app-id="firefox$"
-        open-on-workspace "2"
-    }
-
-    window-rule {
-        match title="^kew-player$"
-        open-on-workspace "9"
-    }
-
-    window-rule {
         match app-id="firefox$" title="^Picture-in-Picture$"
         open-floating true
         default-column-width { fixed 480; }
@@ -140,8 +120,32 @@ in
     }
 
     window-rule {
+        match app-id="ghostty$"
+        opacity 0.9
+    }
+
+    window-rule {
         geometry-corner-radius 8
         clip-to-geometry true
+    }
+
+    window-rule {
+        match is-floating=true
+
+        border {
+            on
+            width 2
+            active-color "#89b4fa"
+            inactive-color "#6c7086"
+        }
+
+        shadow {
+            on
+            softness 30
+            spread 5
+            offset x=0 y=5
+            color "#00000070"
+        }
     }
 
     binds {
@@ -155,6 +159,8 @@ in
 
         Mod+Shift+Q repeat=false { close-window; }
         Mod+Shift+Space repeat=false { toggle-window-floating; }
+        Mod+V repeat=false { toggle-window-floating; }
+        Mod+Shift+V repeat=false { switch-focus-between-floating-and-tiling; }
         Mod+F repeat=false { fullscreen-window; }
         Mod+Shift+E repeat=false { quit; }
         Super+Alt+L allow-inhibiting=false repeat=false { spawn "swaylock"; }
