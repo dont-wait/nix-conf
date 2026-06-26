@@ -53,7 +53,7 @@
     autocutsel
     xclip
     # rofi
-    dmenu-rs
+    dmenu
     blueman
     # file manager
     thunar

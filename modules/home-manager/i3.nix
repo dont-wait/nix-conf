@@ -57,7 +57,7 @@ in
         "${mod}+Shift+m" =
           "exec --no-startup-id bash -c 'ghostty --title=kew-player -e bash -c \"kew all shuffle\" & sleep 0.5 && i3-msg \"[title=kew-player] move to workspace 9\"'";
         # App launcher
-        "${mod}+d" = "exec dmenu-rs -show drun";
+        "${mod}+d" = "exec dmenu_run";
 
         # Window control
         "${mod}+Shift+q" = "kill";
