@@ -32,6 +32,8 @@
   within = {
     neovim.enable = true;
     ghostty.enable = true;
+    kitty.enable = true;
+    wezterm.enable = true;
     zsh.enable = true;
   };
 
@@ -43,6 +45,7 @@
     fastfetch
     tree-sitter
     ghostty
+    kitty
     wezterm
     yazi
 
