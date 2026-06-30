@@ -2,7 +2,7 @@
 set -euo pipefail
 
 play_sound() {
-    local file="$HOME/dotfiles/tmux/Ringing.mp3"
+    local file="/home/dontwait/Documents/git/nix-conf/dotfiles/tmux/Ringing.mp3"
     mpv --no-terminal "$file" &
 }
 

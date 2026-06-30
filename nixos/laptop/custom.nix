@@ -26,8 +26,6 @@
     tlrc
     gnumake
     discord-ptb
-    droidcam # android phone wbcam client
-    # android-tools
     fastfetch
     tree
     btop

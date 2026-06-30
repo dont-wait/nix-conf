@@ -10,6 +10,15 @@ let
   tr = "#00000000";
 in
 {
+  xdg.configFile."polybar/launch.sh" = {
+    executable = true;
+    text = ''
+      #!/usr/bin/env bash
+      killall -q polybar || true
+      polybar main 2>&1 | logger -t polybar &
+    '';
+  };
+
   services.polybar = {
     enable = true;
     package = pkgs-stable.polybar.override {

@@ -92,7 +92,7 @@
     ];
   };
 
-  # Config 
+  # Config
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
@@ -206,17 +206,6 @@
     android_sdk.accept_license = true;
   };
 
-  # system.userActivationScripts = {
-  #   stdio = {
-  #     text = ''
-  #       rm -f ~/Android/Sdk/platform-tools/adb
-  #       ln -s /run/current-system/sw/bin/adb ~/Android/Sdk/platform-tools/adb
-  #     '';
-  #     deps = [
-  #     ];
-  #   };
-  # };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -246,13 +235,6 @@
     i3status
     networkmanager-openvpn
     update-systemd-resolved
-    antigravity-fhs
-    # (androidenv.composeAndroidPackages {
-    #   platformVersions = [ "36" ];
-    #   ndkVersions = [ "28.2.13676358" ];
-    #   buildToolsVersions = [ "35.0.0" ];
-    #   includeNDK = true;
-    # }).androidsdk
   ];
 
   # Enable the OpenSSH daemon.
