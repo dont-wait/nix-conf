@@ -40,7 +40,6 @@
         "browser.theme.toolbar-theme" = 1;
       };
       userChrome = ''
-                
         /* Menu button */
         #PanelUI-button {
           -moz-box-ordinal-group: 0 !important;
@@ -55,11 +54,6 @@
           margin-right: 12px !important;
         }
 
-        /* Ẩn nút Firefox View */
-        #firefox-view-button {
-          display: none !important;
-        }
-
         /* Page back and foward buttons */
         #back-button,
         #forward-button
@@ -69,12 +63,10 @@
 
         /* Extensions button */
         #unified-extensions-button {
-          display: flex !important; 
-          position: static !important;
-          opacity: 1 !important;
-          /* Đảm bảo nó không bị gán kích thước quá nhỏ */
-          width: auto !important;
-          height: auto !important;
+            position: absolute !important;
+            /* opacity: 0 !important; */
+            display: none !important;
+          size: 1px !important;
         }
 
         /*hide sidebar button*/
@@ -134,7 +126,7 @@
 
         @media screen and (max-width:949px)    /*  The window is not enough wide for a one line layout */
         {:root #nav-bar{padding: 0 5px 0 5px!important; height: calc(var(--NavbarHeightSmall) * 1px) !important} toolbarspring{display: none !important;} #TabsToolbar, #nav-bar{transition: margin-top .25s !important}}
-        #nav-bar, #PersonalToolbar{background-color: #0000 !important;background-image: none !important; box-shadow: none !important} #nav-bar{margin-left: 3px;} .tab-background, .tab-stack { min-height: calc(var(--TabsHeight) * 1px) !important}
+        #nav-bar, #PersonalToolbar{background-color: -moz-dialog !important;background-image: none !important; box-shadow: none !important} #nav-bar{margin-left: 3px;} .tab-background, .tab-stack { min-height: calc(var(--TabsHeight) * 1px) !important}
 
         /*  Removes urlbar border/background  */
         #urlbar-background {
