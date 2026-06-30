@@ -63,7 +63,6 @@
     thunar-volman
     gvfs
     udiskie
-    cargo
     udisks2
     zathura
     rar
@@ -75,7 +74,6 @@
     libreoffice-qt
     hunspell
     mpv
-    postman
     pavucontrol
     android-tools
 
@@ -85,7 +83,6 @@
     # dev
     direnv
     openssl
-    azuredatastudio
     virt-manager
 
     # misc
