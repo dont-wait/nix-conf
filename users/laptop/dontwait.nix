@@ -86,7 +86,7 @@
     direnv
     openssl
     azuredatastudio
-    vmware-workstation
+    virt-manager
 
     # misc
     networkmanagerapplet

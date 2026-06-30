@@ -37,7 +37,7 @@ Full desktop configuration:
 - **PDF Reader**: Zathura
 - **Audio**: PipeWire with PulseAudio/Jack support
 - **Input Method**: Fcitx5 with Unikey
-- **Virtualization**: Docker, VMware
+- **Virtualization**: Docker, virt-manager
 - **Android SDK**: Platform tools, NDK 28, Build tools 35
 
 ### minimal-vm

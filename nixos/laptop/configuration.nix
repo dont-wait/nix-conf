@@ -179,6 +179,7 @@
       "video"
       "render"
       "kvm"
+      "libvirtd"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -263,17 +264,13 @@
     80
     22
   ];
-  networking.firewall.trustedInterfaces = [
-    "vmnet1"
-    "vmnet8"
-  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
-  # VMWare config
-  virtualisation.vmware.host.enable = true;
-  virtualisation.vmware.guest.enable = true;
+  # KVM/QEMU via libvirt
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # Garbage Collector Setting
   nix.gc.automatic = true;
