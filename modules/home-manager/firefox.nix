@@ -61,13 +61,7 @@
           display: none !important
         }
 
-        /* Extensions button */
-        #unified-extensions-button {
-            position: absolute !important;
-            /* opacity: 0 !important; */
-            display: none !important;
-          size: 1px !important;
-        }
+        /* Extensions button (visible) */
 
         /*hide sidebar button*/
         #sidebar-box,
@@ -83,6 +77,11 @@
         /* Extension name inside URL bar */
         #identity-box.extensionPage #identity-icon-label {
           visibility: collapse !important
+        }
+
+        /* Firefox View (recent browsing) button */
+        #firefox-view-button {
+          display: none !important
         }
 
         /* All tabs (v-like) button */
