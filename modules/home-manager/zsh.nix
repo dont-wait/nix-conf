@@ -19,6 +19,7 @@ in
       bat
       ripgrep # grep string telescope
       zsh-powerlevel10k
+      codex
     ];
     programs.direnv = {
       enable = true;
