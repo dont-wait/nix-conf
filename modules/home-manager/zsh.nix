@@ -19,7 +19,6 @@ in
       bat
       ripgrep # grep string telescope
       zsh-powerlevel10k
-      codex
     ];
     programs.direnv = {
       enable = true;
@@ -168,7 +167,7 @@ in
                    }
                 export GOPATH="$HOME/go"
                 export CARGO_HOME="${config.home.homeDirectory}/.cargo"
-                export PATH="$CARGO_HOME/bin:$GOPATH/bin:$HOME/.npm-global/bin:$PATH"
+                export PATH="$CARGO_HOME/bin:$GOPATH/bin:$PATH:$HOME/.npm-global/bin"
             '';
     };
   };
