@@ -20,6 +20,10 @@ in
       ripgrep # grep string telescope
       zsh-powerlevel10k
     ];
+    home.sessionPath = [
+      "${config.home.homeDirectory}/go/bin"
+      "${config.home.homeDirectory}/.npm-global/bin"
+    ];
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -165,10 +169,9 @@ in
                       tmux attach-session -t "$name"
                     fi       
                    }
-                export GOPATH="$HOME/go"
-                export CARGO_HOME="${config.home.homeDirectory}/.cargo"
-                export PATH="$CARGO_HOME/bin:$GOPATH/bin:$PATH:$HOME/.npm-global/bin"
-            '';
+                 export GOPATH="$HOME/go"
+                 export CARGO_HOME="${config.home.homeDirectory}/.cargo"
+             '';
     };
   };
 }
