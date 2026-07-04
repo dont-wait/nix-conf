@@ -180,8 +180,6 @@ bindsym $mod+Shift+b exec blueman-manager
 #========================
 # AUTOSTART
 # ========================
-exec --no-startup-id autocutsel -fork
-exec --no-startup-id autocutsel -selection PRIMARY -fork
 exec --no-startup-id udiskie --tray &
 exec_always --no-startup-id picom
 exec_always --no-startup-id dunst

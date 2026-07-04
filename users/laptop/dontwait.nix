@@ -54,7 +54,6 @@
     dunst
     feh
     arandr
-    autocutsel
     xclip
     # rofi
     dmenu

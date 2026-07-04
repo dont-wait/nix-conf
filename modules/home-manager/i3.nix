@@ -180,8 +180,6 @@ in
       # ========================
       # AUTOSTART
       # ========================
-      exec --no-startup-id autocutsel -fork
-      exec --no-startup-id autocutsel -selection PRIMARY -fork
       exec --no-startup-id udiskie --tray
       exec --no-startup-id lookapp
       exec_always --no-startup-id picom
