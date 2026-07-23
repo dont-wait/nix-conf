@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 THEME_DIR="$HOME/.config/zathura/themes"
-LINK_PATH="$HOME/.config/zathura/zathurarc"
+LINK_PATH="$HOME/.config/zathura/current.theme"
 
 themes=($(basename -s .theme "$THEME_DIR"/*.theme))
 
