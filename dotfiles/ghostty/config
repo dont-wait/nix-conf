@@ -16,7 +16,7 @@ keybind = alt+right=goto_split:right
 keybind = alt+enter=toggle_maximize
 
 # background 
-background-image = "/home/dontwait/Documents/git/nix-conf/dotfiles/bg/rem3.png"
+background-image = "/home/dontwait/Documents/git/nix-conf/dotfiles/bg/nezuko.jpg"
 background-image-fit = cover
 background-image-position = center
-background-image-opacity = 0.05
+background-image-opacity = 0.15

@@ -22,7 +22,6 @@ return {
 			"gosum",
 			"java",
 			"json",
-			"jsonc",
 			"zig",
 			"c_sharp",
 			"dart",
