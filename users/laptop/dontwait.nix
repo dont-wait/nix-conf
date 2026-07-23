@@ -96,6 +96,16 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  xdg.mimeApps.defaultApplications = {
+    "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+    "application/epub+zip" = [ "org.pwmt.zathura.desktop" ];
+
+    "text/html" = [ "firefox.desktop" ];
+    "application/xhtml+xml" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
+  };
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
