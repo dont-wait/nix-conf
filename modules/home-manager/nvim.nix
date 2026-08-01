@@ -51,6 +51,7 @@ in
         bash-language-server # bashls
         dockerfile-language-server # docker
         rust-analyzer
+        sourcekit-lsp
       ];
 
     };

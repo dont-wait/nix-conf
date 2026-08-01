@@ -10,7 +10,7 @@ return {
         lazy = false,
         opts = {
             auto_install = true,
-            ensure_installed = { "zls", "ts_ls", "gopls", "lua_ls", "jsonls", "yamlls", "bashls", "pylsp", "lemminx", "rust_analyzer" },
+            ensure_installed = { "zls", "ts_ls", "gopls", "lua_ls", "jsonls", "html", "cssls", "yamlls", "bashls", "pylsp", "lemminx", "rust_analyzer" },
         },
     },
     {
@@ -41,7 +41,12 @@ return {
                 },
             }
 
-            vim.lsp.config.ts_ls = { capabilities = capabilities }
+            vim.lsp.config.ts_ls = {
+                capabilities = capabilities,
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            }
+            vim.lsp.config.html = { capabilities = capabilities }
+            vim.lsp.config.cssls = { capabilities = capabilities }
             vim.lsp.config.eslint = { capabilities = capabilities }
             vim.lsp.config.zls = { capabilities = capabilities }
             vim.lsp.config.yamlls = { capabilities = capabilities }
@@ -83,6 +88,10 @@ return {
                 },
             }
             vim.lsp.config.bashls = { capabilities = capabilities }
+            vim.lsp.config.sourcekit = {
+                capabilities = capabilities,
+                filetypes = { "swift" },
+            }
             -- vim.lsp.config.dartls = {
             --     capabilities = capabilities,
             --     cmd = { "dart", "language-server", "--protocol=lsp" },
@@ -123,6 +132,8 @@ return {
             vim.lsp.enable({
                 "lua_ls",
                 "ts_ls",
+                "html",
+                "cssls",
                 "eslint",
                 "zls",
                 "yamlls",
@@ -135,6 +146,7 @@ return {
                 "svelte",
                 "pylsp",
                 "bashls",
+                "sourcekit",
                 -- "dartls",
                 "lemminx",
                 "rust_analyzer",
@@ -160,9 +172,16 @@ return {
                     lua = "function",
                     go = { "method", "struct", "interface" },
                     cs = { "class", "method", "interface", "property", "struct" },
+                    swift = { "class", "method", "struct", "enum", "protocol", "function" },
                 }
-                local symbols = symbols_map[filetype] or "function"
-                require("fzf-lua").lsp_document_symbols({ symbols = symbols })
+                local opts = {}
+                local symbols = symbols_map[filetype]
+
+                if symbols then
+                    opts.symbols = symbols
+                end
+
+                require("fzf-lua").lsp_document_symbols(opts)
             end, {})
         end,
     },
