@@ -8,24 +8,25 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
-		opts = {
-			auto_install = true,
-			ensure_installed = {
-				"zls",
-				"ts_ls",
-				"gopls",
-				"lua_ls",
-				"jsonls",
-				"html",
-				"cssls",
-				"yamlls",
-				"bashls",
-				"pylsp",
-				"lemminx",
-				"rust_analyzer",
+			opts = {
+				auto_install = true,
+				ensure_installed = {
+					"zls",
+					"phpactor",
+					"ts_ls",
+					"gopls",
+					"lua_ls",
+					"jsonls",
+					"html",
+					"cssls",
+					"yamlls",
+					"bashls",
+					"pylsp",
+					"lemminx",
+					"rust_analyzer",
+				},
 			},
 		},
-	},
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
@@ -114,6 +115,7 @@ return {
 				},
 			}
 			vim.lsp.config.bashls = { capabilities = capabilities }
+			vim.lsp.config.phpactor = { capabilities = capabilities }
 			vim.lsp.config.sourcekit = {
 				capabilities = capabilities,
 				filetypes = { "swift" },
@@ -172,6 +174,7 @@ return {
 				"svelte",
 				"pylsp",
 				"bashls",
+				"phpactor",
 				"sourcekit",
 				-- "dartls",
 				"lemminx",

@@ -52,6 +52,8 @@ in
         dockerfile-language-server # docker
         rust-analyzer
         sourcekit-lsp
+        php
+        phpactor
       ];
 
     };
