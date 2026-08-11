@@ -60,14 +60,14 @@ return {
                     return opts.repo_url and "repo" or "website"
                 end,
                 url = function(opts)
-                    return opts.repo_url or "https://github.com/dontwait"
+                    return opts.repo_url or "https://github.com/dont-wait"
                 end,
             },
         },
         editor = {
             client = "neovim",
             tooltip = "YumikoBaka",
-            -- icon = "https://product.hstatic.net/200000903781/product/vn-11134207-7r98o-luu4at0x9r1ha4_a276c059812246d195e36af6bd5e9599_master.jpeg",
+            icon = "https://product.hstatic.net/200000903781/product/vn-11134207-7r98o-luu4at0x9r1ha4_a276c059812246d195e36af6bd5e9599_master.jpeg",
         },
     },
 }
