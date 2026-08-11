@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  python_version = pkgs.python3_13;
-in
 {
   # Tại đây khai báo các môi trường lập trình và LSP Server
   home.packages = with pkgs; [
@@ -40,6 +37,10 @@ in
     jdt-language-server
     google-java-format
     yaml-language-server
+
+    # PHP
+    php
+    phpactor
 
     # Rust
     cargo
