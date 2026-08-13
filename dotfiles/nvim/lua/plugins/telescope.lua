@@ -1,13 +1,19 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		config = function()
+			local ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
+			if ok and ts_parsers.ft_to_lang == nil and vim.treesitter.language and vim.treesitter.language.get_lang then
+				ts_parsers.ft_to_lang = function(ft)
+					return vim.treesitter.language.get_lang(ft) or ft
+				end
+			end
+
 			local telescope = require("telescope")
 			local builtin = require("telescope.builtin")
 			local themes = require("telescope.themes")
