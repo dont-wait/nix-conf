@@ -210,7 +210,7 @@ return {
 					opts.symbols = symbols
 				end
 
-				require("telescope.builtin").lsp_document_symbols(opts)
+				require("fzf-lua").lsp_document_symbols(opts)
 			end, {})
 		end,
 	},
