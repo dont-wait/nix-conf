@@ -94,6 +94,9 @@
     wev
     nerd-fonts.inconsolata
     nerd-fonts.jetbrains-mono
+
+    #Games
+    prismlauncher
   ];
 
   xdg.mimeApps.defaultApplications = {
