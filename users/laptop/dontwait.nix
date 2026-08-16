@@ -20,6 +20,7 @@
     ../../modules/home-manager/codex.nix
     ../../modules/home-manager/picom.nix
     ../../modules/home-manager/flameshot.nix
+    ../../modules/home-manager/prismlauncher.nix
     ../../modules/home-manager/i3.nix
     ../../modules/home-manager/polybar.nix
     # ../../modules/home-manager/niri.nix
@@ -95,8 +96,6 @@
     nerd-fonts.inconsolata
     nerd-fonts.jetbrains-mono
 
-    #Games
-    prismlauncher
   ];
 
   xdg.mimeApps.defaultApplications = {
