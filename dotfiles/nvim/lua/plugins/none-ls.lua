@@ -1,28 +1,30 @@
 return {
-	"nvimtools/none-ls.nvim",
-	config = function()
-		local null_ls = require("null-ls")
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.formatting.black,
-				null_ls.builtins.formatting.isort,
-				null_ls.builtins.formatting.pint,
-				-- null_ls.builtins.diagnostics.mypy,
-				-- null_ls.builtins.diagnostics.ruff,
-				null_ls.builtins.formatting.gofumpt,
-				null_ls.builtins.code_actions.impl,
-				null_ls.builtins.formatting.asmfmt,
-				null_ls.builtins.formatting.csharpier,
-				-- null_ls.builtins.formatting.google_java_format,
-				null_ls.builtins.formatting.sql_formatter,
-				null_ls.builtins.formatting.xmllint.with({
-					filetypes = { "xml" },
-					extra_args = { "--format" },
-				}),
-			},
-		})
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-	end,
+    "nvimtools/none-ls.nvim",
+    config = function()
+        local null_ls = require("null-ls")
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.stylua,
+                null_ls.builtins.formatting.prettier,
+                null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.isort,
+                null_ls.builtins.formatting.pint.with({
+                    prefer_local = "vendor/bin",
+                }),
+                -- null_ls.builtins.diagnostics.mypy,
+                -- null_ls.builtins.diagnostics.ruff,
+                null_ls.builtins.formatting.gofumpt,
+                null_ls.builtins.code_actions.impl,
+                null_ls.builtins.formatting.asmfmt,
+                null_ls.builtins.formatting.csharpier,
+                -- null_ls.builtins.formatting.google_java_format,
+                null_ls.builtins.formatting.sql_formatter,
+                null_ls.builtins.formatting.xmllint.with({
+                    filetypes = { "xml" },
+                    extra_args = { "--format" },
+                }),
+            },
+        })
+        vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+    end,
 }

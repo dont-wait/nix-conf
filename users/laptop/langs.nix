@@ -41,6 +41,7 @@
     # PHP
     php
     phpactor
+    composer
 
     # Rust
     cargo
@@ -69,5 +70,6 @@
   home.sessionPath = [
     "${pkgs.jdk25}/bin"
     "${config.home.homeDirectory}/.cargo/bin"
+    "${config.home.homeDirectory}/.config/composer/vendor/bin"
   ];
 }
