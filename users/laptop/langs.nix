@@ -39,9 +39,9 @@
     yaml-language-server
 
     # PHP
-    php
+    php84
     phpactor
-    composer
+    php84Packages.composer
 
     # Rust
     cargo
