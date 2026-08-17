@@ -18,6 +18,7 @@
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/opencode.nix
     ../../modules/home-manager/codex.nix
+    ../../modules/home-manager/llms.nix
     ../../modules/home-manager/picom.nix
     ../../modules/home-manager/flameshot.nix
     ../../modules/home-manager/prismlauncher.nix
