@@ -215,6 +215,7 @@
     gh
     curl
     unzip
+    zip
     gnutar
     gzip
     home-manager
