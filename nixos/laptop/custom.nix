@@ -36,10 +36,21 @@
     unzip
     brightnessctl
     cargo-tauri
+    spotify-spotx
 
     inputs.look.packages.${pkgs.system}.default
   ];
-  nixpkgs.config.allowUnfreePredicate = (_: true);
+
+  nixpkgs = {
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "spotify"
+        "spotify-spotx"
+      ];
+    overlays = [ inputs.spotx-nix.overlays.default ];
+  };
+
   boot.loader.systemd-boot.configurationLimit = 5;
   systemd = {
     targets = {

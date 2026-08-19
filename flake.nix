@@ -6,11 +6,14 @@
     extra-trusted-public-keys = [ "look.cachix.org-1:8elPCeSVBzlDZXqIRKBK9GyLIK/Hoe1xiWZF0ir7uX4=" ];
   };
 
-  inputs.look.url = "github:kunkka19xx/look?dir=apps/linows";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    look.url = "github:kunkka19xx/look?dir=apps/linows";
+    spotx-nix = {
+      url = "github:SpotX-Official/SpotX-Nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";

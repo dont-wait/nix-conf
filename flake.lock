@@ -27,11 +27,11 @@
       },
       "locked": {
         "dir": "apps/linows",
-        "lastModified": 1786635507,
-        "narHash": "sha256-QypYyHnFTA+gr4stszfKy1kC4GgV2SIUnmvLnphqnBc=",
+        "lastModified": 1786951259,
+        "narHash": "sha256-m8/FhPXmJvRDq92g5mE1k6ABkFigka2hzkJHV0ZH7lA=",
         "owner": "kunkka19xx",
         "repo": "look",
-        "rev": "7f96bda0bb5cef68b067b1bd25c61ad44a43477e",
+        "rev": "ece58a2d34aaa25ee44906b712f007bca3327291",
         "type": "github"
       },
       "original": {
@@ -94,7 +94,8 @@
         "home-manager": "home-manager",
         "look": "look",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": "nixpkgs-stable",
+        "spotx-nix": "spotx-nix"
       }
     },
     "rust-overlay": {
@@ -115,6 +116,43 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "spotx-bash": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786565726,
+        "narHash": "sha256-+q/1/yeqrkjn6loZ7jyE2KIp5R/PzdSHC5Z21GIDeX8=",
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Bash",
+        "rev": "9ec96c6957609c3d4db514dea34d2ef459d8164c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Bash",
+        "type": "github"
+      }
+    },
+    "spotx-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "spotx-bash": "spotx-bash"
+      },
+      "locked": {
+        "lastModified": 1787123175,
+        "narHash": "sha256-ahJXzIRK9MIX80ujkDWRkMX7ZL+u96mYn2MRjxl1X58=",
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Nix",
+        "rev": "7024269e72fe1b414a7bcd1a0c5a54fb8998f9f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Nix",
         "type": "github"
       }
     }
