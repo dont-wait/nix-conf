@@ -166,7 +166,8 @@ in
       # ========================
       workspace 1 output eDP-1
       for_window [class=".*"] border pixel 0
-      for_window [class="firefox"] move to workspace 2
+      for_window [class="firefox, brave web browser"] move to workspace 2
+      for_window [class="spotify, discord ptb"] move to workspace 9
       for_window [class="Polybar"] floating enable, border none, sticky enable
       for_window [title="Look"] floating enable, border none
 
