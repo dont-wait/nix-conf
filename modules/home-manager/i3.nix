@@ -161,34 +161,34 @@ in
     };
 
     extraConfig = ''
-      # ========================
-      # WINDOW RULES
-      # ========================
-      workspace 1 output eDP-1
-      for_window [class=".*"] border pixel 0
-      for_window [class="firefox, brave web browser"] move to workspace 2
-      for_window [class="spotify, discord ptb"] move to workspace 9
-      for_window [class="Polybar"] floating enable, border none, sticky enable
-      for_window [title="Look"] floating enable, border none
+            # ========================
+            # WINDOW RULES
+            # ========================
+            workspace 1 output eDP-1
+            for_window [class=".*"] border pixel 0
+            for_window [class="^(firefox|Brave-browser)$"] move container to workspace 2
+            for_window [class="^(Spotify|discord-ptb)$"] move container to workspace 9
+            for_window [class="Polybar"] floating enable, border none, sticky enable
+            for_window [title="Look"] floating enable, border none
 
 
-      # ========================
-      # COLORS (Catppuccin Mocha)
-      # ========================
-      # client.focused          #a6adc8 #a6adc8 #11111b #a6adc8 #a6adc8
-      # client.unfocused        #1e1e2e #1e1e2e #6c7086 #1e1e2e #1e1e2e
+            # ========================
+            # COLORS (Catppuccin Mocha)
+            # ========================
+            # client.focused          #a6adc8 #a6adc8 #11111b #a6adc8 #a6adc8
+            # client.unfocused        #1e1e2e #1e1e2e #6c7086 #1e1e2e #1e1e2e
 
-      # ========================
-      # AUTOSTART
-      # ========================
-      exec --no-startup-id udiskie --tray
-      exec --no-startup-id lookapp
-      exec_always --no-startup-id picom
-      exec_always --no-startup-id dunst
-      exec_always --no-startup-id blueman-applet
-      exec_always --no-startup-id nm-applet
-      exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-      exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ${wallpaperPath}
+            # ========================
+            # AUTOSTART
+            # ========================
+            exec --no-startup-id udiskie --tray
+            exec --no-startup-id lookapp
+            exec_always --no-startup-id picom
+            exec_always --no-startup-id dunst
+            exec_always --no-startup-id blueman-applet
+            exec_always --no-startup-id nm-applet
+            exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+            exec_always --no-startup-id ${pkgs.feh}/bin/feh --bg-fill ${wallpaperPath}
     '';
   };
 }
