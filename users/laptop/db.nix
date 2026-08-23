@@ -5,6 +5,7 @@
     mariadb 
     sqlcmd 
     mongodb-compass
+    mongodb-tools
 
   ];
 }

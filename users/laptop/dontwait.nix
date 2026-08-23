@@ -21,7 +21,6 @@
     ../../modules/home-manager/llms.nix
     ../../modules/home-manager/picom.nix
     ../../modules/home-manager/flameshot.nix
-    ../../modules/home-manager/prismlauncher.nix
     ../../modules/home-manager/i3.nix
     ../../modules/home-manager/polybar.nix
     # ../../modules/home-manager/niri.nix
@@ -97,6 +96,7 @@
     nerd-fonts.inconsolata
     nerd-fonts.jetbrains-mono
 
+    vscode
   ];
 
   xdg.mimeApps.defaultApplications = {
