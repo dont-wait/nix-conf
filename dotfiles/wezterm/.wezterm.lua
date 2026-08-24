@@ -25,7 +25,7 @@ local function pick_random_background(folder)
 	end
 end
 
-local bg_image = background_folder .. "/nezuko.jpg"
+local bg_image = background_folder .. "/1387138.png"
 
 local function make_background(image, bright)
 	return {
