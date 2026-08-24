@@ -39,6 +39,7 @@
     spotify-spotx
 
     inputs.look.packages.${pkgs.system}.default
+    inputs.nixgl.packages.${system}.nixGLIntel
   ];
 
   nixpkgs = {
