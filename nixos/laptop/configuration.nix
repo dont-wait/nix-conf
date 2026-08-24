@@ -119,7 +119,7 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
-      common.default = "gtk";
+      common.default = "*";
       # niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
     };
     xdgOpenUsePortal = false;
@@ -237,6 +237,7 @@
     networkmanager-openvpn
     update-systemd-resolved
     fuse
+    appimage-run
   ];
 
   # Enable the OpenSSH daemon.
