@@ -236,6 +236,7 @@
     i3status
     networkmanager-openvpn
     update-systemd-resolved
+    fuse
   ];
 
   # Enable the OpenSSH daemon.
