@@ -10,7 +10,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     look.url = "github:kunkka19xx/look?dir=apps/linows";
-    ixgl.url = "github:guibou/nixGL";
+    nixgl.url = "github:guibou/nixGL";
     spotx-nix = {
       url = "github:SpotX-Official/SpotX-Nix";
       inputs.nixpkgs.follows = "nixpkgs";
