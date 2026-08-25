@@ -6,6 +6,7 @@
     sqlcmd 
     mongodb-compass
     mongodb-tools
+    sqlite
 
   ];
 }
