@@ -1,0 +1,47 @@
+[end-work]
+name = "End work"
+icon = "🌙"
+aliases = ["quit all", "evening"]
+confirm = "Close every window except Look?"
+do = ['''
+if [ -n "$NIRI_SOCKET" ]; then
+  windows=$(niri msg -j windows |
+    jq -r '.[] | select((.app_id // "") != "lookapp") | "\(.id) \(.pid // 0)"')
+  echo "$windows" | while read -r id pid; do
+    [ -n "$id" ] && niri msg action close-window --id "$id" >/dev/null 2>&1
+  done
+elif [ -n "$SWAYSOCK" ]; then
+  # `.pid` is what makes a node a window. An XWayland mongoClient has no `app_id`
+  # at all - Firefox reports `window_properties.class` instead - so keying on
+  # app_id alone silently spared every X11 window.
+  windows=$(swaymsg -t get_tree |
+    jq -r '.. | objects | select(.pid != null)
+           | select((.app_id // .window_properties.class // "") != "lookapp")
+           | "\(.id) \(.pid)"')
+  echo "$windows" | while read -r id pid; do
+    [ -n "$id" ] && swaymsg "[con_id=$id] kill" >/dev/null 2>&1
+  done
+elif command -v i3-msg >/dev/null 2>&1; then
+  # On i3 a real window has `.window`/`.pid`, and Look is easiest to recognise
+  # by the title your config already matches. Keep the launcher alive, close the
+  # rest, then fall back to TERM for anything that ignored the request.
+  windows=$(i3-msg -t get_tree |
+    jq -r '.. | objects | select(.window != null)
+           | select((.window_properties.title // "") != "Look")
+           | "\(.id) \(.pid // 0)"')
+  echo "$windows" | while read -r id pid; do
+    [ -n "$id" ] && i3-msg "[con_id=$id] kill" >/dev/null 2>&1
+  done
+else
+  echo "no supported compositor/session: not niri, sway, or i3" >&2
+  exit 1
+fi
+
+sleep 3
+echo "$windows" | while read -r id pid; do
+  case "$pid" in
+    "" | 0) continue ;;
+  esac
+  kill -0 "$pid" 2>/dev/null && kill -TERM "$pid" 2>/dev/null
+done
+''']

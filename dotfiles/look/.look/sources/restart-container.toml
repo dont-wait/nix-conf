@@ -1,0 +1,4 @@
+[restart-container]
+name = "Restart"
+confirm = "Restart {title}?"
+do = ["docker restart {id}"]

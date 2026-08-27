@@ -1,0 +1,9 @@
+[nixcfg]
+name = "Nix config"
+dirs = ["~/Documents/git/nix-conf/", "~/Documents/git/nix-conf/nixos", "~/Documents/git/nix-conf/modules", "~/Documents/git/nix-conf/users"]
+depth = 2
+only = "files"
+match = ["*.nix"]
+aliases = ["nix", "config"]
+bias = -20
+then = ["nix-rebuild"]

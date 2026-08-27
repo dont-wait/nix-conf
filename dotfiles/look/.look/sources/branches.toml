@@ -1,0 +1,7 @@
+[branches]
+name = "Branches"
+icon = "🌳"
+run = "git -C {path} for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads"
+open = "git -C {parent.path} checkout {id}"
+preview = "git -C {parent.path} log -10 --date=short --format='%h  %ad  %an  %s' {id}"
+then = ["drop-branch"]

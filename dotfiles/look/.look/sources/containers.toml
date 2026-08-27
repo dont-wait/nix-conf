@@ -1,0 +1,7 @@
+[containers]
+name = "Containers"
+icon = "🐳"
+run = "docker ps --format '{{.ID}}\t{{.Names}}\t{{.Status}}'"
+preview = "docker logs --tail 40 {id}"
+open = "ghostty -e docker exec -it {id} sh"
+then = ["restart-container", "stop-container"]

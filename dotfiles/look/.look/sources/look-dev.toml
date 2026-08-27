@@ -1,0 +1,7 @@
+[look-dev]
+name = "Look dev"
+icon = "🔨"
+do = [
+  "ghostty --working-directory ~/Documents/git/look",
+  "ghostty --working-directory ~/Documents/git/look -e nvim .",
+]

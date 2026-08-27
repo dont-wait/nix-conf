@@ -1,0 +1,3 @@
+[nvim-here]
+name = "Edit in nvim"
+do = ["ghostty --working-directory {path} -e nvim ."]

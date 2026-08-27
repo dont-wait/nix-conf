@@ -1,0 +1,72 @@
+# look configuration
+# Generated on first launch. Edit values, then reload with Cmd+Shift+;
+# (Ctrl+Shift+; on Linux and Windows).
+
+# Backend indexing (file_scan_depth: 1-12, file_scan_limit: 500-50000)
+app_scan_roots=/usr/share/applications,/usr/local/share/applications
+app_scan_depth=3
+app_exclude_paths=
+app_exclude_names=
+file_scan_roots=Desktop,Documents,Downloads,Pictures,Videos
+file_scan_extra_roots=
+file_scan_depth=4
+file_scan_limit=8000
+file_exclude_paths=
+ignored_patterns_sample=
+# File ignore patterns. Gitignore-style path globs: *, **, ?, [abc].
+# Format: ignored_patterns_<group>=Pattern1|Pattern2|Pattern3
+# macOS/Linux usually use ~/... or /... ; on Windows, C:\... is the safest documented form and ~ expands to your home dir.
+# ignored_patterns_browser=~/AppData/Local/BraveSoftware/**/*.log|~/AppData/Local/Google/Chrome/**/*.tmp
+# ignored_patterns_sqlite=~/Documents/git/project/**/*.db-wal|~/Documents/git/project/**/*.db-shm
+# ignored_patterns_temp=~/Downloads/*.tmp|~/Downloads/**/*.part
+lazy_indexing_enabled=true
+# Localized app and System Settings names. macOS 15.4+ only. Slows the first
+# index pass (~3ms -> ~35ms on a 134-app machine) and caches bundle metadata
+# for the process lifetime.
+localized_app_names=false
+skip_dir_names=node_modules,target,build,dist,library,applications,old firefox data,deriveddata,pods,vendor,out,coverage,tmp,cache,venv,Migrations
+
+# Clipboard history size (10-100). Out-of-range values fall back to 10.
+clipboard_history_limit=10
+
+# Preferred tools. Name the tool, not a command: Look knows how to drive it,
+# including running a terminal editor inside your terminal. Declare nothing and
+# nothing changes. Editing uses text_editor on a file and code_editor on a
+# folder; declaring only one of the two covers both.
+# Acted on from the row's action menu, and from Cmd+E / Cmd+T (Ctrl elsewhere).
+text_editor=code
+code_editor=nvim
+terminal=wezterm
+file_manager=thunar
+
+# UI theme
+ui_tint_red=0.08
+ui_tint_green=0.10
+ui_tint_blue=0.12
+ui_tint_opacity=1
+ui_blur_material=hudWindow
+ui_blur_opacity=0.95
+ui_font_name=SF Pro Text
+ui_font_size=14
+ui_font_red=0.96
+ui_font_green=0.96
+ui_font_blue=0.98
+ui_font_opacity=0.96
+ui_border_thickness=1.0
+ui_border_red=1.0
+ui_border_green=1.0
+ui_border_blue=1.0
+ui_border_opacity=0.12
+
+# Search aliases (apps + System Settings). Format: alias_<keyword>=Term1|Term2|Term3
+# The defaults below cover both macOS and Windows app catalogs; entries that don't
+# exist on the current host simply won't match, so cross-platform lists are harmless.
+alias_note=Notion|Obsidian|Notes|Apple Notes|Bear|Logseq|OneNote|Microsoft OneNote|Sticky Notes|Joplin
+alias_code=Visual Studio Code|VSCode|Cursor|Windsurf|IntelliJ IDEA|PyCharm|WebStorm|Neovim|Xcode|Zed|Visual Studio|Notepad++|Sublime Text
+alias_term=Terminal|iTerm|iTerm2|Ghostty|WezTerm|Alacritty|Kitty|Warp|Windows Terminal|PowerShell|Command Prompt|wsl
+alias_chat=Slack|Discord|Telegram|Messages|Microsoft Teams|Teams|WhatsApp|Signal|Zoom
+alias_music=Spotify|Apple Music|Music|YouTube Music|VLC|Windows Media Player|foobar2000
+alias_brow=Safari|Arc|Google Chrome|Chrome|Firefox|Brave|Microsoft Edge|Edge|Brave Browser|Vivaldi|Opera
+settings_blur_multiplier=1
+ui_bg_image=/home/dontwait/Documents/git/nix-conf/dotfiles/bg/will.jpeg
+ui_bg_blur=1.8

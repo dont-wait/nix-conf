@@ -1,0 +1,4 @@
+[stop-container]
+name = "Stop container"
+confirm = "Stop {title}?"
+do = ["docker stop {id}"]

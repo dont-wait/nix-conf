@@ -1,0 +1,6 @@
+[commits]
+name = "Commits"
+icon = "📜"
+run = "git -C {path} log -30 --date=short --format='%h%x09%s%x09%ad %an'"
+preview = "git -C {parent.path} show --stat --format='%an  %ad%n%n%s%n%n%b' {id}"
+open = "git -C {parent.path} show {id} | tee /tmp/look-{id}.patch >/dev/null && ghostty -e nvim /tmp/look-{id}.patch"

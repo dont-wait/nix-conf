@@ -1,7 +1,7 @@
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 19
 #0.94
-# background-opacity = 0.94
+background-opacity = 0.86
 background-blur-radius = 80
 title = ""
 theme = Catppuccin Macchiato
@@ -17,7 +17,7 @@ keybind = alt+right=goto_split:right
 keybind = alt+enter=toggle_maximize
 
 # background 
-background-image = "/home/dontwait/Documents/git/nix-conf/dotfiles/bg/rem3.png"
-background-image-fit = cover
-background-image-position = center
-background-image-opacity = 0.05
+# background-image = "/home/dontwait/Documents/git/nix-conf/dotfiles/bg/rem3.png"
+# background-image-fit = cover
+# background-image-position = center
+# background-image-opacity = 0.05

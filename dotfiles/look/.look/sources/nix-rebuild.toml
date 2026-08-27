@@ -1,0 +1,5 @@
+[nix-rebuild]
+name = "Rebuild NixOS"
+icon = "❄️"
+confirm = "Rebuild this system from ~/Documents/git/nix-conf#laptop?"
+do = ["ghostty -e bash -lc 'cd ~/Documents/git/nix-conf && sudo nixos-rebuild switch --flake .#laptop; echo; read -n 1 -s -r -p \"Press any key to close...\"'"]

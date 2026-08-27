@@ -1,0 +1,19 @@
+# Firefox history, searchable in Look. Type "history" (or "web", "url").
+# Reload after editing: Ctrl+Shift+;
+#
+# Needs sqlite3 on PATH. Without it the script prints nothing and the block
+# quietly has no rows.
+
+[history]
+name    = "Browser history"
+icon    = "🌐"
+run     = "~/.look/browser-history.sh"
+format  = "json"
+timeout = "20s"
+aliases = ["history", "web", "url", "browser"]
+
+# The row id is the URL, so Enter hands it to the default browser.
+open = "xdg-open {id}"
+
+# The full URL, which the row truncates: this is where you check what Enter opens.
+preview = "printf '%s\\n' {id}"

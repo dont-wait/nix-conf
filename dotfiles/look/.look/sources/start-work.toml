@@ -1,0 +1,9 @@
+[start-work]
+name = "Start work"
+icon = "🌅"
+aliases = ["work", "morning"]
+do = [
+  "ghostty --gtk-single-instance=true",
+  "DiscordPTB",
+  "xdg-open https://github.com",
+]
