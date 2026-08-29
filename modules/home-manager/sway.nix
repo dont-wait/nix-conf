@@ -7,6 +7,17 @@
 let
   mod = "Mod4";
   wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/nix-girl2.png";
+  scratchpadToggle = pkgs.writeShellScript "sway-scratchpad-toggle" ''
+    set -eu
+
+    if ${pkgs.sway}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq -e '
+      .. | objects | select(.scratchpad_state? and .scratchpad_state != "none")
+    ' >/dev/null; then
+      exec ${pkgs.sway}/bin/swaymsg scratchpad show
+    fi
+
+    exec ${pkgs.sway}/bin/swaymsg 'floating enable, resize set 1280px 1080px, move position center, move scratchpad'
+  '';
 in
 {
   programs.swaylock = {
@@ -95,8 +106,7 @@ in
         "${mod}+Shift+space" = "floating toggle";
 
         # Scratchpad
-        "${mod}+minus" =
-          "exec swaymsg scratchpad show || bash -c 'swaymsg floating enable && swaymsg resize set 1280px 1080px && swaymsg move position center && swaymsg move scratchpad'";
+        "${mod}+minus" = "exec ${scratchpadToggle}";
         "${mod}+Shift+minus" = "move scratchpad";
 
         # Focus (vim style)
@@ -168,7 +178,7 @@ in
       # Window rules
       default_border pixel 1
       workspace 1 output eDP-1
-      for_window [app_id="ghostty"] border none
+      for_window [app_id="^(ghostty|wezterm)$"] border none move to workspace 1
       for_window [class=".*"] border pixel 0
       for_window [app_id="^(firefox|brave-browser)$"] move to workspace 2
       for_window [class="^(firefox|Brave-browser)$"] move to workspace 2
