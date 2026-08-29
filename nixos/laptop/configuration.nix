@@ -69,15 +69,12 @@
     GTK_IM_MODULE = lib.mkForce "fcitx";
     QT_IM_MODULE = lib.mkForce "fcitx";
     XMODIFIERS = "@im=fcitx";
-    # NIXOS_OZONE_WL = "1";
-    NIXOS_OZONE_WL = "0";
-    # MOZ_ENABLE_WAYLAND = "1";
-    # Force browsers to use X11
-    MOZ_ENABLE_WAYLAND = "0";
-    # ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    ELECTRON_OZONE_PLATFORM_HINT = "x11";
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
     # XDG_CURRENT_DESKTOP = "niri";
-    XDG_CURRENT_DESKTOP = "i3";
+    # XDG_CURRENT_DESKTOP = "i3";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -87,17 +84,15 @@
       "--gtk-version=4"
       "--disable-features=WaylandFractionalScaleV1"
       "--enable-features=UseOzonePlatform"
-      # "--ozone-platform=wayland"
-      "--ozone-platform=x11"
+      "--ozone-platform=wayland"
     ];
   };
 
   # Config
   services.xserver = {
     enable = true;
-    displayManager.lightdm.enable = true;
-    windowManager.i3.enable = true;
-    libinput.touchpad.naturalScrolling = true;
+    # displayManager.lightdm.enable = true;
+    # windowManager.i3.enable = true;
 
     xkb = {
       layout = "us";
@@ -111,22 +106,40 @@
 
   };
 
+  programs.sway = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   # programs.niri.enable = true;
 
-  # services.libinput.touchpad.naturalScrolling = true;
+  services.libinput.touchpad.naturalScrolling = true;
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
     config = {
-      common.default = "*";
+      common.default = [ "gtk" ];
+      sway.default = lib.mkForce [ "wlr" "gtk" ];
       # niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
     };
-    xdgOpenUsePortal = false;
+    xdgOpenUsePortal = true;
   };
 
   # services.displayManager.defaultSession = "niri";
-  services.displayManager.defaultSession = "none+i3";
+  # services.displayManager.defaultSession = "none+i3";
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "greeter";
+      };
+    };
+  };
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -136,7 +149,7 @@
   # services.printing.enable = true;
 
   security.polkit.enable = true;
-  # security.pam.services.swaylock = { };
+  security.pam.services.swaylock = { };
 
   # Enable Flatpak
   services.flatpak.enable = true;
@@ -196,7 +209,7 @@
     stdenv.cc.cc.lib
     zlib
   ];
-  programs.bash.enableCompletion = true;
+  programs.bash.completion.enable = true;
 
   programs.nm-applet.enable = true;
 

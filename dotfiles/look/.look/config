@@ -4,7 +4,7 @@
 # Indexing
 file_scan_roots=Desktop,Documents,Downloads,Pictures,Videos
 file_scan_extra_roots=
-file_scan_depth=12
+file_scan_depth=8
 file_scan_limit=8000
 file_exclude_paths=
 ignored_patterns_sample=
@@ -62,7 +62,7 @@ localized_app_names=false
 ui_tint_red=0.08
 ui_tint_green=0.10
 ui_tint_blue=0.12
-ui_tint_opacity=0.95
+ui_tint_opacity=0.78
 ui_blur_material=hudWindow
 ui_blur_opacity=1
 ui_font_name=JetBrainsMono NF
@@ -87,5 +87,5 @@ ui_bg_image=/home/dontwait/Documents/git/nix-conf/dotfiles/bg/will.jpeg
 ui_bg_opacity=0.54
 settings_blur_multiplier=1
 ui_blur_style=high_contrast
-launch_at_login=true
+launch_at_login=false
 ui_bg_blur=0.8

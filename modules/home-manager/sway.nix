@@ -9,6 +9,42 @@ let
   wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/nix-girl2.png";
 in
 {
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "1e1e2e";
+      font = "JetBrainsMono Nerd Font";
+      indicator-idle-visible = false;
+      indicator-radius = 100;
+      line-color = "89b4fa";
+      ring-color = "313244";
+      inside-color = "1e1e2e";
+      text-color = "cdd6f4";
+      separator-color = "00000000";
+      grace = 2;
+      fade-in = 0.2;
+      show-failed-attempts = true;
+    };
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = {
+      before-sleep = "swaylock -f";
+      lock = "swaylock -f";
+    };
+    timeouts = [
+      {
+        timeout = 300;
+        command = "swaylock -f";
+      }
+      {
+        timeout = 1800;
+        command = "systemctl suspend";
+      }
+    ];
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -45,7 +81,7 @@ in
         "${mod}+Shift+t" = "exec bash $HOME/.config/zathura/change-theme.bash";
         "${mod}+Shift+m" =
           "exec bash -c 'ghostty --title=kew-player -e bash -c \"kew all shuffle\" & sleep 0.5 && swaymsg \"[title=kew-player] move to workspace 9\"'";
-        "${mod}+d" = "exec rofi -show drun";
+        "${mod}+d" = "exec dmenu_run";
 
         # Window control
         "${mod}+Shift+q" = "kill";
@@ -126,12 +162,6 @@ in
         "${mod}+Shift+b" = "exec blueman-manager";
       };
 
-      assigns = {
-        "2" = [
-          { app_id = "firefox"; }
-          { class = "firefox"; }
-        ];
-      };
     };
 
     extraConfig = ''
@@ -140,8 +170,13 @@ in
       workspace 1 output eDP-1
       for_window [app_id="ghostty"] border none
       for_window [class=".*"] border pixel 0
+      for_window [app_id="^(firefox|brave-browser)$"] move to workspace 2
+      for_window [class="^(firefox|Brave-browser)$"] move to workspace 2
+      for_window [app_id="^spotify$"] move to workspace 8
+      for_window [class="^Spotify$"] move to workspace 8
+      for_window [app_id="^(discord|discord-ptb)$"] move to workspace 9
+      for_window [class="^(Discord|discord|discord-ptb)$"] move to workspace 9
       for_window [title="kew-player"] move to workspace 9
-      for_window [title="Look"] floating enable, border none
 
 
       # Font
@@ -152,6 +187,7 @@ in
 
       # Autostart
       exec udiskie --tray
+      # Look injects its own Alt+Space and floating/border rules via swaymsg.
       exec lookapp
       exec dunst
       exec blueman-applet

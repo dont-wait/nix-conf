@@ -19,12 +19,13 @@
     ../../modules/home-manager/opencode.nix
     ../../modules/home-manager/codex.nix
     ../../modules/home-manager/llms.nix
-    ../../modules/home-manager/picom.nix
-    ../../modules/home-manager/flameshot.nix
-    ../../modules/home-manager/i3.nix
-    ../../modules/home-manager/polybar.nix
+    # ../../modules/home-manager/picom.nix
+    # ../../modules/home-manager/flameshot.nix
+    # ../../modules/home-manager/i3.nix
+    # ../../modules/home-manager/polybar.nix
+    ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/waybar.nix
     # ../../modules/home-manager/niri.nix
-    # ../../modules/home-manager/waybar.nix
   ];
 
   home.username = "dontwait";
@@ -58,6 +59,7 @@
     xclip
     # rofi
     dmenu
+    wdisplays
     blueman
     # file manager
     thunar
@@ -93,6 +95,9 @@
     qt6Packages.fcitx5-configtool
     jq
     wev
+    grim
+    slurp
+    wl-clipboard
     nerd-fonts.inconsolata
     nerd-fonts.jetbrains-mono
 

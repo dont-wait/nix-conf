@@ -17,18 +17,22 @@
         margin-left = 8;
         margin-right = 8;
         spacing = 0;
-        modules-left = [ "niri/workspaces" "niri/window" ];
+        modules-left = [ "sway/workspaces" "sway/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "cpu" "memory" "disk" "pulseaudio" "battery" ];
+        modules-right = [ "cpu" "memory" "disk" "pulseaudio" "battery" "tray" ];
 
-        "niri/workspaces" = {
+        "sway/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
           format = "{value}";
         };
 
-        "niri/window" = {
+        "sway/window" = {
           format = "{title}";
+        };
+
+        "tray" = {
+          spacing = 10;
         };
 
         "clock" = {
