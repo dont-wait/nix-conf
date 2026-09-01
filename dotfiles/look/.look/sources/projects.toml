@@ -3,5 +3,5 @@ name = "Projects"
 dir = "~/Documents/git"
 only = "dirs"
 aliases = ["repo", "git", "code"]
-terminal = "ghostty --working-directory {path}"
+terminal = "ghostty --working-directory={path}"
 then = ["branches", "commits", "nvim-here"]

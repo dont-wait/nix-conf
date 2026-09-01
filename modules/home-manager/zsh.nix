@@ -80,6 +80,8 @@ in
         lzd = "lazydocker";
         lzg = "lazygit";
         slzd = "sudo lazydocker";
+        gamsg = "git add . && git commit -m";
+        gp = "git push";
       };
       initContent = ''
                   eval "$(direnv hook zsh)"

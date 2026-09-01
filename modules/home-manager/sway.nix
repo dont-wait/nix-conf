@@ -197,7 +197,6 @@ in
 
       # Autostart
       exec udiskie --tray
-      # Look injects its own Alt+Space and floating/border rules via swaymsg.
       exec lookapp
       exec dunst
       exec blueman-applet

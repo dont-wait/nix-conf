@@ -2,6 +2,6 @@
 name = "Look dev"
 icon = "🔨"
 do = [
-  "ghostty --working-directory ~/Documents/git/look",
-  "ghostty --working-directory ~/Documents/git/look -e nvim .",
+  "ghostty --working-directory=~/Documents/git/look",
+  "ghostty --working-directory=~/Documents/git/look -e nvim .",
 ]
