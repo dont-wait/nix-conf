@@ -31,6 +31,7 @@
   home.username = "dontwait";
   home.homeDirectory = "/home/dontwait";
   home.stateVersion = "26.05";
+  home.enableNixpkgsReleaseCheck = false;
 
   within = {
     neovim.enable = true;

@@ -87,5 +87,5 @@ ui_bg_image=/home/dontwait/Documents/git/nix-conf/dotfiles/bg/will.jpeg
 ui_bg_opacity=0.54
 settings_blur_multiplier=1
 ui_blur_style=high_contrast
-launch_at_login=true
+launch_at_login=false
 ui_bg_blur=0.8

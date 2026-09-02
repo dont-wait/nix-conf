@@ -40,7 +40,7 @@ ai_enabled=true
 super_actions_enabled=true
 
 # UI theme (empty = built-in default; pick one in Settings)
-ui_theme=kanagawa
+ui_theme=
 
 # Added by look update
 app_scan_roots=/usr/share/applications,/usr/local/share/applications
@@ -51,7 +51,7 @@ localized_app_names=false
 ui_tint_red=0.08
 ui_tint_green=0.10
 ui_tint_blue=0.12
-ui_tint_opacity=0.93
+ui_tint_opacity=0.55
 ui_blur_material=hudWindow
 ui_blur_opacity=0.95
 ui_font_name=SF Pro Text
@@ -59,17 +59,15 @@ ui_font_size=14
 ui_font_red=0.96
 ui_font_green=0.96
 ui_font_blue=0.98
-ui_font_opacity=1
+ui_font_opacity=0.96
 ui_border_thickness=1.0
 ui_border_red=1.0
 ui_border_green=1.0
 ui_border_blue=1.0
-ui_border_opacity=0.26
+ui_border_opacity=0.12
 alias_note=Notion|Obsidian|Notes|Apple Notes|Bear|Logseq|OneNote|Microsoft OneNote|Sticky Notes|Joplin
 alias_code=Visual Studio Code|VSCode|Cursor|Windsurf|IntelliJ IDEA|PyCharm|WebStorm|Neovim|Xcode|Zed|Visual Studio|Notepad++|Sublime Text
 alias_term=Terminal|iTerm|iTerm2|Ghostty|WezTerm|Alacritty|Kitty|Warp|Windows Terminal|PowerShell|Command Prompt|wsl
 alias_chat=Slack|Discord|Telegram|Messages|Microsoft Teams|Teams|WhatsApp|Signal|Zoom
 alias_music=Spotify|Apple Music|Music|YouTube Music|VLC|Windows Media Player|foobar2000
 alias_brow=Safari|Arc|Google Chrome|Chrome|Firefox|Brave|Microsoft Edge|Edge|Brave Browser|Vivaldi|Opera
-ui_surface=
-settings_blur_multiplier=0.98
