@@ -24,6 +24,10 @@
     go
     go-tools
 
+    # Zig
+    zig
+    zls
+
     # Flutter
     gradle_9
     flutter329
