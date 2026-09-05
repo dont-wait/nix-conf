@@ -83,7 +83,7 @@ in
         gamsg = "git add . && git commit -m";
         gp = "git push";
         o = "opencode";
-        review = ''hunk diff "$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD)...HEAD"'';
+        lg = "lgtm";
       };
       initContent = ''
          eval "$(direnv hook zsh)"

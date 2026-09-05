@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 wezterm.log_info("config loaded successfully")
 local config = wezterm.config_builder()
-local io = require("io")
 local brightness = 0.05
 
 -- image setting
@@ -9,19 +8,9 @@ local home = os.getenv("HOME")
 local background_folder = home .. "/Documents/git/nix-conf/dotfiles/bg"
 
 local function pick_random_background(folder)
-	local handle = io.popen('ls "' .. folder .. '"')
-	if handle ~= nil then
-		local files = handle:read("*a")
-		handle:close()
-		local images = {}
-		for file in string.gmatch(files, "[^\n]+") do
-			table.insert(images, file)
-		end
-		if #images > 0 then
-			return folder .. "/" .. images[math.random(#images)]
-		else
-			return nil
-		end
+	local images = wezterm.glob(folder .. "/*")
+	if #images > 0 then
+		return images[math.random(#images)]
 	end
 end
 
@@ -59,6 +48,7 @@ config.window_padding = {
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Regular", stretch = "Normal", style = "Normal" })
 config.font_size = 19
+config.adjust_window_size_when_changing_font_size = false
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
 config.status_update_interval = 0
@@ -79,8 +69,9 @@ config.keys = {
 		key = "b",
 		mods = "CTRL|SHIFT",
 		action = wezterm.action_callback(function(window)
-			bg_image = pick_random_background(background_folder)
-			if bg_image then
+			local new_bg_image = pick_random_background(background_folder)
+			if new_bg_image then
+				bg_image = new_bg_image
 				window:set_config_overrides({
 					background = make_background(bg_image, brightness),
 				})

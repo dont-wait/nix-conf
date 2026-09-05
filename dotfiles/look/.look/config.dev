@@ -51,10 +51,10 @@ localized_app_names=false
 ui_tint_red=0.08
 ui_tint_green=0.10
 ui_tint_blue=0.12
-ui_tint_opacity=0.78
+ui_tint_opacity=0.97
 ui_blur_material=hudWindow
 ui_blur_opacity=0.95
-ui_font_name=SF Pro Text
+ui_font_name=JetBrainsMono NF
 ui_font_size=14
 ui_font_red=0.96
 ui_font_green=0.96
@@ -75,5 +75,10 @@ alias_brow=Safari|Arc|Google Chrome|Chrome|Firefox|Brave|Microsoft Edge|Edge|Bra
 # Added by look update
 launcher_query_clear_after_hide_seconds=8
 ui_surface=liquid
-settings_blur_multiplier=1
+settings_blur_multiplier=0.97
 ui_surface_radius=1.4
+ui_bg_image=/home/dontwait/bg/nix-girl.png
+ui_bg_blur=2.5
+
+# Added by look update
+query_retention_seconds=2

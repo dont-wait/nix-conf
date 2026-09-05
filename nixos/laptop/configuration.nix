@@ -121,6 +121,10 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
     ];
+    wlr.settings.screencast = {
+      chooser_type = "simple";
+      chooser_cmd = "${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";
+    };
     config = {
       common.default = [ "gtk" ];
       sway.default = lib.mkForce [ "wlr" "gtk" ];
