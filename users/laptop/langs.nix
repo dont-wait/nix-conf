@@ -66,6 +66,7 @@
 
     # Rust
     CARGO_HOME = "${config.home.homeDirectory}/.cargo";
+    RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
 
     # Java
     JAVA_HOME = "${pkgs.jdk25}";

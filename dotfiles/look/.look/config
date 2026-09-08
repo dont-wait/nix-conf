@@ -40,7 +40,7 @@ file_manager=thunar
 
 # Home-screen inner gap in px (0-24). 0 keeps the classic framed panel;
 # above 0 the home screen splits into floating tiles separated by this gap.
-inner_gap=7
+inner_gap=8
 
 # Web answers - inline answer card for question-like queries. Set false to
 # disable all network answer features and run fully offline.
@@ -51,7 +51,7 @@ ai_enabled=true
 super_actions_enabled=true
 
 # UI theme (empty = built-in default; pick one in Settings)
-ui_theme=liquid
+ui_theme=kanagawa
 
 # Added by look update
 app_scan_roots=/usr/share/applications,/usr/local/share/applications
@@ -82,10 +82,15 @@ alias_term=Terminal|iTerm|iTerm2|Ghostty|WezTerm|Alacritty|Kitty|Warp|Windows Te
 alias_chat=Slack|Discord|Telegram|Messages|Microsoft Teams|Teams|WhatsApp|Signal|Zoom
 alias_music=Spotify|Apple Music|Music|YouTube Music|VLC|Windows Media Player|foobar2000
 alias_brow=Safari|Arc|Google Chrome|Chrome|Firefox|Brave|Microsoft Edge|Edge|Brave Browser|Vivaldi|Opera
-ui_surface=liquid
-ui_bg_image=
+ui_surface=
+ui_bg_image=/home/dontwait/bg/itachi.jpg
 ui_bg_opacity=0.82
 settings_blur_multiplier=1
 ui_blur_style=high_contrast
 launch_at_login=false
-ui_bg_blur=1.7
+ui_bg_blur=3
+
+# Added by look update
+query_retention_seconds=5
+ui_surface_radius=1.6
+ui_bg_layout=fill

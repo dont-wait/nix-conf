@@ -1,0 +1,5 @@
+[optimize]
+name    = "Optimize"
+applies = { ext = ["png"] }
+do      = ["oxipng -o4 {path}"]
+

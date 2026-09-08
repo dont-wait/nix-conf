@@ -33,6 +33,7 @@ return {
 			"toml",
 			"python",
 			"nix",
+			"rust",
 		})
 
 		-- Bật highlight và indent cho tất cả filetype

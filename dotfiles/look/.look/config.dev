@@ -12,7 +12,7 @@ ignored_patterns_sample=
 # ignored_patterns_browser=~/AppData/Local/BraveSoftware/**/*.log|~/AppData/Local/Google/Chrome/**/*.tmp
 # ignored_patterns_sqlite=~/Documents/git/project/**/*.db-wal|~/Documents/git/project/**/*.db-shm
 lazy_indexing_enabled=true
-skip_dir_names=node_modules,target,build,dist,.git,vendor,out,coverage,tmp,cache,venv
+skip_dir_names=node_modules,target,build,dist,.git,vendor,out,coverage,tmp,cache,venv, Extras
 
 # Arch (and other affected stacks) - workarounds for WebKitGTK ghost rendering.
 # arch_disable_gpu forces HardwareAccelerationPolicy::Never (needs restart);
@@ -73,7 +73,6 @@ alias_music=Spotify|Apple Music|Music|YouTube Music|VLC|Windows Media Player|foo
 alias_brow=Safari|Arc|Google Chrome|Chrome|Firefox|Brave|Microsoft Edge|Edge|Brave Browser|Vivaldi|Opera
 
 # Added by look update
-launcher_query_clear_after_hide_seconds=8
 ui_surface=liquid
 settings_blur_multiplier=0.97
 ui_surface_radius=1.4

@@ -1,5 +1,6 @@
 [downloads]
 name = "Recent downloads"
 format = "json"
+aliases = ["dl"]
 run = '''ls -1t ~/Downloads | head -20 | jq -R -c '{id: ., title: ., path: ("~/Downloads/" + .)}' '''
 timeout = "5s"
