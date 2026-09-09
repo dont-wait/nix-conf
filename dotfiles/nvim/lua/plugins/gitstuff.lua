@@ -10,8 +10,9 @@ return {
 					vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
 				end
 				-- navigation
-				map("n", "]h", gs.next_hunk, "Next hunk")
-				map("n", "[h", gs.prev_hunk, "Prev hunk")
+				local next_hunk, previous_hunk = require("repeat-motion").pair(gs.next_hunk, gs.prev_hunk)
+				map("n", "]h", next_hunk, "Next hunk")
+				map("n", "[h", previous_hunk, "Prev hunk")
 				-- Actions
 				map("n", "<leader>hs", gs.stage_hunk, "Stage hunk")
 				map("n", "<leader>hr", gs.reset_hunk, "Reset hunk")

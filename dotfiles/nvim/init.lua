@@ -19,6 +19,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- install plugins and options
 require("vim-options")
+require("repeat-motion").setup()
 require("vim-helpers")
 require("help-floating")
 require("floating-term")

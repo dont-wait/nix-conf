@@ -12,8 +12,9 @@ vim.keymap.set("n", "<leader>ce", function()
 end, { noremap = true, silent = true })
 
 -- go to errors in a file :/
-vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next) -- next err
-vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev) -- previous err
+local next_error, previous_error = require("repeat-motion").pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<leader>ne", next_error) -- next err
+vim.keymap.set("n", "<leader>pe", previous_error) -- previous err
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 -- copy current file path (absolute) into clipboard
 vim.keymap.set("n", "<leader>cp", function()
