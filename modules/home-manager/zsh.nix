@@ -23,6 +23,7 @@ in
     home.sessionPath = [
       "${config.home.homeDirectory}/go/bin"
       "${config.home.homeDirectory}/.npm-global/bin"
+      "${config.home.homeDirectory}/.local/bin"
     ];
     programs.direnv = {
       enable = true;

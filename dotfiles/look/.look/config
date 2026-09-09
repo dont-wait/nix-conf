@@ -91,6 +91,6 @@ launch_at_login=false
 ui_bg_blur=3
 
 # Added by look update
-query_retention_seconds=5
+query_retention_seconds=-1
 ui_surface_radius=1.6
 ui_bg_layout=fill
