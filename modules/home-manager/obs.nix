@@ -39,7 +39,7 @@ let
   encoder = (pkgs.formats.json { }).generate "obs-recordEncoder.json" {
     # kbps: approximately 30 MB/minute of video, plus audio/container overhead.
     rate-control = "cbr";
-    bitrate = 4000; # increase bitrate = 8000 when demo
+    bitrate = 8000; # increase bitrate = 8000 when demo
     key-int-max = 60;
     b-frames = 0;
     target-usage = 4;
