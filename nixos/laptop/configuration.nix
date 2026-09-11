@@ -144,7 +144,10 @@
       };
     };
   };
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-media-driver ];
+  };
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
@@ -246,7 +249,6 @@
     libGL
     tree
     pulseaudio
-    intel-media-driver
     vulkan-loader
     intel-compute-runtime
     openvpn

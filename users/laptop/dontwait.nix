@@ -19,6 +19,7 @@
     ../../modules/home-manager/opencode.nix
     ../../modules/home-manager/codex.nix
     ../../modules/home-manager/llms.nix
+    ../../modules/home-manager/obs.nix
     # ../../modules/home-manager/picom.nix
     # ../../modules/home-manager/flameshot.nix
     # ../../modules/home-manager/i3.nix
@@ -74,7 +75,6 @@
     # apps
     discord-ptb
     brave
-    obs-studio
     libreoffice-qt
     hunspell
     mpv
