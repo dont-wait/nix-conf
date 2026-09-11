@@ -81,3 +81,6 @@ ui_bg_blur=2.5
 
 # Added by look update
 query_retention_seconds=2
+
+# Added by look update
+auto_update_enable=1

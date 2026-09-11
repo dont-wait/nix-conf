@@ -85,6 +85,7 @@ in
         gp = "git push";
         o = "opencode";
         lg = "lgtm";
+        gpr = "git pull origin";
       };
       initContent = ''
          eval "$(direnv hook zsh)"
