@@ -40,7 +40,7 @@ ai_enabled=true
 super_actions_enabled=true
 
 # UI theme (empty = built-in default; pick one in Settings)
-ui_theme=liquid
+ui_theme=custom
 
 # Added by look update
 app_scan_roots=/usr/share/applications,/usr/local/share/applications
@@ -50,11 +50,11 @@ app_exclude_names=
 localized_app_names=false
 ui_tint_red=0.08
 ui_tint_green=0.10
-ui_tint_blue=0.12
+ui_tint_blue=0.16
 ui_tint_opacity=0.97
 ui_blur_material=hudWindow
 ui_blur_opacity=0.95
-ui_font_name=JetBrainsMono NF
+ui_font_name=DejaVu Sans
 ui_font_size=14
 ui_font_red=0.96
 ui_font_green=0.96
@@ -76,7 +76,7 @@ alias_brow=Safari|Arc|Google Chrome|Chrome|Firefox|Brave|Microsoft Edge|Edge|Bra
 ui_surface=liquid
 settings_blur_multiplier=0.97
 ui_surface_radius=1.4
-ui_bg_image=/home/dontwait/bg/nix-girl.png
+ui_bg_image=
 ui_bg_blur=2.5
 
 # Added by look update
@@ -84,3 +84,4 @@ query_retention_seconds=2
 
 # Added by look update
 auto_update_enable=1
+ui_bg_layout=stretch

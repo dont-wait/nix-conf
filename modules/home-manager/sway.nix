@@ -175,6 +175,11 @@ in
     };
 
     extraConfig = ''
+      # SwayFX blur for transparent windows such as Ghostty
+      blur enable
+      blur_radius 8
+      blur_passes 2
+
       # Window rules
       default_border pixel 1
       workspace 1 output eDP-1
@@ -188,7 +193,8 @@ in
       for_window [class="^(Discord|discord|discord-ptb)$"] move to workspace 9
       for_window [title="kew-player"] move to workspace 9
 
-
+      for_window [app_id="wshowkeys"] floating enable
+      for_window [app_id="wshowkeys"] move position 1600 900
       # Font
       font pango:JetBrainsMono Nerd Font 16
 

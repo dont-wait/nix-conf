@@ -108,6 +108,7 @@
 
   programs.sway = {
     enable = true;
+    package = pkgs.swayfx;
     xwayland.enable = true;
   };
 
@@ -127,7 +128,10 @@
     };
     config = {
       common.default = [ "gtk" ];
-      sway.default = lib.mkForce [ "wlr" "gtk" ];
+      sway.default = lib.mkForce [
+        "wlr"
+        "gtk"
+      ];
       # niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
     };
     xdgOpenUsePortal = true;
@@ -200,6 +204,7 @@
       "render"
       "kvm"
       "libvirtd"
+      "input"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -257,7 +262,15 @@
     update-systemd-resolved
     fuse
     appimage-run
+    wshowkeys
   ];
+
+  security.wrappers.wshowkeys = {
+    source = "${pkgs.wshowkeys}/bin/wshowkeys";
+    owner = "root";
+    group = "root";
+    setuid = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
