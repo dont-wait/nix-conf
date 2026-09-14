@@ -178,8 +178,8 @@ in
     extraConfig = ''
       # SwayFX blur for transparent windows such as Ghostty
       blur enable
-      blur_radius 8
-      blur_passes 2
+      blur_radius 1
+      blur_passes 1
 
       # Window rules
       default_border pixel 1
