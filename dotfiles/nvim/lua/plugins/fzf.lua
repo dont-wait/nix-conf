@@ -20,14 +20,14 @@ return {
 				bg = "-1",
 				gutter = "-1",
 			},
+			-- keymap.fzf lowercases keys in this plugin version; preserve Shift-J/K.
+			fzf_cli_args = "--bind=J:down,K:up",
 			keymap = {
 				fzf = {
 					["ctrl-q"] = "select-all+accept",
 					-- Override fzf's native bindings; false only removes plugin bindings.
 					["ctrl-j"] = "ignore",
 					["ctrl-k"] = "ignore",
-					["J"] = "down",
-					["K"] = "up",
 				},
 			},
 		})
