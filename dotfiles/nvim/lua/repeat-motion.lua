@@ -19,6 +19,20 @@ function M.repeat_callback(index)
     last_motion[index]()
 end
 
+function M.repeat_normal(index, key)
+    local scroll = require("motion-scroll")
+    local before = scroll.begin()
+    local win = vim.api.nvim_get_current_win()
+    local buf = vim.api.nvim_get_current_buf()
+    local action = last_motion and last_motion[index] or key
+    if type(action) == "string" then
+        vim.cmd.normal({ args = { (vim.v.count > 0 and tostring(vim.v.count) or "") .. action }, bang = true })
+    else
+        action()
+    end
+    scroll.animate(win, buf, before)
+end
+
 function M.setup()
     local modes = { "n", "x", "o" }
     for _, keys in ipairs({ { "}", "{" }, { ")", "(" }, { "n", "N" } }) do
@@ -46,6 +60,9 @@ function M.setup()
             -- Cursor-changing callbacks must run outside expression-map evaluation.
             return "<Cmd>lua require('repeat-motion').repeat_callback(" .. index .. ")<CR>"
         end, { expr = true, desc = index == 1 and "Repeat last motion" or "Repeat last motion backwards" })
+        vim.keymap.set("n", key, function()
+            M.repeat_normal(index, key)
+        end, { desc = index == 1 and "Repeat last motion smoothly" or "Repeat last motion backwards smoothly" })
     end
 end
 
