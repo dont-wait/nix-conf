@@ -40,7 +40,7 @@ file_manager=thunar
 
 # Home-screen inner gap in px (0-24). 0 keeps the classic framed panel;
 # above 0 the home screen splits into floating tiles separated by this gap.
-inner_gap=8
+inner_gap=12
 
 # Web answers - inline answer card for question-like queries. Set false to
 # disable all network answer features and run fully offline.
@@ -61,7 +61,7 @@ app_exclude_names=
 localized_app_names=false
 ui_tint_red=0.08
 ui_tint_green=0.10
-ui_tint_blue=0.12
+ui_tint_blue=0.31
 ui_tint_opacity=0.78
 ui_blur_material=hudWindow
 ui_blur_opacity=0.93
@@ -69,12 +69,12 @@ ui_font_name=JetBrainsMono NF
 ui_font_size=16
 ui_font_red=0.96
 ui_font_green=0.96
-ui_font_blue=0.98
+ui_font_blue=0.18
 ui_font_opacity=1
-ui_border_thickness=1.0
-ui_border_red=1.0
-ui_border_green=1.0
-ui_border_blue=1.0
+ui_border_thickness=0.5
+ui_border_red=0.91
+ui_border_green=0.91
+ui_border_blue=1
 ui_border_opacity=0.1
 alias_note=Notion|Obsidian|Notes|Apple Notes|Bear|Logseq|OneNote|Microsoft OneNote|Sticky Notes|Joplin
 alias_code=Visual Studio Code|VSCode|Cursor|Windsurf|IntelliJ IDEA|PyCharm|WebStorm|Neovim|Xcode|Zed|Visual Studio|Notepad++|Sublime Text
@@ -92,5 +92,5 @@ ui_bg_blur=3
 
 # Added by look update
 query_retention_seconds=2
-ui_surface_radius=1.6
+ui_surface_radius=1.5
 ui_bg_layout=stretch
