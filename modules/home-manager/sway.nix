@@ -58,7 +58,6 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
     checkConfig = false;
     config = {
@@ -176,11 +175,6 @@ in
     };
 
     extraConfig = ''
-      # SwayFX blur for transparent windows such as Ghostty
-      blur enable
-      blur_radius 2
-      blur_passes 1
-
       # Window rules
       default_border pixel 1
       workspace 1 output eDP-1

@@ -122,19 +122,6 @@
     "x-scheme-handler/chrome" = [ "firefox.desktop" ];
   };
 
-  # The PTB build was crashing in the Wayland/Niri session on this system.
-  # Run it through Xwayland with GPU acceleration disabled until the Electron
-  # build works reliably on native Wayland.
-  xdg.desktopEntries.discord = {
-    name = "Discord";
-    exec = "${pkgs.discord} --ozone-platform=x11 --disable-gpu %U";
-    icon = "discord";
-    terminal = false;
-    type = "Application";
-    categories = [ "Network" "InstantMessaging" ];
-    mimeType = [ "x-scheme-handler/discord" ];
-  };
-
   home.sessionVariables = {
     EDITOR = "nvim";
   };
