@@ -72,9 +72,6 @@
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    # XDG_CURRENT_DESKTOP = "niri";
-    # XDG_CURRENT_DESKTOP = "i3";
-    XDG_CURRENT_DESKTOP = "sway";
   };
 
   # Add this if you use Brave or Google Chrome
@@ -112,7 +109,10 @@
     xwayland.enable = true;
   };
 
-  # programs.niri.enable = true;
+  programs.niri.enable = true;
+
+  # Let niri-session inherit the complete user PATH from Home Manager.
+  systemd.user.services.niri.enableDefaultPath = false;
 
   services.libinput.touchpad.naturalScrolling = true;
 
@@ -143,7 +143,8 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+        # Sway remains the fallback/default; press F3 in tuigreet to choose Niri.
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.system.path}/share/wayland-sessions --cmd sway";
         user = "greeter";
       };
     };

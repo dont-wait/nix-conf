@@ -164,4 +164,77 @@
       }
     '';
   };
+
+  # Niri uses its own IPC modules. Keep this as a complete config instead of
+  # mixing niri/* with the Sway modules from mainBar.
+  xdg.configFile."waybar/niri.json".text = builtins.toJSON {
+    mainBar = {
+      layer = "top";
+      position = "top";
+      height = 32;
+      margin-top = 8;
+      margin-left = 8;
+      margin-right = 8;
+      spacing = 0;
+      modules-left = [ "niri/workspaces" "niri/window" ];
+      modules-center = [ "clock" ];
+      modules-right = [ "cpu" "memory" "disk" "pulseaudio" "battery" "tray" ];
+
+      "niri/workspaces" = {
+        all-outputs = true;
+        disable-scroll = true;
+        format = "{value}";
+        sort-by-id = true;
+      };
+
+      "niri/window" = {
+        format = "{title}";
+      };
+
+      "tray" = {
+        spacing = 10;
+      };
+
+      "clock" = {
+        interval = 1;
+        format = "{:%a %d/%m/%Y   %H:%M}";
+      };
+
+      "cpu" = {
+        interval = 3;
+        format = "  {usage}%";
+      };
+
+      "memory" = {
+        interval = 5;
+        format = "  {used}GiB";
+      };
+
+      "disk" = {
+        interval = 30;
+        format = "  {free}";
+        path = "/";
+      };
+
+      "pulseaudio" = {
+        format = "{icon} {volume}%";
+        format-bluetooth = "{icon} {volume}%";
+        format-muted = "  ----";
+        format-icons = {
+          default = [ "" "" ];
+        };
+        scroll-step = 5;
+        on-click = "pavucontrol";
+      };
+
+      "battery" = {
+        interval = 5;
+        format = "{icon} {capacity}%";
+        format-charging = " {capacity}%";
+        format-plugged = " {capacity}%";
+        format-alt = "{time}";
+        format-icons = [ "" "" "" "" "" ];
+      };
+    };
+  };
 }

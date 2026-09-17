@@ -26,7 +26,7 @@
     # ../../modules/home-manager/polybar.nix
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/waybar.nix
-    # ../../modules/home-manager/niri.nix
+    ../../modules/home-manager/niri.nix
   ];
 
   home.username = "dontwait";
@@ -73,7 +73,7 @@
     rar
 
     # apps
-    discord-ptb
+    discord
     brave
     libreoffice-qt
     hunspell
@@ -120,6 +120,19 @@
     "x-scheme-handler/http" = [ "firefox.desktop" ];
     "x-scheme-handler/https" = [ "firefox.desktop" ];
     "x-scheme-handler/chrome" = [ "firefox.desktop" ];
+  };
+
+  # The PTB build was crashing in the Wayland/Niri session on this system.
+  # Run it through Xwayland with GPU acceleration disabled until the Electron
+  # build works reliably on native Wayland.
+  xdg.desktopEntries.discord = {
+    name = "Discord";
+    exec = "${pkgs.discord} --ozone-platform=x11 --disable-gpu %U";
+    icon = "discord";
+    terminal = false;
+    type = "Application";
+    categories = [ "Network" "InstantMessaging" ];
+    mimeType = [ "x-scheme-handler/discord" ];
   };
 
   home.sessionVariables = {

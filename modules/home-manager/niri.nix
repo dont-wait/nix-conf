@@ -1,51 +1,12 @@
 { pkgs, ... }:
 
 let
-  wallpaperDir = "$HOME/Documents/git/nix-conf/dotfiles/bg";
-  wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/bg1.jpg";
-  lockCmd = "${pkgs.swaylock}/bin/swaylock -f";
+  wallpaperDir = ../../dotfiles/bg;
+  wallpaperPath = ../../dotfiles/bg/nix-girl2.png;
+  swaybg = "${pkgs.swaybg}/bin/swaybg";
+  waybar = "${pkgs.waybar}/bin/waybar";
 in
 {
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      color = "1e1e2e";
-      font = "JetBrainsMono Nerd Font";
-      indicator-idle-visible = false;
-      indicator-radius = 100;
-      line-color = "89b4fa";
-      ring-color = "313244";
-      inside-color = "1e1e2e";
-      text-color = "cdd6f4";
-      separator-color = "00000000";
-      grace = 2;
-      fade-in = 0.2;
-      show-failed-attempts = true;
-    };
-  };
-
-  services.swayidle = {
-    enable = true;
-    events = {
-      before-sleep = lockCmd;
-      lock = lockCmd;
-    };
-    timeouts = [
-      {
-        timeout = 300;
-        command = lockCmd;
-      }
-      {
-        timeout = 600;
-        command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
-      }
-      {
-        timeout = 1800;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
-      }
-    ];
-  };
-
   xdg.configFile."niri/config.kdl".text = ''
     input {
         keyboard {
@@ -113,7 +74,8 @@ in
     spawn-at-startup "lookapp"
     spawn-at-startup "blueman-applet"
     spawn-at-startup "nm-applet"
-    spawn-sh-at-startup "swaybg -i ${wallpaperPath} -m fill"
+    spawn-sh-at-startup "${waybar} -c \"$HOME/.config/waybar/niri.json\""
+    spawn-sh-at-startup "${swaybg} -i ${wallpaperPath} -m fill"
 
     window-rule {
         match app-id="firefox$" title="^Picture-in-Picture$"
@@ -165,11 +127,13 @@ in
     binds {
         Mod+Return repeat=false { spawn "ghostty"; }
         Mod+D repeat=false { spawn "fuzzel"; }
+        Alt+Space allow-inhibiting=false repeat=false { spawn "${pkgs.glib}/bin/gdbus" "call" "--session" "--dest" "com.look.Desktop" "--object-path" "/com/look/Desktop" "--method" "com.look.Desktop.Toggle"; }
 
         Mod+Shift+F repeat=false { spawn "firefox"; }
         Mod+Shift+D repeat=false { spawn "zathura"; }
         Mod+Shift+T repeat=false { spawn-sh "bash $HOME/.config/zathura/change-theme.bash"; }
         Mod+Shift+M repeat=false { spawn-sh "ghostty --title=kew-player -e bash -lc 'kew all shuffle'"; }
+        Mod+Shift+P repeat=false { spawn "wdisplays"; }
 
         Mod+Shift+Q repeat=false { close-window; }
         Mod+Shift+Space repeat=false { toggle-window-floating; }
@@ -177,7 +141,9 @@ in
         Mod+Shift+V repeat=false { switch-focus-between-floating-and-tiling; }
         Mod+F repeat=false { fullscreen-window; }
         Mod+Shift+E repeat=false { quit; }
-        Super+Alt+L allow-inhibiting=false repeat=false { spawn "swaylock"; }
+        Mod+Alt+L allow-inhibiting=false repeat=false { spawn "swaylock"; }
+
+        Mod+Shift+S repeat=false { spawn-sh "grim -g \"$(slurp)\" - | wl-copy"; }
 
         Mod+H { focus-column-left; }
         Mod+J { focus-window-down; }
@@ -232,7 +198,7 @@ in
 
         Mod+Shift+B repeat=false { spawn "blueman-manager"; }
         Mod+B repeat=false { spawn "pkill" "-SIGUSR1" "waybar"; }
-        Mod+Shift+N repeat=false { spawn-sh "pkill swaybg || true; swaybg -i \"$(find ${wallpaperDir} -type f | shuf -n1)\" -m fill"; }
+        Mod+Shift+N repeat=false { spawn-sh "pkill swaybg || true; ${swaybg} -i \"$(find ${wallpaperDir} -type f | shuf -n1)\" -m fill"; }
 
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     }
