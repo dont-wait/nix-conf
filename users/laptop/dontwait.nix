@@ -73,7 +73,6 @@
     rar
 
     # apps
-    discord
     brave
     libreoffice-qt
     hunspell
