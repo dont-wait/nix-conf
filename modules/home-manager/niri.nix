@@ -115,7 +115,7 @@ in
         shadow { off; }
         clip-to-geometry false
     }
-    
+
     window-rule {
         geometry-corner-radius 8
         clip-to-geometry true
@@ -173,10 +173,10 @@ in
         Mod+Shift+K { move-window-up; }
         Mod+Shift+L { move-column-right; }
 
-        Mod+Ctrl+H { set-column-width "-10%"; }
-        Mod+Ctrl+L { set-column-width "+10%"; }
-        Mod+Ctrl+J { set-window-height "+10%"; }
-        Mod+Ctrl+K { set-window-height "-10%"; }
+        Mod+Ctrl+H { set-column-width "-5%"; }
+        Mod+Ctrl+L { set-column-width "+5%"; }
+        Mod+Ctrl+J { set-window-height "+5%"; }
+        Mod+Ctrl+K { set-window-height "-5%"; }
 
         Mod+1 { focus-workspace "1"; }
         Mod+2 { focus-workspace "2"; }

@@ -166,7 +166,7 @@ in
         "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set 5%-";
 
         # Waybar toggle
-        "${mod}+b" = "exec pkill -SIGUSR1 -f '/waybar( |$)'";
+        "${mod}+b" = "exec pkill -SIGUSR1 waybar";
 
         # Bluetooth
         "${mod}+Shift+b" = "exec blueman-manager";

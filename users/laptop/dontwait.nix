@@ -56,6 +56,7 @@
 
     # desktop
     dunst
+    fuzzel
     feh
     arandr
     xclip

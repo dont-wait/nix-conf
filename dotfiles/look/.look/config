@@ -51,7 +51,7 @@ ai_enabled=true
 super_actions_enabled=true
 
 # UI theme (empty = built-in default; pick one in Settings)
-ui_theme=liquid
+ui_theme=custom
 
 # Added by look update
 app_scan_roots=/usr/share/applications,/usr/local/share/applications
@@ -69,13 +69,13 @@ ui_font_name=JetBrainsMono NF
 ui_font_size=16
 ui_font_red=0.96
 ui_font_green=0.96
-ui_font_blue=0.18
+ui_font_blue=0.98
 ui_font_opacity=1
 ui_border_thickness=0.5
-ui_border_red=0.91
-ui_border_green=0.91
+ui_border_red=0.3
+ui_border_green=0
 ui_border_blue=1
-ui_border_opacity=0.1
+ui_border_opacity=1
 alias_note=Notion|Obsidian|Notes|Apple Notes|Bear|Logseq|OneNote|Microsoft OneNote|Sticky Notes|Joplin
 alias_code=Visual Studio Code|VSCode|Cursor|Windsurf|IntelliJ IDEA|PyCharm|WebStorm|Neovim|Xcode|Zed|Visual Studio|Notepad++|Sublime Text
 alias_term=Terminal|iTerm|iTerm2|Ghostty|WezTerm|Alacritty|Kitty|Warp|Windows Terminal|PowerShell|Command Prompt|wsl
@@ -83,7 +83,7 @@ alias_chat=Slack|Discord|Telegram|Messages|Microsoft Teams|Teams|WhatsApp|Signal
 alias_music=Spotify|Apple Music|Music|YouTube Music|VLC|Windows Media Player|foobar2000
 alias_brow=Safari|Arc|Google Chrome|Chrome|Firefox|Brave|Microsoft Edge|Edge|Brave Browser|Vivaldi|Opera
 ui_surface=liquid
-ui_bg_image=/home/dontwait/bg/itachi.jpg
+ui_bg_image=/home/dontwait/Documents/git/nix-conf/dotfiles/bg/bg1.jpg
 ui_bg_opacity=0.82
 settings_blur_multiplier=0.96
 ui_blur_style=high_contrast
@@ -93,4 +93,4 @@ ui_bg_blur=3
 # Added by look update
 query_retention_seconds=2
 ui_surface_radius=1.5
-ui_bg_layout=stretch
+ui_bg_layout=fill
