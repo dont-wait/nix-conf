@@ -1,13 +1,22 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   wallpaperDir = ../../dotfiles/bg;
   wallpaperPath = ../../dotfiles/bg/nix-girl2.png;
   swaybg = "${pkgs.swaybg}/bin/swaybg";
   waybar = "${pkgs.waybar}/bin/waybar";
+  waybarConfig = "${config.xdg.configHome}/waybar/niri.json";
+  randomWallpaper = pkgs.writeShellScript "niri-random-wallpaper" ''
+    pkill swaybg
+    exec ${swaybg} -i "$(find ${wallpaperDir} -type f | shuf -n1)" -m fill
+  '';
 in
 {
   xdg.configFile."niri/config.kdl".text = ''
+    xwayland-satellite {
+        path "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
+    }
+
     input {
         keyboard {
             xkb {
@@ -15,6 +24,8 @@ in
                 options "caps:escape"
             }
         }
+
+        focus-follows-mouse
 
         touchpad {
             tap
@@ -42,8 +53,9 @@ in
     workspace "9"
 
     layout {
-        gaps 4
-        center-focused-column "never"
+        gaps 8
+        center-focused-column "on-overflow"
+        always-center-single-column
 
         preset-column-widths {
             proportion 0.33333
@@ -74,7 +86,7 @@ in
     spawn-at-startup "lookapp"
     spawn-at-startup "blueman-applet"
     spawn-at-startup "nm-applet"
-    spawn-sh-at-startup "${waybar} -c \"$HOME/.config/waybar/niri.json\""
+    spawn-at-startup "${waybar}" "-c" "${waybarConfig}"
     spawn-sh-at-startup "${swaybg} -i ${wallpaperPath} -m fill"
 
     window-rule {
@@ -88,6 +100,7 @@ in
     window-rule {
         match app-id="firefox$"
         open-on-workspace "2"
+        default-column-width { proportion 1.0; }
     }
 
     window-rule {
@@ -98,6 +111,9 @@ in
     window-rule {
         match title="^Look$"
         open-floating true
+        focus-ring { off; }
+        shadow { off; }
+        clip-to-geometry false
     }
     
     window-rule {
@@ -117,10 +133,10 @@ in
 
         shadow {
             on
-            softness 30
-            spread 5
+            softness 20
+            spread 4
             offset x=0 y=5
-            color "#00000070"
+            color "#00000080"
         }
     }
 
@@ -143,7 +159,9 @@ in
         Mod+Shift+E repeat=false { quit; }
         Mod+Alt+L allow-inhibiting=false repeat=false { spawn "swaylock"; }
 
-        Mod+Shift+S repeat=false { spawn-sh "grim -g \"$(slurp)\" - | wl-copy"; }
+        Mod+Ctrl+Shift+4 repeat=false { screenshot; }
+        Mod+Ctrl+4 repeat=false { screenshot-screen; }
+        Mod+Ctrl+Shift+5 repeat=false { screenshot-window; }
 
         Mod+H { focus-column-left; }
         Mod+J { focus-window-down; }
@@ -197,8 +215,8 @@ in
         XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
 
         Mod+Shift+B repeat=false { spawn "blueman-manager"; }
-        Mod+B repeat=false { spawn "pkill" "-SIGUSR1" "waybar"; }
-        Mod+Shift+N repeat=false { spawn-sh "pkill swaybg || true; ${swaybg} -i \"$(find ${wallpaperDir} -type f | shuf -n1)\" -m fill"; }
+        Mod+B repeat=false { spawn "pkill" "-SIGUSR1" "-f" "/waybar( |$)"; }
+        Mod+Shift+N repeat=false { spawn "${randomWallpaper}"; }
 
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     }
