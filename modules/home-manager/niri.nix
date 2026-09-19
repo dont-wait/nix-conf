@@ -198,8 +198,11 @@ in
         Mod+Shift+8 { move-window-to-workspace "8"; }
         Mod+Shift+9 { move-window-to-workspace "9"; }
 
+        Mod+F1 repeat=false { spawn-sh "niri msg output eDP-1 on && niri msg output HDMI-A-1 off"; }
+        Mod+F2 repeat=false { spawn-sh "niri msg output HDMI-A-1 on && niri msg output eDP-1 off"; }
         Mod+F3 { focus-monitor-left; }
         Mod+F4 { focus-monitor-right; }
+        Mod+F5 repeat=false { spawn-sh "niri msg output eDP-1 on && niri msg output HDMI-A-1 on"; }
         Mod+Shift+F1 { move-column-to-monitor-left; }
         Mod+Shift+F2 { move-column-to-monitor-right; }
 

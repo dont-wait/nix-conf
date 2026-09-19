@@ -106,6 +106,8 @@
   programs.sway = {
     enable = true;
     xwayland.enable = true;
+    package = pkgs.swayfx;
+    wrapperFeatures.gtk = true;
   };
 
   programs.niri.enable = true;
@@ -143,7 +145,8 @@
     settings = {
       default_session = {
         # Sway remains the fallback/default; press F3 in tuigreet to choose Niri.
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.system.path}/share/wayland-sessions --cmd sway";
+        # Use NixOS desktop entries: Niri's Exec is niri-session, not bare niri.
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --cmd sway";
         user = "greeter";
       };
     };
@@ -168,6 +171,12 @@
   # File GUI
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+  services.udev.extraRules = ''
+    # Raspberry Pi Pico Bootloader (RPI-RP2)
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666", TAG+="uaccess"
+    # Raspberry Pi Pico CDC-UART Serial
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000a", MODE="0666", TAG+="uaccess", GROUP="dialout"
+  '';
   services.tumbler.enable = true;
   programs.dconf.enable = true;
 
