@@ -13,6 +13,11 @@ let
 in
 {
   xdg.configFile."niri/config.kdl".text = ''
+    environment {
+        // Let GTK use Wayland input in Niri; keep the global setting for Sway.
+        GTK_IM_MODULE null
+    }
+
     xwayland-satellite {
         path "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
     }
