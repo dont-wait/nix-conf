@@ -1,28 +1,33 @@
-{ pkgs, inputs, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   programs.firefox = {
     enable = true;
-    configPath = ".mozilla/firefox";
+    # NOTE: only pin `configPath` on Linux, never unconditionally. Overriding it
+    # for every platform forced macOS onto the Linux path, which is why Firefox
+    # kept opening a different/empty profile after rebuilds. macOS keeps the
+    # module default ("Library/Application Support/Firefox"), where the profile
+    # name "default" maps to Profiles/default (the real profile with
+    # bookmarks/history/extensions).
+    #
+    # On Linux the module default changed to ".config/mozilla/firefox" (Firefox's
+    # new XDG layout). Firefox still uses ~/.mozilla/firefox when that directory
+    # already exists, so taking the new default made home-manager write the
+    # profile to the XDG path and drop the old ~/.mozilla/firefox/profiles.ini.
+    # Firefox then found no profiles.ini and started a brand-new empty profile.
+    # Stay on the legacy path so the existing profile keeps being managed.
+    configPath = lib.mkIf pkgs.stdenv.isLinux ".mozilla/firefox";
     profiles.default = {
 
       search.engines = {
         "Nix Packages" = {
-          urls = [
-            {
-              template = "https://search.nixos.org/packages";
-              params = [
-                {
-                  name = "type";
-                  value = "packages";
-                }
-                {
-                  name = "query";
-                  value = "{searchTerms}";
-                }
-              ];
-            }
-          ];
+          urls = [{
+            template = "https://search.nixos.org/packages";
+            params = [
+              { name = "type"; value = "packages"; }
+              { name = "query"; value = "{searchTerms}"; }
+            ];
+          }];
 
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "@np" ];
@@ -31,13 +36,14 @@
       search.force = true;
 
       settings = {
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.pocket.enabled" = false;
         "dom.security.https_only_mode" = false;
         "browser.download.panel.shown" = true;
         "identity.fxaccounts.enabled" = false;
         "signon.rememberSignons" = false;
         "browser.theme.toolbar-theme" = 1;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "layout.css.devPixelsPerPx" = "1.0";
       };
       userChrome = ''
         /* Menu button */
@@ -61,27 +67,16 @@
           display: none !important
         }
 
-        /* Extensions button (visible) */
-
-        /*hide sidebar button*/
-        #sidebar-box,
-        #sidebar-splitter,
-        #sidebar-button {
-          display: none !important;
+        /* Extensions button */
+        #unified-extensions-button {
+            position: absolute !important;
+            opacity: 0 !important;
+          size: 1px !important;
         }
 
-        /* Hide reload button */
-        #stop-reload-button {
-          display: none !important;
-        }
         /* Extension name inside URL bar */
         #identity-box.extensionPage #identity-icon-label {
           visibility: collapse !important
-        }
-
-        /* Firefox View (recent browsing) button */
-        #firefox-view-button {
-          display: none !important
         }
 
         /* All tabs (v-like) button */
@@ -125,7 +120,7 @@
 
         @media screen and (max-width:949px)    /*  The window is not enough wide for a one line layout */
         {:root #nav-bar{padding: 0 5px 0 5px!important; height: calc(var(--NavbarHeightSmall) * 1px) !important} toolbarspring{display: none !important;} #TabsToolbar, #nav-bar{transition: margin-top .25s !important}}
-        #nav-bar, #PersonalToolbar{background-color: -moz-dialog !important;background-image: none !important; box-shadow: none !important} #nav-bar{margin-left: 3px;} .tab-background, .tab-stack { min-height: calc(var(--TabsHeight) * 1px) !important}
+        #nav-bar, #PersonalToolbar{background-color: #0000 !important;background-image: none !important; box-shadow: none !important} #nav-bar{margin-left: 3px;} .tab-background, .tab-stack { min-height: calc(var(--TabsHeight) * 1px) !important}
 
         /*  Removes urlbar border/background  */
         #urlbar-background {
@@ -163,7 +158,7 @@
         /* tabs */
         .tabbrowser-tab:not(:hover):not([visuallyselected], [multiselected]) {
             transition: .5s !important;
-            filter: opacity(30%) !important;
+            filter: opacity(50%) !important;
         }
 
         #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon, .tabbrowser-tab:is([visuallyselected], [multiselected]) {
@@ -264,7 +259,6 @@
             cursor: pointer;
             display: -moz-box !important;
         }
-
       '';
     };
   };
