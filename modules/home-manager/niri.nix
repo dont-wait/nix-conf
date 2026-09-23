@@ -59,7 +59,7 @@ in
 
     layout {
         gaps 8
-        center-focused-column "on-overflow"
+        center-focused-column "never"
         always-center-single-column
 
         preset-column-widths {
@@ -180,6 +180,9 @@ in
 
         Mod+Ctrl+H { set-column-width "-5%"; }
         Mod+Ctrl+L { set-column-width "+5%"; }
+        Mod+R { switch-preset-column-width; }
+        Mod+Shift+R { switch-preset-column-width-back; }
+        Mod+W { set-column-width "50%"; }
         Mod+Ctrl+J { set-window-height "+5%"; }
         Mod+Ctrl+K { set-window-height "-5%"; }
 
