@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   # Managed recording profile; select Untitled in OBS if using another profile.
   profileDirectory = "${config.xdg.configHome}/obs-studio/basic/profiles/Untitled";
+  gstreamerRegistry = "${config.xdg.cacheHome}/obs-studio/gstreamer/registry.x86_64.bin";
   recordingDirectory = "${config.home.homeDirectory}/Documents/Videos";
   profile = (pkgs.formats.ini { }).generate "obs-basic.ini" {
     General.Name = "Untitled";
@@ -48,8 +54,16 @@ in
 {
   programs.obs-studio = {
     enable = true;
-    plugins = [ pkgs.obs-studio-plugins.obs-vaapi ];
+    # Provide screen capture on wlroots-based Wayland compositors.
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-vaapi
+    ];
   };
+
+  # Keep OBS isolated from stale registries created by another GStreamer
+  # package generation. This prevents appsrc/appsink from being blacklisted.
+  home.sessionVariables.GST_REGISTRY_1_0 = gstreamerRegistry;
 
   # OBS must be able to rewrite its files. Install writable copies, restoring
   # the declared profile on every activation; user.ini and scenes stay intact.
@@ -60,7 +74,7 @@ in
     fi
 
     obsProfile=${lib.escapeShellArg profileDirectory}
-    run ${pkgs.coreutils}/bin/mkdir -p "$obsProfile" ${lib.escapeShellArg recordingDirectory}
+    run ${pkgs.coreutils}/bin/mkdir -p "$obsProfile" ${lib.escapeShellArg recordingDirectory} ${lib.escapeShellArg (builtins.dirOf gstreamerRegistry)}
     for file in basic.ini recordEncoder.json; do
       if [ -e "$obsProfile/$file" ] && [ ! -e "$obsProfile/$file.before-nix" ]; then
         run ${pkgs.coreutils}/bin/cp -p "$obsProfile/$file" "$obsProfile/$file.before-nix"

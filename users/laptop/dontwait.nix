@@ -103,6 +103,7 @@
     nerd-fonts.jetbrains-mono
 
     vscode
+    platformio-core
   ];
 
   xdg.mimeApps.enable = true;
