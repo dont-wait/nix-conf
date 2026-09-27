@@ -96,6 +96,17 @@ in
            local branch=$(git rev-parse --abbrev-ref HEAD)
            git push --set-upstream origin "$branch"
          }
+
+        book() {
+          local file
+          file=$(find ~/Documents/git/books -type f \
+            \( -iname '*.pdf' -o -iname '*.epub' -o -iname '*.djvu' \) |
+            fzf --prompt="📚 Book > ")
+
+          [ -n "$file" ] && zathura "$file"
+        }
+
+
          cdb() {
              local target
              if [[ -z "$1" ]]; then
