@@ -98,14 +98,16 @@ in
          }
 
         book() {
-          local file
-          file=$(find ~/Documents/git/books -type f \
-            \( -iname '*.pdf' -o -iname '*.epub' -o -iname '*.djvu' \) |
-            fzf --prompt="📚 Book > ")
+              local file
+              file=$(find ~/Documents/git/books/ -type f \
+                \( -iname '*.pdf' -o -iname '*.epub' -o -iname '*.djvu' \) |
+                fzf --prompt="📚 Book > ")
 
-          [ -n "$file" ] && zathura "$file"
-        }
-
+              if [[ -n "$file" ]]; then
+                zathura "$file" >/dev/null 2>&1 &
+                disown
+              fi
+            }
 
          cdb() {
              local target
