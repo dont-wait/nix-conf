@@ -68,7 +68,7 @@ in
   # OBS must be able to rewrite its files. Install writable copies, restoring
   # the declared profile on every activation; user.ini and scenes stay intact.
   home.activation.configureObs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if ${pkgs.procps}/bin/pgrep -u "$(${pkgs.coreutils}/bin/id -u)" -x obs >/dev/null; then
+    if ${pkgs.procps}/bin/pgrep -u "$(${pkgs.coreutils}/bin/id -u)" -f '(^|/)(obs|\.obs-wrapped)( |$)' >/dev/null; then
       echo "Close OBS before switching Home Manager so it cannot overwrite recording settings." >&2
       exit 1
     fi

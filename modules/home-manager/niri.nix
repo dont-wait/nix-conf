@@ -5,6 +5,7 @@ let
   wallpaperPath = ../../dotfiles/bg/nix-girl2.png;
   swaybg = "${pkgs.swaybg}/bin/swaybg";
   waybar = "${pkgs.waybar}/bin/waybar";
+  wlMirror = "${pkgs.wl-mirror}/bin/wl-mirror";
   waybarConfig = "${config.xdg.configHome}/waybar/niri.json";
   randomWallpaper = pkgs.writeShellScript "niri-random-wallpaper" ''
     pkill swaybg
@@ -211,6 +212,7 @@ in
         Mod+F3 { focus-monitor-left; }
         Mod+F4 { focus-monitor-right; }
         Mod+F5 repeat=false { spawn-sh "niri msg output eDP-1 on && niri msg output HDMI-A-1 on"; }
+        Mod+F6 repeat=false { spawn-sh "niri msg output eDP-1 on && niri msg output HDMI-A-1 on && ${wlMirror} eDP-1"; }
         Mod+Shift+F1 { move-column-to-monitor-left; }
         Mod+Shift+F2 { move-column-to-monitor-right; }
 
