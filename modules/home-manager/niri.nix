@@ -120,6 +120,10 @@ in
         focus-ring { off; }
         shadow { off; }
         clip-to-geometry false
+        // Look asks for blur over ext-background-effect-v1. niri answers with
+        // xray by default: one blurred copy of the wallpaper, reused, which
+        // looks frozen because windows below never reach it.
+        background-effect { xray false; }
     }
 
     window-rule {
@@ -144,6 +148,12 @@ in
             offset x=0 y=5
             color "#00000080"
         }
+    }
+    // Same window when gtk-layer-shell is around: it is a layer surface then,
+    // not a toplevel, and the window-rule above cannot see it.
+    layer-rule {
+       match namespace="^lookapp$"
+       background-effect { xray false; }
     }
 
     binds {
