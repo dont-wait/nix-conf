@@ -104,6 +104,7 @@
 
     vscode
     platformio-core
+    webkitgtk_4_1
   ];
 
   xdg.mimeApps.enable = true;
