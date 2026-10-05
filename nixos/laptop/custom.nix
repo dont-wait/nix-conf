@@ -37,7 +37,6 @@
     cargo-tauri
     spotify-spotx
 
-    inputs.look.packages.${pkgs.system}.default
     inputs.nixgl.packages.${pkgs.system}.nixGLIntel
 
     gcc-arm-embedded

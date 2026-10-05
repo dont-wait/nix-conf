@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   config,
   pkgs,
   ...
@@ -239,6 +238,8 @@
     allowUnfree = true;
     android_sdk.accept_license = true;
   };
+
+  programs.lookapp.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

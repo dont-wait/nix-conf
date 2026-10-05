@@ -9,7 +9,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    look.url = "github:kunkka19xx/look?dir=apps/linows";
+    look = {
+      url = "github:kunkka19xx/look?dir=apps/linows";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixgl.url = "github:guibou/nixGL";
     spotx-nix = {
       url = "github:SpotX-Official/SpotX-Nix";
@@ -48,6 +51,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             { nixpkgs.overlays = [ polybarOverlay ]; }
+            inputs.look.nixosModules.default
           ]
           ++ extraModules;
         };
