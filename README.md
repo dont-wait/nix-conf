@@ -99,15 +99,6 @@ nix flake update
 nix flake update nixpkgs
 ```
 
-### WebKitGTK downgrade
-
-`flake.nix` uses WebKitGTK from the locked `nixpkgs-stable` input for both
-`webkitgtk_4_1` and `webkitgtk_6_0` in NixOS and Home Manager. The current lock
-selects **2.52.4**, replacing unstable's **2.54.1**. Look's package dependency is
-overridden separately because its default package uses the Look flake's package set.
-
-Apply both configurations, then restart affected apps:
-
 ```bash
 sudo nixos-rebuild switch --flake .#laptop
 home-manager switch --flake .#dontwait
