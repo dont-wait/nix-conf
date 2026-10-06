@@ -35,7 +35,12 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # Use the older WebKitGTK from the locked stable input for both ABIs.
+      webkitOverlay = final: prev: {
+        inherit (nixpkgs-stable.legacyPackages.${system}) webkitgtk_4_1 webkitgtk_6_0;
+      };
+
+      pkgs = nixpkgs.legacyPackages.${system}.extend webkitOverlay;
 
       polybarOverlay = final: prev: {
         polybar = nixpkgs-stable.legacyPackages.${system}.polybar.override {
@@ -50,7 +55,16 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            { nixpkgs.overlays = [ polybarOverlay ]; }
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [ polybarOverlay webkitOverlay ];
+                # Look's default package uses its own package set, outside these overlays.
+                programs.lookapp.package = inputs.look.packages.${system}.default.override {
+                  webkitgtk_4_1 = pkgs.webkitgtk_4_1;
+                };
+              }
+            )
             inputs.look.nixosModules.default
           ]
           ++ extraModules;
