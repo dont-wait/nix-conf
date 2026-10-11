@@ -99,13 +99,24 @@ nix flake update
 nix flake update nixpkgs
 ```
 
+### Look input-method workaround
+
+Look follows the system's `nixpkgs` input and uses its default package without
+WebKitGTK overrides. `programs.lookapp.package` adds a small wrapper that unsets
+`GTK_IM_MODULE_FILE` and `GTK_IM_MODULE` only for Look, following
+[Kunkka's fcitx workaround](https://github.com/kunkka19xx/nix/blob/2049266bd04abef4017b8bf1366d35ec93aefc5f/modules/home-manager/fcitx5.nix).
+On Wayland, this lets GTK3 use its native input context instead of inheriting the
+global GTK input-module configuration. There is no system-wide WebKitGTK pin or
+overlay, so this workaround does not require recompiling WebKitGTK.
+
+Apply the NixOS configuration and restart Look:
+
 ```bash
 sudo nixos-rebuild switch --flake .#laptop
-home-manager switch --flake .#dontwait
 ```
 
-Updating `nixpkgs-stable` can change this version. Apps from other flakes,
-development shells, or Flatpak use their own dependencies and need separate changes.
+Verify Vietnamese input in the active desktop session. X11 input may behave
+differently from native Wayland input.
 
 ## Customization
 

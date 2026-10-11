@@ -9,11 +9,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    # Pin only the WebKitGTK recipe; updating stable must not change its version.
-    webkitgtk-source = {
-      url = "github:NixOS/nixpkgs/b6018f87da91d19d0ab4cf979885689b469cdd41";
-      flake = false;
-    };
     look = {
       url = "github:kunkka19xx/look?dir=apps/linows";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,25 +35,7 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      # Build stable WebKitGTK with this system's libraries, not stable's closure.
-      webkitOverlay = final: prev: {
-        webkitgtk_6_0 =
-          let
-            package = final.callPackage "${inputs.webkitgtk-source}/pkgs/development/libraries/webkitgtk" {
-              harfbuzz = final.harfbuzzFull;
-              inherit (final.gst_all_1) gst-plugins-base gst-plugins-bad;
-              # The stable recipe predates these nixpkgs attribute renames.
-              enchant2 = final.enchant;
-              libpthreadstubs = final.libpthread-stubs;
-              xorg = { libX11 = final.libx11; };
-            };
-          in
-          assert package.version == "2.52.4";
-          package;
-        webkitgtk_4_1 = final.webkitgtk_6_0.override { gtk4 = final.gtk3; };
-      };
-
-      pkgs = nixpkgs.legacyPackages.${system}.extend webkitOverlay;
+      pkgs = nixpkgs.legacyPackages.${system};
 
       polybarOverlay = final: prev: {
         polybar = nixpkgs-stable.legacyPackages.${system}.polybar.override {
@@ -76,12 +53,10 @@
             (
               { pkgs, ... }:
               let
-                lookPackage = inputs.look.packages.${system}.default.override {
-                  webkitgtk_4_1 = pkgs.webkitgtk_4_1;
-                };
+                lookPackage = inputs.look.packages.${system}.default;
               in
               {
-                nixpkgs.overlays = [ polybarOverlay webkitOverlay ];
+                nixpkgs.overlays = [ polybarOverlay ];
                 # Match Kunkka's per-app fcitx fix; Wayland uses its native IM context.
                 programs.lookapp.package = pkgs.symlinkJoin {
                   name = "lookapp-fcitx-fix";

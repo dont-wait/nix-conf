@@ -141,12 +141,12 @@ in
         "${mod}+Shift+5" = "move container to workspace 5";
 
         # Multi-monitor
-        "${mod}+F1" = "exec swaymsg output eDP-1 enable, output HDMI-A-1 disable";
-        "${mod}+F2" = "exec swaymsg output HDMI-A-1 enable, output eDP-1 disable";
+        "${mod}+F1" = "output eDP-1 enable, output HDMI-A-1 disable";
+        "${mod}+F2" = "output HDMI-A-1 enable, output eDP-1 disable";
         "${mod}+F3" = "focus output eDP-1";
         "${mod}+F4" = "focus output HDMI-A-1";
-        "${mod}+F5" = "exec swaymsg output eDP-1 enable, output HDMI-A-1 enable";
-        "${mod}+F6" = "exec swaymsg output eDP-1 enable, output HDMI-A-1 enable; wl-mirror eDP-1";
+        "${mod}+F5" = "output eDP-1 enable, output HDMI-A-1 enable";
+        "${mod}+F6" = "output eDP-1 enable, output HDMI-A-1 enable; exec wl-mirror eDP-1";
         "${mod}+Shift+F1" = "move container to output eDP-1";
         "${mod}+Shift+F2" = "move container to output HDMI-A-1";
 
