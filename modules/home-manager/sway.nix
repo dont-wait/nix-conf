@@ -58,6 +58,7 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
+    package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
     checkConfig = false;
     config = {
@@ -176,6 +177,20 @@ in
     };
 
     extraConfig = ''
+      # SwayFX blur, corners and shadows
+      blur enable
+      blur_passes 2
+      blur_radius 4
+      blur_noise 0.025
+      blur_brightness 1
+      layer_effects "waybar" blur enable
+
+      corner_radius 8
+      shadows enable
+      shadow_blur_radius 20
+      shadow_color #00000080
+      shadow_offset 0 4
+
       # Window rules
       default_border pixel 1
       workspace 1 output eDP-1

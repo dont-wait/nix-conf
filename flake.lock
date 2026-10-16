@@ -63,11 +63,11 @@
       },
       "locked": {
         "dir": "apps/linows",
-        "lastModified": 1791127659,
-        "narHash": "sha256-8RNgzvvGljUJsIUx/WwltV1PV9cT8bq7dEzCX3BPrM8=",
+        "lastModified": 1792146801,
+        "narHash": "sha256-+tsdevyCm6ii0dusfzAUgDGjXDyrA/X7rVExvygd1Qk=",
         "owner": "kunkka19xx",
         "repo": "look",
-        "rev": "721aba5456f16628eacc94ff3b0c1c6f0c768ba4",
+        "rev": "801e82c4a50e5636596c9616457aa3f35d31af69",
         "type": "github"
       },
       "original": {
@@ -161,11 +161,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778296574,
-        "narHash": "sha256-DVmg1JCjG0VJTa+FF6tH6tkQChaxzK1EzPL98RiRWU0=",
+        "lastModified": 1791189933,
+        "narHash": "sha256-Y8eN7ki0Urx4Ojf4w1xSpWg8uk/3lJqK+E0Oth77rH0=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "1d634a90dffb59ec9ba52652de311b15528c1595",
+        "rev": "e60029353d0c48d216bc4b065168ccd4079c166f",
         "type": "github"
       },
       "original": {

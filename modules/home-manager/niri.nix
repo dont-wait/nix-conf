@@ -45,6 +45,7 @@ in
     }
 
     output "HDMI-A-1" {
+        mode "1920x1080@60.000"
         position x=1920 y=0
     }
 
@@ -89,7 +90,8 @@ in
     spawn-at-startup "fcitx5"
     spawn-at-startup "dunst"
     spawn-at-startup "udiskie" "--tray"
-    spawn-at-startup "lookapp"
+    // Diagnose post-output-switch lag using Look's regular window path.
+    spawn-at-startup "env" "LOOK_NO_LAYER_SHELL=1" "lookapp"
     spawn-at-startup "blueman-applet"
     spawn-at-startup "nm-applet"
     spawn-at-startup "${waybar}" "-c" "${waybarConfig}"

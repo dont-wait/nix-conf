@@ -18,7 +18,6 @@
     };
 
     kernelParams = [
-      "video=HDMI-A-1:1920x1080@120"
       "i915.enable_fbc=0"
     ];
 
@@ -213,6 +212,7 @@
       "kvm"
       "libvirtd"
       "input"
+      "dialout"
     ];
     packages = with pkgs; [
       #  thunderbird
