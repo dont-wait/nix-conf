@@ -184,6 +184,10 @@ in
       blur_noise 0.025
       blur_brightness 1
       layer_effects "waybar" blur enable
+      layer_effects "lookapp" {
+        blur enable
+        blur_ignore_transparent enable
+      }
 
       corner_radius 8
       shadows enable
