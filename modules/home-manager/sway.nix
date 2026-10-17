@@ -6,7 +6,7 @@
 }:
 let
   mod = "Mod4";
-  wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/nix-girl2.png";
+  wallpaperPath = "$HOME/Documents/git/nix-conf/dotfiles/bg/miyamoto-musashi-5k-3840x2160-15210.jpg";
   scratchpadToggle = pkgs.writeShellScript "sway-scratchpad-toggle" ''
     set -eu
 

@@ -79,6 +79,16 @@
     };
 
     style = ''
+      /* Kanagawa Wave palette. */
+      @define-color fujiWhite #DCD7BA;
+      @define-color fujiGray #727169;
+      @define-color crystalBlue #7E9CD8;
+      @define-color springGreen #98BB6C;
+      @define-color carpYellow #E6C384;
+      @define-color waveRed #E46876;
+      @define-color oniViolet #957FB8;
+      @define-color waveAqua #7AA89F;
+
       * {
         font-family: "JetBrainsMono Nerd Font";
         font-size: 12px;
@@ -88,30 +98,47 @@
 
       window#waybar {
         background: transparent;
+        color: @fujiWhite;
+      }
+
+      tooltip {
+        background: rgba(31, 31, 40, 0.95);
+        border: 1px solid #54546D;
+        border-radius: 8px;
+      }
+
+      tooltip label {
+        color: @fujiWhite;
       }
 
       #workspaces button {
-        color: #6c7086;
-        background: rgba(30, 30, 46, 0.6);
+        color: @fujiGray;
+        background: rgba(31, 31, 40, 0.82);
         border-radius: 8px;
         padding: 0 6px;
         margin: 2px 2px;
       }
 
-      #workspaces button.active,
-      #workspaces button.focused {
-        color: #a6e3a1;
-        background: rgba(166, 227, 161, 0.15);
+      #workspaces button:hover {
+        color: @fujiWhite;
+        background: rgba(54, 54, 70, 0.9);
+        box-shadow: none;
       }
 
       #workspaces button.visible {
-        color: #89b4fa;
-        background: rgba(137, 180, 250, 0.1);
+        color: @crystalBlue;
+        background: rgba(34, 50, 73, 0.85);
+      }
+
+      #workspaces button.active,
+      #workspaces button.focused {
+        color: @fujiWhite;
+        background: rgba(45, 79, 103, 0.9);
       }
 
       #workspaces button.urgent {
-        color: #f38ba8;
-        background: rgba(243, 139, 168, 0.15);
+        color: @waveRed;
+        background: rgba(67, 36, 43, 0.9);
       }
 
       #clock,
@@ -120,47 +147,50 @@
       #memory,
       #disk,
       #pulseaudio,
-      #battery {
-        color: #cdd6f4;
+      #battery,
+      #tray {
+        color: @fujiWhite;
+        background: rgba(31, 31, 40, 0.82);
+        border-radius: 8px;
         padding: 0 10px;
         margin: 2px 2px;
       }
 
       #cpu {
-        color: #89b4fa;
+        color: @crystalBlue;
       }
 
       #window {
-        color: #cdd6f4;
+        color: @fujiWhite;
         padding-left: 12px;
       }
 
       #memory {
-        color: #a6e3a1;
+        color: @oniViolet;
       }
 
       #disk {
-        color: #f9e2af;
+        color: @carpYellow;
       }
 
       #battery {
-        color: #a6e3a1;
+        color: @springGreen;
       }
 
       #battery.warning {
-        color: #f9e2af;
+        color: @carpYellow;
       }
 
       #battery.critical {
-        color: #f38ba8;
+        color: @waveRed;
       }
 
       #pulseaudio {
-        color: #cdd6f4;
+        color: @waveAqua;
       }
 
       #pulseaudio.muted {
-        color: #6c7086;
+        color: @fujiGray;
       }
     '';
   };
