@@ -46,7 +46,7 @@ config.window_padding = {
 	bottom = 0,
 }
 config.color_scheme = "Tokyo Night"
-config.font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Regular", stretch = "Normal", style = "Normal" })
+config.font = wezterm.font("Inconsolata Nerd Font Mono", { weight = "Regular", stretch = "Normal", style = "Normal" })
 config.font_size = 19
 config.adjust_window_size_when_changing_font_size = false
 config.window_decorations = "RESIZE"

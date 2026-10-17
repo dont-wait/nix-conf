@@ -6,6 +6,8 @@
 }:
 
 {
+  home.packages = [ pkgs.wl-clipboard ];
+
   programs.tmux = {
     plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator

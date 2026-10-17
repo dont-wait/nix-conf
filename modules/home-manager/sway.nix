@@ -183,7 +183,7 @@ in
       blur_radius 4
       blur_noise 0.025
       blur_brightness 1
-      layer_effects "waybar" blur enable
+      layer_effects "waybar" blur disable
       layer_effects "lookapp" {
         blur enable
         blur_ignore_transparent enable
@@ -211,7 +211,7 @@ in
       for_window [app_id="wshowkeys"] floating enable
       for_window [app_id="wshowkeys"] move position 1600 900
       # Font
-      font pango:JetBrainsMono Nerd Font 16
+      font pango:Inconsolata Nerd Font Mono 16
 
       # Wallpaper
       output * bg ${wallpaperPath} fill
