@@ -189,7 +189,7 @@ in
         blur_ignore_transparent enable
       }
 
-      corner_radius 8
+      corner_radius 12
       shadows enable
       shadow_blur_radius 20
       shadow_color #00000080

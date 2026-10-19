@@ -2,7 +2,7 @@ font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 19
 #0.94
 background-opacity = 0.86
-background-blur = 10
+background-blur = 1
 title = ""
 theme = Catppuccin Macchiato
 cursor-opacity = 0.65
