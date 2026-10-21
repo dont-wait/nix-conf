@@ -30,7 +30,6 @@
     btop
     ffmpeg # video, graphics
     vlc
-    screenkey
     xclip # clipboard
     unzip
     brightnessctl
