@@ -18,6 +18,16 @@ let
 
     exec ${pkgs.sway}/bin/swaymsg 'floating enable, resize set 1280px 1080px, move position center, move scratchpad'
   '';
+  # showmethekey toggle (keycast). See the note in niri.nix; the package comes
+  # from pkgs/showmethekey.nix so the layer-shell patch and schema defaults
+  # match the copy installed in environment.systemPackages.
+  keycastToggle = pkgs.writeShellScript "keycast-toggle" ''
+    if pgrep -f showmethekey-gtk >/dev/null; then
+      pkill -f showmethekey-gtk
+    else
+      exec ${pkgs.callPackage ../../pkgs/showmethekey.nix { }}/bin/showmethekey-gtk -A -C
+    fi
+  '';
 in
 {
   programs.swaylock = {
@@ -154,6 +164,9 @@ in
         # Screenshot
         "${mod}+Shift+s" = "exec bash -c 'grim -g \"$(slurp)\" - | wl-copy'";
 
+        # On-screen keys (keycast); Shift+s is taken by the screenshot above.
+        "${mod}+Shift+c" = "exec ${keycastToggle}";
+
         # Random wallpaper
         "${mod}+Shift+n" =
           "exec bash -c 'swaymsg output \"*\" bg \"$(find $HOME/Documents/git/nix-conf/dotfiles/bg -type f | shuf -n1)\" fill'";
@@ -185,6 +198,10 @@ in
       blur_brightness 1
       layer_effects "waybar" blur disable
       layer_effects "lookapp" {
+        blur enable
+        blur_ignore_transparent enable
+      }
+      layer_effects "keycast" {
         blur enable
         blur_ignore_transparent enable
       }

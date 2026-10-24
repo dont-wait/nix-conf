@@ -9,8 +9,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-opencode.url = "github:NixOS/nixpkgs/master";
     look = {
-      url = "github:kunkka19xx/look?dir=apps/linows";
+      url = "github:kunkka19xx/look";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixgl.url = "github:guibou/nixGL";

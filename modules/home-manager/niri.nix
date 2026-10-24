@@ -11,6 +11,18 @@ let
     pkill swaybg
     exec ${swaybg} -i "$(find ${wallpaperDir} -type f | shuf -n1)" -m fill
   '';
+  # showmethekey toggle (keycast). The app is single-instance and a second
+  # launch does nothing visible, so stop it by name instead. -f because the
+  # Nix wrapper is called ".showmethekey-gtk-wrapped"; this script's own
+  # cmdline does not contain "showmethekey-gtk", so no self match. -A: keys
+  # window only, no settings window. -C: click-through overlay.
+  keycastToggle = pkgs.writeShellScript "keycast-toggle" ''
+    if pgrep -f showmethekey-gtk >/dev/null; then
+      pkill -f showmethekey-gtk
+    else
+      exec ${pkgs.callPackage ../../pkgs/showmethekey.nix { }}/bin/showmethekey-gtk -A -C
+    fi
+  '';
 in
 {
   xdg.configFile."niri/config.kdl".text = ''
@@ -158,6 +170,14 @@ in
        background-effect { xray false; }
     }
 
+    // showmethekey keys window: blur what is behind the pill (the
+    // background-effect is what makes the CSS alpha below visible as blur
+    // instead of just a grey wash).
+    layer-rule {
+       match namespace="^keycast$"
+       background-effect { xray false; }
+    }
+
     binds {
         Mod+Return repeat=false { spawn "ghostty"; }
         Mod+D repeat=false { spawn "fuzzel"; }
@@ -242,6 +262,7 @@ in
         Mod+Shift+B repeat=false { spawn "blueman-manager"; }
         Mod+B repeat=false { spawn "pkill" "-SIGUSR1" "-f" "/waybar( |$)"; }
         Mod+Shift+N repeat=false { spawn "${randomWallpaper}"; }
+        Mod+Shift+C repeat=false { spawn "${keycastToggle}"; }
 
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     }

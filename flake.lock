@@ -62,16 +62,14 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "dir": "apps/linows",
-        "lastModified": 1792219140,
-        "narHash": "sha256-f/B3LswiSmF3oKlY5s3pkNywnHzk4MC1G1Fs+FRdVfI=",
+        "lastModified": 1792738470,
+        "narHash": "sha256-uQ7hWMrCJ1VLWDtRjbjnLxNmMXl9RxSl1lQze6WexwI=",
         "owner": "kunkka19xx",
         "repo": "look",
-        "rev": "010682cae0023c292ba6bee515baf910e0b3a3cc",
+        "rev": "912ee0cc154874108c85c2731ca960cbaedf11f9",
         "type": "github"
       },
       "original": {
-        "dir": "apps/linows",
         "owner": "kunkka19xx",
         "repo": "look",
         "type": "github"
@@ -107,6 +105,22 @@
       },
       "original": {
         "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-opencode": {
+      "locked": {
+        "lastModified": 1792554001,
+        "narHash": "sha256-kl1O+PN79CnnRgVkE+NrXYRJz63//rmlUefk9aiFE34=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "af9839e576da1d1d549f70e00304274acbaa6d29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -149,6 +163,7 @@
         "look": "look",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-opencode": "nixpkgs-opencode",
         "nixpkgs-stable": "nixpkgs-stable",
         "spotx-nix": "spotx-nix"
       }

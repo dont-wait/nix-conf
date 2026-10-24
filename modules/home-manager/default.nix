@@ -7,5 +7,6 @@
     ./ghostty.nix
     ./kitty.nix
     ./wezterm.nix
+    ./showmethekey.nix
   ];
 }

@@ -35,6 +35,7 @@
     brightnessctl
     cargo-tauri
     spotify-spotx
+    (pkgs.callPackage ../../pkgs/showmethekey.nix { }) # on-screen keys, keycast style
 
     inputs.nixgl.packages.${pkgs.system}.nixGLIntel
 
