@@ -86,16 +86,17 @@ in
         o = "opencode";
         lg = "lgtm";
         gpr = "git pull origin";
+        risk = "lgtm risk --base origin/main";
       };
       initContent = ''
          eval "$(direnv hook zsh)"
          export MANPAGER="nvim +Man!"
          bindkey -v
          bindkey '^F' autosuggest-accept
-         gpup() {
-           local branch=$(git rev-parse --abbrev-ref HEAD)
-           git push --set-upstream origin "$branch"
-         }
+        gpup() {
+          local branch=$(git rev-parse --abbrev-ref HEAD)
+          git push --set-upstream origin "$branch"
+        }
 
         book() {
               local file
