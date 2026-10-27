@@ -1,8 +1,8 @@
-font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "Inconsolata Nerd Font Mono"
 font-size = 19
 #0.94
-background-opacity = 0.86
-background-blur = 1
+background-opacity = 0.88
+background-blur = false
 title = ""
 theme = Catppuccin Macchiato
 cursor-opacity = 0.65
