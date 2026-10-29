@@ -21,3 +21,22 @@ keybind = alt+enter=toggle_maximize
 # background-image-fit = cover
 # background-image-position = center
 # background-image-opacity = 0.05
+
+# Scrollback
+scrollback-compression = true
+scrollback-limit-lines = 50000
+
+# Split
+drag-handle = always
+
+# Clipboard
+copy-on-select = both
+
+# Tab navigation
+gtk-horizontal-tab-scroll = false
+
+# Hyperlinks
+link-osc8 = true
+
+# Window padding
+window-padding-balance = equal

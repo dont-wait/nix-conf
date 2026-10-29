@@ -2,14 +2,21 @@
   description = "dontwait nix config";
 
   nixConfig = {
-    extra-substituters = [ "https://look.cachix.org" ];
-    extra-trusted-public-keys = [ "look.cachix.org-1:8elPCeSVBzlDZXqIRKBK9GyLIK/Hoe1xiWZF0ir7uX4=" ];
+    extra-substituters = [
+      "https://look.cachix.org"
+      "https://ghostty.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "look.cachix.org-1:8elPCeSVBzlDZXqIRKBK9GyLIK/Hoe1xiWZF0ir7uX4="
+      "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
+    ];
   };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-opencode.url = "github:NixOS/nixpkgs/master";
+    ghostty.url = "github:ghostty-org/ghostty/v1.4.0";
     look = {
       url = "github:kunkka19xx/look";
       inputs.nixpkgs.follows = "nixpkgs";

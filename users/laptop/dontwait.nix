@@ -49,7 +49,7 @@
     oh-my-zsh
     fastfetch
     tree-sitter
-    ghostty
+    inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
     kitty
     wezterm
     yazi

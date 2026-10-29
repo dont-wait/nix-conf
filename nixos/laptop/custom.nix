@@ -12,6 +12,10 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.substituters = [ "https://ghostty.cachix.org" ];
+  nix.settings.trusted-public-keys = [
+    "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
+  ];
 
   # Shell Envs
   programs.zsh.enable = true;
