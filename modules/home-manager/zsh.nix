@@ -87,6 +87,7 @@ in
         lg = "lgtm";
         gpr = "git pull origin";
         risk = "lgtm risk --base origin/main";
+        ssh="ghostty +ssh --";
       };
       initContent = ''
          eval "$(direnv hook zsh)"
