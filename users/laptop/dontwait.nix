@@ -27,6 +27,8 @@
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/niri.nix
+    ../../modules/home-manager/jj.nix
+
   ];
 
   home.username = "dontwait";
@@ -105,8 +107,6 @@
     vscode
     platformio-core
     webkitgtk_4_1
-
-    jujutsu
   ];
 
   xdg.mimeApps.enable = true;
