@@ -105,6 +105,8 @@
     vscode
     platformio-core
     webkitgtk_4_1
+
+    jujutsu
   ];
 
   xdg.mimeApps.enable = true;
