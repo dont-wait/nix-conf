@@ -27,6 +27,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rex.url = "https://pkgs.superlogical.com/rex/nix/snapshot.tar.gz";
+
+    zalo-for-linux = {
+      url = "github:VN-Linux-Family/zalo-for-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

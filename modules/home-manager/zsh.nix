@@ -87,7 +87,15 @@ in
         lg = "lgtm";
         gpr = "git pull origin";
         risk = "lgtm risk --base origin/main";
-        ssh="ghostty +ssh --";
+        ssh = "ghostty +ssh --";
+      } // lib.optionalAttrs config.programs.jujutsu.enable {
+        j = "jj";
+        jl = "jj log";
+        js = "jj status";
+        jd = "jj diff";
+        jn = "jj new";
+        jp = "jj git push";
+        jf = "jj git fetch";
       };
       initContent = ''
          eval "$(direnv hook zsh)"

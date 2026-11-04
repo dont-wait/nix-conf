@@ -1,22 +1,38 @@
+{ lib, config, pkgs, ... }:
+
+with lib;
+
+let
+  cfg = config.within.jujutsu;
+in
 {
-  programs.jujutsu = {
-    enable = true;
+  options.within.jujutsu.enable =
+    mkEnableOption "Enables Jujutsu";
 
-    settings = {
-      user = {
-        name = "dont-wait";
-        email = "nguyentansang15042005@gmail.com";
-      };
+  config = mkIf cfg.enable {
+    programs.jujutsu = {
+      enable = true;
 
-      ui = {
-        editor = "nvim";
-        default-command = "log";
-      };
+      settings = {
+        user = {
+          name = "dont-wait";
+          email = "157901375+dont-wait@users.noreply.github.com";
+        };
 
-      aliases = {
-        l = ["log" "-r" "all()" "-T" "builtin_log_detailed"];
-        s = ["status"];
-        d = ["diff"];
+        ui = {
+          editor = "nvim";
+          default-command = "log";
+        };
+
+        aliases = {
+          l = [ "log" "-r" "all()" ];
+          ll = [ "log" "-r" "all()" "-T" "builtin_log_detailed" ];
+          s = [ "status" ];
+          d = [ "diff" ];
+          n = [ "new" ];
+          push = [ "git" "push" ];
+          fetch = [ "git" "fetch" ];
+        };
       };
     };
   };

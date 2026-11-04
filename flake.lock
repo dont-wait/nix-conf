@@ -231,6 +231,34 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1789632929,
+        "narHash": "sha256-j08lBbqaYwjsW0xy6Dh4MNZpQ/oSvLU1MLAo38OXphM=",
+        "rev": "a32edd7654519351e48e80372a928df336394670",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1075288.a32edd765451/nixexprs.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz"
+      }
+    },
+    "rex": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1793741575,
+        "narHash": "sha256-MfxrlfzGXlWjQsEZc3Rd0G+HJ3XyrBrdMUdLUYUrO5M=",
+        "type": "tarball",
+        "url": "https://pkgs.superlogical.com/rex/nix/snapshot/0.0.1793741575-g1b6654.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://pkgs.superlogical.com/rex/nix/snapshot.tar.gz"
+      }
+    },
     "root": {
       "inputs": {
         "ghostty": "ghostty",
@@ -240,7 +268,9 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-opencode": "nixpkgs-opencode",
         "nixpkgs-stable": "nixpkgs-stable",
-        "spotx-nix": "spotx-nix"
+        "rex": "rex",
+        "spotx-nix": "spotx-nix",
+        "zalo-for-linux": "zalo-for-linux"
       }
     },
     "rust-overlay": {
@@ -330,6 +360,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "zalo-for-linux": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793762912,
+        "narHash": "sha256-k+Ymh9cm2E9iy6+kbxyfPaYD3UGKq84OgDFGsR4dHEk=",
+        "owner": "VN-Linux-Family",
+        "repo": "zalo-for-linux",
+        "rev": "63bb20c8519bb27bab74b7d0e536243d4e74a51b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VN-Linux-Family",
+        "repo": "zalo-for-linux",
         "type": "github"
       }
     },

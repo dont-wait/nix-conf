@@ -8,7 +8,9 @@
 
 {
   imports = [
+    inputs.rex.homeManagerModules.default
     ./db.nix
+    inputs.zalo-for-linux.homeModules.default
     ./langs.nix
 
     ../../modules/home-manager/default.nix
@@ -33,8 +35,13 @@
 
   home.username = "dontwait";
   home.homeDirectory = "/home/dontwait";
-  home.stateVersion = "26.05";
+  home.stateVersion = "26.11";
   home.enableNixpkgsReleaseCheck = false;
+
+  programs.rex.enable = true;
+  services.rex.enable = true;
+  programs.ssh.enable = true;
+  programs.zalo.enable = true;
 
   within = {
     neovim.enable = true;
@@ -42,6 +49,7 @@
     kitty.enable = true;
     wezterm.enable = true;
     zsh.enable = true;
+    jujutsu.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -103,6 +111,7 @@
     wl-clipboard
     nerd-fonts.inconsolata
     nerd-fonts.jetbrains-mono
+    corefonts
 
     vscode
     platformio-core
