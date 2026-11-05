@@ -370,11 +370,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793762912,
-        "narHash": "sha256-k+Ymh9cm2E9iy6+kbxyfPaYD3UGKq84OgDFGsR4dHEk=",
+        "lastModified": 1793844119,
+        "narHash": "sha256-qCNnuv67ZkYlvEJdHKOGn8/YDcWo5WKs+URnK7eJIUQ=",
         "owner": "VN-Linux-Family",
         "repo": "zalo-for-linux",
-        "rev": "63bb20c8519bb27bab74b7d0e536243d4e74a51b",
+        "rev": "a8f6be68c7217e4393432616c698467bbf11b48d",
         "type": "github"
       },
       "original": {
