@@ -84,7 +84,9 @@
     rar
 
     # apps
-    brave
+    # Brave's Wayland backend crashes in libxkbcommon on this machine.
+    # Keep Brave on XWayland even when NIXOS_OZONE_WL enables the Wayland hint.
+    (brave.override { commandLineArgs = "--ozone-platform=x11"; })
     libreoffice-qt
     hunspell
     mpv
