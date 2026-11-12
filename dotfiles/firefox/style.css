@@ -146,8 +146,14 @@
 }
 
 /* focused tab: accent-colored bold title */
-.tabbrowser-tab[selected] .tab-label {
+.tabbrowser-tab:is([selected], [visuallyselected]) {
+    --tab-selected-textcolor: var(--tab-accent) !important;
     color: var(--tab-accent) !important;
+}
+.tabbrowser-tab:is([selected], [visuallyselected]) .tab-label,
+.tabbrowser-tab:is([selected], [visuallyselected]) .tab-text {
+    color: var(--tab-accent) !important;
+    font-weight: 600 !important;
 }
 
 /* no rounded corners on any tab */
@@ -157,6 +163,14 @@
 .tab-stack,
 .tab-content {
     border-radius: 0 !important;
+}
+
+/* focused tab keeps a fixed width; other tabs shrink/grow normally */
+.tabbrowser-tab[selected]:not([pinned]) {
+    flex: none !important;
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
 }
 
 /* tab animations (colors/opacity only, no size changes) */

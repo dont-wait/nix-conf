@@ -110,6 +110,8 @@
 
         /* Navbar size calc */
         :root{
+        --tab-min-width: 140px;
+        --tab-max-width: 400px;
         --3tab-border-radius: 6px !important; /*  Tab border radius -- Changes the tabs rounding  *//*  Default: 6px  */
         --NavbarWidth: 43; /*  Default values: 36 - 43  */
         --TabsHeight: 36; /*  Minimum: 30  *//*  Default: 36  */
@@ -190,8 +192,14 @@
         }
 
         /* focused tab: accent-colored bold title */
-        .tabbrowser-tab[selected] .tab-label {
+        .tabbrowser-tab:is([selected], [visuallyselected]) {
+            --tab-selected-textcolor: var(--tab-accent) !important;
             color: var(--tab-accent) !important;
+        }
+        .tabbrowser-tab:is([selected], [visuallyselected]) .tab-label,
+        .tabbrowser-tab:is([selected], [visuallyselected]) .tab-text {
+            color: var(--tab-accent) !important;
+            font-weight: 600 !important;
         }
 
         /* no rounded corners on any tab */
@@ -201,6 +209,14 @@
         .tab-stack,
         .tab-content {
             border-radius: 0 !important;
+        }
+
+        /* focused tab keeps a fixed width; other tabs shrink/grow normally */
+        .tabbrowser-tab[selected]:not([pinned]) {
+            flex: none !important;
+            width: 200px !important;
+            min-width: 200px !important;
+            max-width: 200px !important;
         }
 
         /* tab animations (colors/opacity only, no size changes) */
