@@ -26,15 +26,11 @@ return {
 				builtin = {
 					["<C-j>"] = "preview-down",
 					["<C-k>"] = "preview-up",
-					["<C-h>"] = "preview-left",
-					["<C-l>"] = "preview-right",
 				},
 				fzf = {
 					["ctrl-q"] = "select-all+accept",
 					["ctrl-j"] = "preview-down",
 					["ctrl-k"] = "preview-up",
-					["ctrl-h"] = "preview-left",
-					["ctrl-l"] = "preview-right",
 				},
 			},
 		})

@@ -150,6 +150,17 @@ in
              rm -f -- "''$tmp"
          }
 
+         opgw() {
+           local base="$HOME/Documents/git/edux"
+           local dir
+           dir=$(find "$base" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -exec test -d {} \; -print | fzf)
+           if [[ -n "$dir" ]]; then
+             cd "$dir"
+           else
+             cd "$base"
+           fi
+         }
+
          opg() {
            local base="$HOME/Documents/git"
            local dir
