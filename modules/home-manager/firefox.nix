@@ -39,10 +39,12 @@
         "extensions.pocket.enabled" = false;
         "dom.security.https_only_mode" = false;
         "browser.download.panel.shown" = true;
-        "identity.fxaccounts.enabled" = false;
+        "identity.fxaccounts.enabled" = true;
         "signon.rememberSignons" = false;
         "browser.theme.toolbar-theme" = 1;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        # Firefox built-in VPN button (off by default, rolled out via Nimbus)
+        "browser.ipProtection.enabled" = true;
         "layout.css.devPixelsPerPx" = "1.0";
       };
       userChrome = ''
@@ -67,11 +69,9 @@
           display: none !important
         }
 
-        /* Extensions button */
-        #unified-extensions-button {
-            position: absolute !important;
-            opacity: 0 !important;
-          size: 1px !important;
+        /* Hide reload button */
+        #stop-reload-button {
+          display: none !important;
         }
 
         /* Extension name inside URL bar */
@@ -99,6 +99,11 @@
         /* "This time search with:..." */
         #urlbar .search-one-offs {
           display: none !important
+        }
+
+        /* Firefox VPN button: keep it visible (id unverified, check in Browser Toolbox) */
+        #ipprotection-button:not([hidden]) {
+          display: -moz-box !important;
         }
 
         /* --- ~END~ element visibility section --- */
@@ -156,25 +161,63 @@
 
 
         /* tabs */
-        .tabbrowser-tab:not(:hover):not([visuallyselected], [multiselected]) {
+        :root { --tab-accent: #89b4fa; } /* catppuccin blue; try #cba6f7 (mauve) or #a6e3a1 (green) */
+
+        .tabbrowser-tab:not(:hover):not([selected], [multiselected]) {
             transition: .5s !important;
             filter: opacity(50%) !important;
         }
 
-        #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon, .tabbrowser-tab:is([visuallyselected], [multiselected]) {
+        #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon, .tabbrowser-tab:is([selected], [multiselected]) {
             background: none !important;
             filter: none !important;
             & .tab-background {
-                background: none !important;
-                box-shadow: none !important;
+                background: color-mix(in srgb, var(--tab-accent) 14%, transparent) !important;
+                box-shadow: 0 0 10px color-mix(in srgb, var(--tab-accent) 35%, transparent) !important;
                 /*border-bottom: 2px solid AccentColor !important;*/
                 border-bottom-right-radius: 0 !important;
                 border-bottom-left-radius: 0 !important;
+                /* focused tab: rectangular border instead of rounded */
+                border-radius: 0 !important;
+                outline: 1px solid var(--tab-accent) !important;
+                outline-offset: -1px !important;
             }
         }
 
-        .tabbrowser-tab:hover .tab-background {
-            background: none !important;
+        .tabbrowser-tab:hover:not([selected]) .tab-background {
+            background: color-mix(in srgb, var(--tab-accent) 7%, transparent) !important;
+            border-radius: 0 !important;
+        }
+
+        /* focused tab: accent-colored bold title */
+        .tabbrowser-tab[selected] .tab-label {
+            color: var(--tab-accent) !important;
+        }
+
+        /* no rounded corners on any tab */
+        :root { --tab-border-radius: 0px !important; --3tab-border-radius: 0px !important; }
+        .tabbrowser-tab,
+        .tab-background,
+        .tab-stack,
+        .tab-content {
+            border-radius: 0 !important;
+        }
+
+        /* tab animations (colors/opacity only, no size changes) */
+        .tabbrowser-tab .tab-background {
+            transition: background .25s ease, outline-color .25s ease, box-shadow .25s ease !important;
+        }
+        .tabbrowser-tab .tab-label {
+            transition: color .25s ease !important;
+        }
+        .tabbrowser-tab:hover:not([selected]) .tab-label {
+            color: var(--tab-accent) !important;
+        }
+        .tabbrowser-tab[selected] .tab-close-button {
+            transition: opacity .2s ease, transform .2s ease !important;
+        }
+        .tabbrowser-tab[selected] .tab-close-button:hover {
+            transform: rotate(90deg) !important;
         }
 
         /* remove gap after pinned tabs */
@@ -226,38 +269,19 @@
         } 
 
 
-        /*  Tabs close button  */
-        .tabbrowser-tab:not(:hover) .tab-close-button {
-            opacity: 0% !important;
-            transition: 0.3s !important;
-            display: -moz-box !important;
+        /*  Tabs close button: only the focused tab shows the x  */
+        .tabbrowser-tab:not([selected]) .tab-close-button {
+            display: none !important;
         }
-        .tab-close-button[selected]:not(:hover) {
-            opacity: 45% !important;
-            transition: 0.3s !important;
+        .tabbrowser-tab[selected] .tab-close-button {
             display: -moz-box !important;
-            background: none !important;
-        }
-        .tabbrowser-tab:hover .tab-close-button {
-            opacity: 50%;
-            transition: 0.3s !important;
+            opacity: 70% !important;
             background: none !important;
             cursor: pointer;
-            display: -moz-box !important;
+            transition: 0.3s !important;
         }
-        .tab-close-button:hover {
+        .tabbrowser-tab[selected] .tab-close-button:hover {
             opacity: 100% !important;
-            transition: 0.3s !important;
-            background: none !important;
-            cursor: pointer;
-            display: -moz-box !important;
-        }
-        .tab-close-button[selected]:hover {
-            opacity: 100% !important;
-            transition: 0.3s !important;
-            background: none !important;
-            cursor: pointer;
-            display: -moz-box !important;
         }
       '';
     };
